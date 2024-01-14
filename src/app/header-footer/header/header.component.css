@@ -1,0 +1,27 @@
+.navbar{
+    background-color: var(--couleurPrincipal);
+}
+.current{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.navbar-nav .nav-item .nav-link{
+    color: var(--couleurSecondaire);
+    font-weight: bold;
+}
+.navbar-nav .nav-item .nav-link:hover{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.btnConnexion{
+    border-radius: 8px;
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+    font-weight: bold;
+   
+}
+@media (max-width:990px){
+    #navbarText{
+        margin-left: 45%;
+    }
+}
