@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+
+:root{
+    --couleurPrincipal:#F0E9D8;
+    --couleurSecondaire:#1E1E1E;
+}
+*{
+    list-style: none;
+    /* border: 1px solid red; */
+}
