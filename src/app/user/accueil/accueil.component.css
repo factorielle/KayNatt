@@ -180,7 +180,20 @@
   .containerTon{
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 8%;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .texton{
+    width: 70vh !important;
   }
   #tontine{
     margin-top: 300px !important;
+  }
+  .accordion-item{
+    border-radius: 0;
+    background-color: var(--couleurPrincipal);
+  }
+  .accordion-button{
+    background-color: var(--couleurPrincipal);
   }
