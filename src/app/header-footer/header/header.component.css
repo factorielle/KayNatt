@@ -1,10 +1,12 @@
 .navbar{
     background-color: var(--couleurPrincipal);
+    height: 60px;
 }
 .current{
     text-decoration: underline;
     text-underline-offset: 4px;
 }
+
 .navbar-nav .nav-item .nav-link{
     color: var(--couleurSecondaire);
     font-weight: bold;
