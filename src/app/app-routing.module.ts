@@ -36,9 +36,9 @@ const routes: Routes = [
   // route pour les composant dans le dossier user
   {path:'accueil', component:AccueilComponent},
   {path:'politique', component:PolitiqueComponent},
-  {path:'condtion', component:ConditionComponent},
+  {path:'condition', component:ConditionComponent},
   {path:'contact', component:ContactComponent},
-  {path:'detailTontine/:id', component:DetailTontineComponent},
+  {path:'detailTontine', component:DetailTontineComponent},
   // route pour les composant dans le dossier participant
   {path:'dashboardPart', component:DashParticipantComponent},
   {path:'detailCyclePart', component:DetailCycleTontineParticipantComponent},

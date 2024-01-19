@@ -1,1 +1,33 @@
-<p>contact works!</p>
+<app-header></app-header>
+<body class=" mt-5">
+    <div class="contacte mt-5 d-flex">
+        <div class="form  ">
+            <p class="topContact container pt-1 mt-3 mb-5 fw-bold">Contactez-nous</p>
+            <form class="container card border-0">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label fw-bold">Nom Complet</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label fw-bold">Email</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="form mb-5">
+                    <label for="floatingTextarea2 " class="fw-bold">Message</label>
+                    <textarea class="form-control"  id="floatingTextarea2" style="height: 100px"></textarea>
+                  </div>
+                <button type="submit" class="btn btnContacte mx-auto">Envoyer</button>
+              </form>
+        </div>
+        <div class="info container">
+            <p class="text-center fw-bold titreCoor">Coordonnees</p>
+            <ul class="coordonnees">
+                <li class="me-4"><span>+221 77 234 44 23</span> <i class="bi bi-telephone-fill" style="color: black; float: right;"></i> </li><br><br>
+                <li class="me-4"><i class="bi bi-envelope"  style="color: black; float: left;"></i> <span style="float: right; margin-right: -14px;">kaynatt@gmail.com</span></li><br><br>
+                <li class="me-4"> <span style="float: left; margin-left: -15px;">Dakar, Senegal</span> <i class="bi bi-geo-alt-fill"  style="color: black;float: right;"></i></li><br>
+            </ul>
+        </div>
+    </div>
+</body>
+<app-footer></app-footer>
