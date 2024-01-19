@@ -1,5 +1,5 @@
 #banner {
-    width: auto;
+    width: 207vh;
     height: 90vh;
     margin-top: 4%;
 
@@ -107,7 +107,7 @@
     position: absolute;
     width: 300px;
     height: 350px;
-    background-color: coral;
+    background-color: white;
     --r: calc(var(--position) - var(--offset));
     --abs: max(calc(var(--r) * -1), var(--r));
     transition: all 0.25s linear;
@@ -118,23 +118,23 @@
   
   div.item:nth-of-type(1) {
     --offset: 1;
-    background-color: #90f1ef;
+    background-color: white;
   }
   div.item:nth-of-type(2) {
     --offset: 2;
-    background-color: #ff70a6;
+    background-color: white;
   }
   div.item:nth-of-type(3) {
     --offset: 3;
-    background-color: #ff9770;
+    background-color: white;
   }
   div.item:nth-of-type(4) {
     --offset: 4;
-    background-color: #ffd670;
+    background-color: white;
   }
   div.item:nth-of-type(5) {
     --offset: 5;
-    background-color: #e9ff70;
+    background-color: white;
   }
   
   input:nth-of-type(1) {
@@ -249,47 +249,45 @@
 
  /* pagination */
 /* Les medias queries */
-@media (max-width:721px){
+@media (max-width:776px){
   #banner{
-    width: 134vh;
-    height: 60vh;
+    width: 152vh;
+    /* height: 60vh; */
   }
   .contenuBan img{
     display: none;
   }
   .texteBan p{
-    font-size: 28px !important;
-    margin-top: -10%;
-    margin-bottom: 10%;
-    
+    font-size: 18px !important;
+    margin: 18% auto;
   }
   .btnCreer{
-    width: 20vh;
+    /* width: 20vh; */
     font-size: 24px;
   }
   .containerAbout{
-    width: 90vh;
+    /* width: 90vh; */
   }
   
-  .titreAbout, .titreAv, .titretem{
-    margin-left: 70%;
+  .titreAbout, .titreAv, .titretem, .titreguide, .titreTon{
+    margin-left: 40%;
     width: 50vh;
-    font-size: 35px !important;
+    font-size: 25px !important;
   }
   .imgAbout{
-    margin-left: 20%;
+    margin-left: 25%;
     width: 500vh !important;
     
   }
-  .imgAbout ,.containerTon img{
+  .imgAbout img{
     width: 70vh !important;
     height: 50vh !important;
     
   }
 
   .textAbout{
-    margin-left: 15%;
-    font-size: 32px;
+    margin-left: 20%;
+    font-size: 18px;
   }
   .decor{
     display: none;
@@ -298,29 +296,94 @@
     display: grid;
     grid-template-columns: 1fr;
     /* margin: 0 auto; */
-    margin-left: 37%;
+    margin-left: 25%;
   }
-  .avantage{
+  .avantage, .carteTontineItem1, .carteTontineItem2{
     width: 80vh !important;
-    font-size: 32px;
+    font-size: 18px;
   }
   .cardtitre{
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
   }
   .containerTemoignage{
-    margin-left:50% ;
-    width: 90vh;
+    margin-left:30% ;
+    /* width: 90vh; */
   }
   .item{
     height: 60vh !important;
-    font-size: 25px;
+    font-size: 18px;
   }
   .containerTon{
     display: grid;
     grid-template-columns: 1fr;
+    margin-left: 15%;
+    margin-bottom: 10%;
+    font-size: 18px;
+  }
+  .texton{
+    width: 110vh !important;
+    margin-left: -6%;
   }
   .titretem{
     margin-bottom: 8%;
+  }
+  .accor{
+    margin-left: 30%;
+    margin-bottom: 10%;
+ 
+  }
+  .containerCardTontine{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 20%;
+    margin-bottom: 43%;
+  }
+  .quart-de-cercle1, .quart-de-cercle2{
+    background-color: transparent;
+  }
+  .item1title{
+    font-size: 22px;
+  }
+  .btnItem1, .btnItem2{
+    width: 22%;
+    font-size: 18px;
+  }
+}
+@media (min-width:777px) and (max-width:1025px){
+  #banner{
+    width: 205vh;
+  }
+  .contenuBan img{
+    width: 300px !important;
+    height: 300px !important;
+    margin-top: 10%;
+  }
+  .texteBan p{
+    margin-top: 20% !important;
+  }
+  .containerAbout{
+    width: 189vh;
+     
+  }
+  .titreAbout, .titreAv, .titretem, .titreguide, .titreTon{
+    margin-left: 50%;
+    width: 50vh;
+    font-size: 25px !important;
+  }
+  .decor{
+    display: none;
+  }
+  .containerAv, .containerTemoignage{
+    margin-left: 25%;
+  }
+  .accor{
+    margin-left: 35%;
+    
+  }
+  .containerCardTontine{
+    margin-left: 25%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }
