@@ -197,3 +197,200 @@
   .accordion-button{
     background-color: var(--couleurPrincipal);
   }
+  
+
+ 
+  .containerCardTontine{
+    display: grid ;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 7%;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .quart-de-cercle1 {
+    width: 75px; /* Ajustez la largeur selon vos besoins */
+    height: 75px; /* Ajustez la hauteur selon vos besoins */
+    border-radius: 0px 5px  0px 100px; /* Utilisez des valeurs appropriées pour border-radius */
+    background-color: var(--couleurPrincipal); /* Couleur de fond du quart de cercle */
+    overflow: hidden; /* Cache la partie excédentaire du cercle */
+    margin-left: 212px;
+  }
+  .carteTontineItem1{
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+  }
+  .btnItem1{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSecondaire);
+    float: right;
+    font-weight: bold;
+  }
+  .item1title{
+    margin-top: -70px;
+  }
+  .carteTontineItem2{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSecondaire);
+  }
+  .btnItem2{
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+    float: right;
+    font-weight: bold;
+  }
+  .quart-de-cercle2 {
+    width: 75px; /* Ajustez la largeur selon vos besoins */
+    height: 75px; /* Ajustez la hauteur selon vos besoins */
+    border-radius: 0px 5px  0px 100px; /* Utilisez des valeurs appropriées pour border-radius */
+    background-color: var(--couleurSecondaire); /* Couleur de fond du quart de cercle */
+    overflow: hidden; /* Cache la partie excédentaire du cercle */
+    margin-left: 212px;
+  }
+
+ /* pagination */
+/* Les medias queries */
+/* Pour les écrans de petite taille (par exemple, les smartphones) */
+@media (max-width: 576px) {
+  #banner {
+    height: 70vh;
+  }
+
+  .contenuBan {
+    top: -300px;
+  }
+
+  .contenuBan .texteBan {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  #about {
+    margin-top: -10%;
+  }
+
+  .imgAbout img {
+    width: 100%;
+    height: auto;
+  }
+
+  .textAbout {
+    margin-top: 10%;
+  }
+  
+  
+  .carteAv {
+    display: grid;
+    grid-template-columns: 1fr;    
+    align-items: center;
+    width: 100%;
+  }
+
+  .decor {
+   display: none;
+  }
+  #tontine {
+    margin-top: 100px !important;
+  }
+
+  .containerTon {
+    grid-template-columns: 1fr;
+    gap: 5%;
+  }
+
+  .texton {
+    width: 100% !important;
+  }
+  .containerCardTontine {
+    grid-template-columns: 1fr;
+    gap: 5%;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .quart-de-cercle1,
+  .quart-de-cercle2 {
+    margin-left: 0;
+  }
+}
+
+/* Pour les écrans de taille moyenne (par exemple, les tablettes) */
+@media (min-width: 577px) and (max-width: 992px) {
+  #banner {
+    height: 80vh;
+  }
+
+  .contenuBan {
+    top: -400px;
+  }
+
+  .contenuBan .texteBan {
+    font-size: 18px;
+    margin-right: 100px;
+  }
+  #about {
+    margin-top: -15%;
+  }
+
+  .imgAbout img {
+    width: 100%;
+    height: auto;
+  }
+
+  .textAbout {
+    margin-top: 8%;
+  }
+}
+
+/* Pour les écrans de grande taille (par exemple, les ordinateurs de bureau) */
+@media (min-width: 993px) {
+  #banner {
+    height: 90vh;
+  }
+
+  .contenuBan {
+    top: -500px;
+  }
+
+  .contenuBan .texteBan {
+    font-size: 20px;
+    margin-right: 150px;
+  }
+  #about {
+    margin-top: -25%;
+  }
+
+  .imgAbout img {
+    width: 450px;
+    height: 300px;
+  }
+
+  .textAbout {
+    margin-top: 5%;
+  }
+}
+
+@media (min-width: 577px) {
+  .carteAv {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+  }
+
+  .decor {
+    float: right;
+    position: relative;
+    right: -98px;
+    top: -700px;
+  }
+  #tontine {
+    margin-top: 300px !important;
+  }
+  
+  .containerTon {
+    grid-template-columns: 1fr 1fr;
+    gap: 8%;
+  }
+
+  .texton {
+    width: 70vh !important;
+  }
+}

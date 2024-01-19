@@ -1,0 +1,56 @@
+.etatTontine{
+    margin-top: 10%;
+    width: 30vh;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: swing 2s infinite;
+    transform-origin: top center;
+}
+.card{
+    background-color: var(--couleurPrincipal);
+    margin-bottom: -15%;
+}
+
+@keyframes swing {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(40deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  .boutons{
+    margin-top: 8% !important;
+  }
+  .btnInt{
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+  }
+  .btnRetour{
+    outline: 1px solid var(--couleurSecondaire);
+    background-color: white;
+  }
+  .btnPop{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSecondaire);
+  }
+  input{
+    border-left: 3px solid var(--couleurSecondaire);
+    
+}
+  @media (max-width:780px){
+    .infoTontine{
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+    }
+  }
+  @media(min-width:782px) and (max-width:1130px){
+    .btnInt{
+        margin-bottom: 15% !important;
+    }
+  }

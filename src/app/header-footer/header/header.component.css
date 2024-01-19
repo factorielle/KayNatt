@@ -1,6 +1,7 @@
 .navbar{
     background-color: var(--couleurPrincipal);
     height: 60px;
+    width: auto;
 }
 .current{
     text-decoration: underline;
@@ -25,5 +26,8 @@
 @media (max-width:990px){
     #navbarText{
         margin-left: 45%;
+    }
+    img{
+        height: 4vh;
     }
 }
