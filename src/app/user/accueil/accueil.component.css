@@ -1,5 +1,5 @@
 #banner {
-    width: 100%;
+    width: auto;
     height: 90vh;
     margin-top: 4%;
 
@@ -249,148 +249,78 @@
 
  /* pagination */
 /* Les medias queries */
-/* Pour les écrans de petite taille (par exemple, les smartphones) */
-@media (max-width: 576px) {
-  #banner {
-    height: 70vh;
+@media (max-width:721px){
+  #banner{
+    width: 134vh;
+    height: 60vh;
   }
-
-  .contenuBan {
-    top: -300px;
+  .contenuBan img{
+    display: none;
   }
-
-  .contenuBan .texteBan {
-    font-size: 16px;
-    margin-right: 20px;
-  }
-  #about {
+  .texteBan p{
+    font-size: 28px !important;
     margin-top: -10%;
+    margin-bottom: 10%;
+    
   }
-
-  .imgAbout img {
-    width: 100%;
-    height: auto;
+  .btnCreer{
+    width: 20vh;
+    font-size: 24px;
   }
-
-  .textAbout {
-    margin-top: 10%;
-  }
-  
-  
-  .carteAv {
-    display: grid;
-    grid-template-columns: 1fr;    
-    align-items: center;
-    width: 100%;
-  }
-
-  .decor {
-   display: none;
-  }
-  #tontine {
-    margin-top: 100px !important;
-  }
-
-  .containerTon {
-    grid-template-columns: 1fr;
-    gap: 5%;
-  }
-
-  .texton {
-    width: 100% !important;
-  }
-  .containerCardTontine {
-    grid-template-columns: 1fr;
-    gap: 5%;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  .quart-de-cercle1,
-  .quart-de-cercle2 {
-    margin-left: 0;
-  }
-}
-
-/* Pour les écrans de taille moyenne (par exemple, les tablettes) */
-@media (min-width: 577px) and (max-width: 992px) {
-  #banner {
-    height: 80vh;
-  }
-
-  .contenuBan {
-    top: -400px;
-  }
-
-  .contenuBan .texteBan {
-    font-size: 18px;
-    margin-right: 100px;
-  }
-  #about {
-    margin-top: -15%;
-  }
-
-  .imgAbout img {
-    width: 100%;
-    height: auto;
-  }
-
-  .textAbout {
-    margin-top: 8%;
-  }
-}
-
-/* Pour les écrans de grande taille (par exemple, les ordinateurs de bureau) */
-@media (min-width: 993px) {
-  #banner {
-    height: 90vh;
-  }
-
-  .contenuBan {
-    top: -500px;
-  }
-
-  .contenuBan .texteBan {
-    font-size: 20px;
-    margin-right: 150px;
-  }
-  #about {
-    margin-top: -25%;
-  }
-
-  .imgAbout img {
-    width: 450px;
-    height: 300px;
-  }
-
-  .textAbout {
-    margin-top: 5%;
-  }
-}
-
-@media (min-width: 577px) {
-  .carteAv {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 23px;
-  }
-
-  .decor {
-    float: right;
-    position: relative;
-    right: -98px;
-    top: -700px;
-  }
-  #tontine {
-    margin-top: 300px !important;
+  .containerAbout{
+    width: 90vh;
   }
   
-  .containerTon {
-    grid-template-columns: 1fr 1fr;
-    gap: 8%;
+  .titreAbout, .titreAv, .titretem{
+    margin-left: 70%;
+    width: 50vh;
+    font-size: 35px !important;
   }
-
-  .texton {
+  .imgAbout{
+    margin-left: 20%;
+    width: 500vh !important;
+    
+  }
+  .imgAbout ,.containerTon img{
     width: 70vh !important;
+    height: 50vh !important;
+    
+  }
+
+  .textAbout{
+    margin-left: 15%;
+    font-size: 32px;
+  }
+  .decor{
+    display: none;
+  }
+  .carteAv{
+    display: grid;
+    grid-template-columns: 1fr;
+    /* margin: 0 auto; */
+    margin-left: 37%;
+  }
+  .avantage{
+    width: 80vh !important;
+    font-size: 32px;
+  }
+  .cardtitre{
+    font-size: 34px;
+    font-weight: bold;
+  }
+  .containerTemoignage{
+    margin-left:50% ;
+    width: 90vh;
+  }
+  .item{
+    height: 60vh !important;
+    font-size: 25px;
+  }
+  .containerTon{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .titretem{
+    margin-bottom: 8%;
   }
 }
