@@ -1,1 +1,105 @@
-<p>login works!</p>
+<section class="ftco-section container" >
+    <div class="container">
+        <div class="row  justify-content-center">
+            <div class="col-md-12 col-lg-10 " >
+                <div class="wrap d-md-flex">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" style="width: 50%;">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="https://img.freepik.com/free-photo/beautiful-woman-autumn-setting_23-2149056534.jpg?size=626&ext=jpg&ga=GA1.2.522834921.1700648147&semt=ais" class="d-block w-100" alt="..." height="500px" width="100px">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://img.freepik.com/free-photo/medium-shot-woman-working-as-economist_23-2150132285.jpg?size=626&ext=jpg&ga=GA1.2.522834921.1700648147&semt=ais" class="d-block w-100" alt="..." height="500px" width="100px">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="https://img.freepik.com/free-photo/close-up-portrait-beautiful-teenager_23-2149153361.jpg?size=626&ext=jpg&ga=GA1.2.522834921.1700648147&semt=ais" class="d-block w-100" alt="..."  height="500px" width="100px"  >
+                          </div>
+                        </div>
+                      </div>
+                    <div class="login-wrap p-4 p-md-5" *ngIf="afficherLogin">
+                        <div class="d-flex">
+                            <div class="w-100 text-center">
+                              <img src="assets/KayNatt.png" alt="" width="150px" height="60px">
+                            </div>
+                           
+                        </div>
+                        <form action="#" class="signin-form mt-5">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" required name="email" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="text">Mot de passe</label>
+                                <input type="password" class="form-control" placeholder="mot de passe" required name="password">
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " >Connexion</button>
+                            </div>
+                        </form>
+                        <p class="mt-2">Pas de compte ? <span class="fw-bold" (click)="afficherFormIns()">S'inscrire</span></p>
+                    </div>
+                    <div class="insccrip login-wrap p-4 p-md-5" *ngIf="!afficherLogin">
+                        <div class="d-flex">
+                            <div class="w-100 text-center">
+                              <img src="assets/KayNatt.png" alt="" width="150px" height="60px">
+                            </div>
+                           
+                        </div>
+                        <form action="#" class="signin-form mt-1" *ngIf="afficherIns">
+                            <div class="row">
+                                <div class="col mb-3">
+                                  <label>Prenom</label>
+                                  <input type="text" class="form-control" placeholder="Prenom" name="prenom" aria-label="First name">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Nom</label>
+                                  <input type="text" class="form-control" placeholder="Nom" name="nom"  aria-label="Last name">
+                                </div>
+                              </div><div class="row">
+                                <div class="col mb-3">
+                                    <label>Numero telephone</label>
+                                  <input type="text" class="form-control" placeholder="Numero telephone" name="tel" aria-label="First name">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Numero  proche</label>
+                                  <input type="text" class="form-control" placeholder="Numero  proche" name="numero" aria-label="Last name">
+                                </div>
+                              </div><div class="row">
+                                <div class="col mb-3">
+                                    <label>Email</label>
+                                  <input type="text" class="form-control" placeholder="Email" name="email" aria-label="First name">
+                                </div>
+                                <div class="col mb-3">
+                                    <label>Adresse</label>
+                                  <input type="text" class="form-control" placeholder="Adresse"  name="adresse" aria-label="Last name">
+                                </div>
+                             
+                              </div> 
+                            <div class="form-group text-center">
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="afficherFormIns2()">Suivant</button>
+                            </div>
+                        </form>
+                        <form action="#" class="signin-form mt-1" *ngIf="!afficherIns">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Numero d'identification nationale</label>
+                                <input type="text" class="form-control" placeholder="Numero d'identification nationale" required name="nin" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="prenom">Mot de passe</label>
+                                <input type="text" class="form-control" placeholder="Mot de passe" required name="password">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="email">Mot de passe de confirmation</label>
+                                <input type="text" class="form-control" placeholder="Mot de passe de confirmation" required name="passwordConf">
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="afficherFormIns2()">S'inscrire</button>
+                            </div>
+                        </form>
+                        <p class="mt-2">Vous avez deja un  compte ? <span class="fw-bold" (click)="afficherFormIns()">Se connecter </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
