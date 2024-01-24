@@ -415,3 +415,9 @@ main .analytics .item{
 .profile .left{
     width: 100px;
 }
+.circ{
+    width: 100%;
+    height: 50vh;
+    box-shadow: 1px 1px 5px lightgray;
+    border-radius: 20px;
+}
