@@ -41,7 +41,6 @@
   }
   input{
     border-left: 3px solid var(--couleurSecondaire);
-    
 }
   @media (max-width:780px){
     .infoTontine{
