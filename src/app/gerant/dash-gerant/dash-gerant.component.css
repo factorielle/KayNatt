@@ -170,3 +170,11 @@ input, textarea{
     justify-content: center;
     align-items: center;
 }
+tr td{
+    text-align: left !important;
+}
+
+th{
+    background-color: var(--couleurPrincipal) !important;
+    
+}

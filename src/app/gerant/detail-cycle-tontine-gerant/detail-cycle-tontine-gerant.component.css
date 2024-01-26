@@ -165,3 +165,11 @@
 .btnRetour{
     outline: 1px solid var(--couleurSecondaire);
 }
+tr td{
+    text-align: left !important;
+}
+
+th{
+    background-color: var(--couleurPrincipal) !important;
+    
+}

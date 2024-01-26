@@ -6,7 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-participant.component.css']
 })
 export class DashParticipantComponent implements  OnInit{
+  dtOptions: DataTables.Settings = {};
   ngOnInit() {
+    
+    this.dtOptions = {
+      searching: true,
+      lengthChange: true,
+      paging: true,
+      info: false,
+      pageLength: 5,
+      language: {
+        url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+      }
+    };
+
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
 // Attache un gestionnaire d'événements au clic de cet élément

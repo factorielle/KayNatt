@@ -162,3 +162,20 @@
     justify-content: center;
     align-items: center;
 }
+tr td{
+    text-align: left !important;
+}
+
+th{
+    background-color: var(--couleurPrincipal) !important;
+    
+}
+.btnRetirer{
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+}
+.btnRetour{
+    outline: 1px solid var(--couleurSecondaire);
+    color: var(--couleurSeconaire);
+
+}

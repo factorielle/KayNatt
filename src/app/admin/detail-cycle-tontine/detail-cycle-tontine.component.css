@@ -11,7 +11,7 @@
 .container{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    height: 100vh;
+    height: 140vh;
 }
 
 .container .left-section{
@@ -430,4 +430,17 @@ main .analytics .item{
     border-bottom-right-radius: 10px;
     margin-left: -9px !important;
     padding-left: 10px;
+}
+tr td{
+    text-align: left !important;
+}
+
+th{
+    background-color: var(--couleurPrincipal) !important;
+    
+}
+.btnAjout{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSeconaire);
+    padding: 0 3px;
 }
