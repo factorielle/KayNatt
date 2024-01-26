@@ -486,12 +486,7 @@ main .analytics .item{
   }
   
   
-  .btnContact{
-    background-color: var(--couleurSecondaire);
-    color: var(--couleurPrincipal);
-    float: right !important;
-    padding: 0 2px;
-}
+ 
 .bouton, .cycle{
  width: 95vh;
 }
