@@ -121,7 +121,82 @@
              
 
             <h5 class="text-center">Liste des  cycle de la tontine CaisSos</h5>
-  
+            <div class="tableau container">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                  <thead  style="background-color: var(--couleurPrincipal) !important;">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Tirage</th>
+                        <th>Mois</th>
+                        <th>Fonds</th>
+                        <th>Etat</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+          
+                <tbody>
+                  <tr>
+                      <td>cycle 1</td>
+                      <td>fait </td>
+                      <td>janvier</td>
+                      <td>alloué</td>
+                      <td>terminé</td>
+                      <td><span class="status action-icon">
+                        <button class="btn btnAjout fw-bold me-2">Detail</button>    
+                        <button class="btn btnRetour fw-bold me-2">Modifier</button>    
+                        <button class="btn btnRetirer fw-bold">Retirer</button>    
+                      </span>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>cycle 2 </td>
+                      <td>fait </td>
+                      <td>Fevrier</td>
+                      <td>alloué</td>
+                      <td>En cours</td>
+                      <td><span class="status action-icon">
+                        <button class="btn btnAjout fw-bold me-2">Detail</button>  
+                        <button class="btn btnRetour fw-bold me-2">Modifier</button>    
+                        <button class="btn btnRetirer fw-bold">Retirer</button>    
+                      </span>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>cycle 3</td>
+                      <td>fait </td>
+                      <td>Mars</td>
+                      <td>alloué</td>
+                      <td>En cours</td>
+                      <td><span class="status action-icon">
+                        <button class="btn btnAjout fw-bold me-2">Detail</button>
+                        <button class="btn btnRetour fw-bold me-2">Modifier</button>    
+                        <button class="btn btnRetirer fw-bold">Retirer</button>      
+                      </span>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>cycle 4</td>
+                      <td>fait</td>
+                      <td>avril</td>
+                      <td>non alloué</td>
+                      <td>En cours</td>
+                      <td><span class="status action-icon">
+                        <button class="btn btnAjout fw-bold me-2">Detail</button>
+                        <button class="btn btnRetour fw-bold me-2">Modifier</button>    
+                        <button class="btn btnRetirer fw-bold">Retirer</button>      
+                      </span>
+                      </td>
+                  </tr>
+                
+                 
+                 
+                  
+                  
+                </tbody>
+                  </table>
+                  
+      
+              </div>
  
             </div>
         </div>
