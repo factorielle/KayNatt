@@ -34,6 +34,8 @@ import { DetailTontineAdminComponent } from './admin/detail-tontine-admin/detail
 const routes: Routes = [
   {path:'auth', component:LoginComponent},
   // route pour les composant dans le dossier user
+
+  {path:'', component:AccueilComponent},
   {path:'accueil', component:AccueilComponent},
   {path:'politique', component:PolitiqueComponent},
   {path:'condition', component:ConditionComponent},

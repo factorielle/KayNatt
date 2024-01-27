@@ -1,6 +1,6 @@
 <footer>
     <div class="Container_Footer">
-        <div class="Section_Container">
+        <div class="Section_Container" [routerLink]="['/accueil']">
             <img src="assets/logofooter.png" alt="" width="150px" height="60px">
             <ul class="reseau d-flex justify-content-between ">
                 <li><i class="bi bi-facebook" style="color: var(--couleurPrincipal);"></i></li>
@@ -10,12 +10,12 @@
         </div>
         <div class="footer_Menu" id="Mentions">
             <h5>Mentions Légales</h5>
-             <p><a href=""> <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Politique de confidentialité</a></p>
-            <p><a href=""> <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Condition d'utilisation</a></p>
+             <p [routerLink]="['/politique']"><a> <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Politique de confidentialité</a></p>
+            <p [routerLink]="['/condition']"><a > <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Condition d'utilisation</a></p>
         </div>
         <div class="footer_Menu">
             <h5>Liens utils</h5>
-            <p><a href=""> <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Contact</a></p>
+            <p [routerLink]="['/contact']"><a > <i class="bi bi-chevron-right" style="color: var(--couleurPrincipal);"></i>Contact</a></p>
         </div>
      
     </div>
