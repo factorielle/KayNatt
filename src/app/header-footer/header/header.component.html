@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg  mb-1 fixed-top">
   <div class="container-fluid">
-     <img src="assets/logo.png" alt="" width="100px" height="60px" class="ms-5">
+     <img [routerLink]="['/accueil']" src="assets/logo.png" alt="" width="100px" height="60px" class="ms-5">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,20 +10,20 @@
           <a class="nav-link current" [routerLink]="['/accueil']">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Qui sommes nous ?</a>
+          <a class="nav-link"  href="accueil#about" >Qui sommes nous ?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Guide</a>
+          <a class="nav-link" href="accueil#guide">Guide</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Tontine</a>
+          <a class="nav-link"  href="accueil#tontines">Tontine</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" >Temoignage</a>
+          <a class="nav-link" href="accueil#temoignage" >Temoignage</a>
         </li>
       </ul>
       <div class="me-5  " >
-         <button class="border-0 btnConnexion px-2 pb-1">Connexion</button>
+         <button class="border-0 btnConnexion px-2 pb-1" [routerLink]="['/auth']">Connexion</button>
       </div>
       
     </div>

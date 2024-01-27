@@ -7,7 +7,7 @@
             <div class="texteBan mt-5">
                 <p><b>Bienvenu</b> <br>
                     Sur la plateforme <i class="fw-bold">KayNatt</i> , où la sécurité de vos épargnes est une priorité</p>
-                <button class="fw-bold border-0 btnCreer pb-1">Creer une tontine</button>
+                <button class="fw-bold border-0 btnCreer pb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Creer une tontine</button>
             </div>
         </div>
 
@@ -69,7 +69,7 @@
 
         </div>
     </section>
-    <section class="container">
+    <section class="container" id="temoignage">
         <h4 class="text-center mt-5  titretem ">Nos témoignages</h4>
         <div class="containerTemoignage ">
             <div class='temoignage '>
@@ -167,7 +167,7 @@
       </div>
 
     </section>
-    <section class="container">
+    <section class="container " id="guide">
       <h4 class="text-center titreguide mt-5 mb-2">Guide</h4>
       <div class="accor">
         <div class="accordion" id="accordionExample">
@@ -210,7 +210,7 @@
         </div>
       </div>
     </section>
-    <section class="container">
+    <section class="container" id="tontines">
       <h4 class="text-center titreTon mt-5 mb-4">Nos tontines</h4>
       <div class="containerCardTontine">
         <div class="card carteTontineItem1" style="width: 18rem;">
@@ -218,7 +218,7 @@
           <div class="card-body">
             <h5 class="card-title fw-bold item1title">CaisSocial</h5>
             <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem1">Detail</a>
+            <a class="btn btnItem1" [routerLink]="['/detailTontine']">Detail</a>
           </div>
         </div>
         <div class="card carteTontineItem2" style="width: 18rem;">
@@ -269,3 +269,60 @@
 </body>
 
 <app-footer></app-footer>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Creation tontine</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col mb-3">
+            <label>Nom tontine</label>
+            <input type="text" class="form-control" aria-label="First name">
+          </div>
+          <div class="col mb-3">
+            <label>Nombre de Participants</label>
+            <input type="text" class="form-control" aria-label="Last name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label>Cotisation par cycle</label>
+            <input type="text" class="form-control" aria-label="First name">
+          </div>
+          <div class="col mb-3">
+            <label>Type de tontine </label>
+            <input type="text" class="form-control" aria-label="Last name">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mb-3">
+            <label>Date debut</label>
+            <input type="text" class="form-control" aria-label="First name">
+          </div>
+          <div class="col mb-3">
+            <label>Date fin</label>
+            <input type="text" class="form-control" aria-label="Last name">
+          </div>
+          <div class=" mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"> Regle de la tontine </label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class=" mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"> Description de la tontine </label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Creer</button>
+        <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

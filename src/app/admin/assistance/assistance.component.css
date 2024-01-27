@@ -440,5 +440,13 @@ main .analytics .item{
  top: 20%;
  background-color: var(--couleurPrincipal);
  color: var(--couleurSecondaire);
- font-weight: 500;
+ font-weight: 600;
+}
+.btnInt{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSecondaire);
+
+}
+.btnRetour{
+    outline: 1px solid var(--couleurSecondaire);
 }
