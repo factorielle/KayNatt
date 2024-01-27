@@ -403,3 +403,18 @@ input, textarea{
   color: var(--couleurSeconaire);
 
 }
+.back-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--couleurPrincipal);
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold ;
+}

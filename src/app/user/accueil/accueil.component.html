@@ -1,4 +1,7 @@
 <app-header></app-header>
+<div *ngIf="isButtonVisible" class="back-to-top-button" (click)="scrollToTop()">
+  <i class="bi bi-chevron-up" style="color: var(--couleurSecondaire);"></i>
+</div>
 <body>
     <div class="baniere">
         <img src="assets/banniere.png" alt="" id="banner">
