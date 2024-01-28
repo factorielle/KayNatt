@@ -123,7 +123,7 @@
             <h5 class="text-center mb-2">Cycle 3 de la tontine CaisSos</h5>
             <div>
                 <button class="btn btnAjout ms-5 mb-3 fw-bold">Participer</button>
-                <button class="btn btnRetour ms-5 mb-3 fw-bold">Faire un tirage</button>
+                <button class="btn btnRetour ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Faire un tirage</button>
 
             </div>
             <div class="info ms-5">
@@ -238,3 +238,37 @@
     </div>
   </div>
  
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Tirage</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="tirageEffectue; else tirageContainer" class="participant selected animate__animated animate__tada">
+          {{ gagnant }} 🎁✔
+        </div>
+        <ng-template #tirageContainer>
+          <div class="tirage-container">
+            <div *ngFor="let participant of participants" class="participant">
+              {{ participant }}
+            </div>
+          </div>
+        </ng-template>
+        <button [disabled]="gagnant" (click)="effectuerTirage()">Effectuer le tirage</button>
+        
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btnAjout">Tirage</button>
+        <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

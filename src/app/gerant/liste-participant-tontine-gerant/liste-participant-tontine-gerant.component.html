@@ -211,51 +211,54 @@
     <!-- /#wrapper -->
 </div>
 
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <!-- Modal integrer -->
+ 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Ajout participant</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Integrer une tontine</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-             <div class="row">
+            <div class="row">
                 <div class="col mb-3">
                   <label>Prenom</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control" name="prenom" [(ngModel)]="prenom">
                 </div>
                 <div class="col mb-3">
                     <label>Nom</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="nom" [(ngModel)]="nom">
                 </div>
               </div><div class="row">
                 <div class="col mb-3">
                     <label>Numero telephone</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control"  name="telephone" [(ngModel)]="telephone">
                 </div>
                 <div class="col mb-3">
                     <label>Numero telephone proche</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="num" [(ngModel)]="numProche">
                 </div>
               </div><div class="row">
                 <div class="col mb-3">
                     <label>Email</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control" name="email" [(ngModel)]="email">
                 </div>
                 <div class="col mb-3">
                     <label>Adresse</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="adresse" [(ngModel)]="adresse">
                 </div>
                 <div class=" mb-3">
                     <label>Numero d'identification national</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="nin" [(ngModel)]="nin">
                 </div>
               </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Ajouter</button>
-          <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btnAjout fw-bold" (click)="integration()">Integrer</button>
+          <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>
     </div>
@@ -298,17 +301,17 @@
           <div class="" >
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Cause</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" >
+                  <input type="email" class="form-control" id="exampleFormControlInput1" name="obj" [(ngModel)]="raison">
                 </div>
                 <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mess" [(ngModel)]="message"></textarea>
                 </div>
 
           </div>
       </div>
       <div class="modal-footer" >
-          <button type="button" class="btn btnAjout me-3"  data-bs-dismiss="modal">Envoyer </button>
+          <button type="button" class="btn btnAjout me-3"  data-bs-dismiss="modal" (click)="envoi()">Envoyer </button>
         <button type="button" class="btn btnRetour me-3" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>

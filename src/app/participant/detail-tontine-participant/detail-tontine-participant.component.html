@@ -178,18 +178,18 @@
         <div class="modal-body  ">
             <div class="" >
                 <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Objet</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" >
+                    <label for="exampleFormControlInput1" class="form-label">Cause</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" name="cause" [(ngModel)]="raison">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mess" [(ngModel)]="message"></textarea>
                   </div>
 
             </div>
         </div>
         <div class="modal-footer" >
-            <button type="button" class="btn btnInt me-3"  data-bs-dismiss="modal">Signaler </button>
+            <button type="button" class="btn btnInt me-3"  data-bs-dismiss="modal" (click)="signaler()">Signaler </button>
           <button type="button" class="btn btnRetour me-3" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>

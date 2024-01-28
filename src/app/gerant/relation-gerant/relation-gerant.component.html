@@ -153,17 +153,17 @@
             <div class="" >
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Objet</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" >
+                    <input type="email" class="form-control" id="exampleFormControlInput1" name="obj" [(ngModel)]="raison">
                   </div>
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="mess" [(ngModel)]="message"></textarea>
                   </div>
 
             </div>
         </div>
         <div class="modal-footer" >
-            <button type="button" class="btn btnInt me-3"  data-bs-dismiss="modal">Envoyer </button>
+            <button type="button" class="btn btnInt me-3"  data-bs-dismiss="modal" (click)="envoi()">Envoyer </button>
           <button type="button" class="btn btnRetour me-3" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>

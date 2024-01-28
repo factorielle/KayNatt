@@ -222,24 +222,24 @@
           <form action="">
             <div class="mb-3">
                 <label for="num" class="form-label"> Numero</label>
-                <input type="text" class="form-control" id="num" placeholder="Numero">
+                <input type="text" class="form-control" id="num" placeholder="Numero" name="num" [(ngModel)]="numero">
               </div>
             <div class="mb-3">
                 <label for="date" class="form-label"> Correspondance</label>
-                <input type="text" class="form-control" id="date" placeholder="correspondance">
+                <input type="text" class="form-control" id="date" placeholder="correspondance" name="corr" [(ngModel)]="correspondance">
               </div>
             <div class="mb-3">
                 <label for="corr" class="form-label"> Date butoir</label>
-                <input type="text" class="form-control" id="corr" placeholder="date butoir">
+                <input type="text" class="form-control" id="corr" placeholder="date butoir" name="but" [(ngModel)]="dButoir">
               </div>
             <div class="mb-3">
                 <label for="but" class="form-label">Penalité</label>
-                <input type="text" class="form-control" id="but" placeholder="penalite">
+                <input type="text" class="form-control" id="but" placeholder="penalite" name="pen" [(ngModel)]="penalite">
               </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Ajouter</button>
+          <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" (click)=" AjoutCycle()">Ajouter</button>
           <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>
@@ -257,24 +257,24 @@
           <form action="">
             <div class="mb-3">
                 <label for="num" class="form-label"> Numero</label>
-                <input type="text" class="form-control" id="num" placeholder="Numero">
+                <input type="text" class="form-control" id="num" placeholder="Numero" name="num" [(ngModel)]="numero">
               </div>
             <div class="mb-3">
                 <label for="date" class="form-label"> Correspondance</label>
-                <input type="text" class="form-control" id="date" placeholder="correspondance">
+                <input type="text" class="form-control" id="date" placeholder="correspondance" name="corr" [(ngModel)]="correspondance">
               </div>
             <div class="mb-3">
                 <label for="corr" class="form-label"> Date butoir</label>
-                <input type="text" class="form-control" id="corr" placeholder="date butoir">
+                <input type="text" class="form-control" id="corr" placeholder="date butoir" name="but" [(ngModel)]="dButoir">
               </div>
             <div class="mb-3">
                 <label for="but" class="form-label">Penalité</label>
-                <input type="text" class="form-control" id="but" placeholder="penalite">
+                <input type="text" class="form-control" id="but" placeholder="penalite" name="pen" [(ngModel)]="penalite">
               </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Modifier</button>
+          <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" (click)="ModifCycle()" >Modifier</button>
           <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>

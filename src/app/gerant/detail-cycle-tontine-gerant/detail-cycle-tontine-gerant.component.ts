@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailCycleTontineGerantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
+
+  // tirage
+  participants: string[] = ['Participant1', 'Participant2', 'Participant3', 'Participant4', 'Participant5', 'Participant6'];
+  gagnant: any;
+ 
+
+
   ngOnInit() {
+   
 
     this.dtOptions = {
       searching: true,
@@ -38,5 +46,19 @@ export class DetailCycleTontineGerantComponent implements OnInit {
         }
     });
   }
+
+  tirageEffectue: boolean = false;
+
+  effectuerTirage() {
+    if (!this.gagnant) {
+      const indexGagnant = Math.floor(Math.random() * this.participants.length);
+      this.gagnant = this.participants[indexGagnant];
+      this.tirageEffectue = true;
+    }
+  }
+  
+  
+  
+  
 
 }

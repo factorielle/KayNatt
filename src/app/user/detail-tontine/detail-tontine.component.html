@@ -52,38 +52,38 @@
             <div class="row">
                 <div class="col mb-3">
                   <label>Prenom</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control" name="prenom" [(ngModel)]="prenom">
                 </div>
                 <div class="col mb-3">
                     <label>Nom</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="nom" [(ngModel)]="nom">
                 </div>
               </div><div class="row">
                 <div class="col mb-3">
                     <label>Numero telephone</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control"  name="telephone" [(ngModel)]="telephone">
                 </div>
                 <div class="col mb-3">
                     <label>Numero telephone proche</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="num" [(ngModel)]="numProche">
                 </div>
               </div><div class="row">
                 <div class="col mb-3">
                     <label>Email</label>
-                  <input type="text" class="form-control" aria-label="First name">
+                  <input type="text" class="form-control" name="email" [(ngModel)]="email">
                 </div>
                 <div class="col mb-3">
                     <label>Adresse</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="adresse" [(ngModel)]="adresse">
                 </div>
                 <div class=" mb-3">
                     <label>Numero d'identification national</label>
-                  <input type="text" class="form-control"  aria-label="Last name">
+                  <input type="text" class="form-control"  name="nin" [(ngModel)]="nin">
                 </div>
               </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btnPop fw-bold">Integrer</button>
+            <button type="button" class="btn btnPop fw-bold" (click)="integration()">Integrer</button>
           <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
         </div>
       </div>

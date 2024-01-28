@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-liste-cycle-tontine-gerant',
@@ -6,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-cycle-tontine-gerant.component.css']
 })
 export class ListeCycleTontineGerantComponent implements OnInit{
+  numero:string='';
+  correspondance:string='';
+  dButoir:string='';
+  penalite:string='';
+
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
     this.dtOptions = {
@@ -39,5 +45,24 @@ export class ListeCycleTontineGerantComponent implements OnInit{
         }
     });
   }
+ AjoutCycle(){
+  if(this.numero=='' || this.correspondance=='' || this.dButoir=='' || this.penalite==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
 
+  }
+ }
+ ModifCycle(){
+  if(this.numero=='' || this.correspondance=='' || this.dButoir=='' || this.penalite==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+  }
+ }
+
+ showMessage(icon:any, titre:any, texte:any){
+  Swal.fire({
+    icon: icon,
+    title: titre,
+    text: texte,
+  })
+}
 }

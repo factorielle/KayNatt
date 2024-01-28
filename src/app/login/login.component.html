@@ -23,55 +23,55 @@
                             </div>
                            
                         </div>
-                        <form action="#" class="signin-form mt-5">
+                        <form  class="signin-form mt-5">
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Email</label>
-                                <input type="text" class="form-control" placeholder="Email" required name="email" >
+                                <input type="text" class="form-control" placeholder="Email"  name="email" [(ngModel)]="email">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="text">Mot de passe</label>
-                                <input type="password" class="form-control" placeholder="mot de passe" required name="password">
+                                <input type="password" class="form-control" placeholder="mot de passe"  name="password" [(ngModel)]="password">
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " >Connexion</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " (click)="connexion()">Connexion</button>
                             </div>
                         </form>
                         <p class="mt-2">Pas de compte ? <span class="fw-bold" (click)="afficherFormIns()">S'inscrire</span></p>
                     </div>
                     <div class="insccrip login-wrap p-4 p-md-5" *ngIf="!afficherLogin">
                         <div class="d-flex">
-                            <div class="w-100 text-center">
+                            <div [routerLink]="['/accueil']" class="w-100 text-center">
                               <img src="assets/KayNatt.png" alt="" width="150px" height="60px">
                             </div>
                            
                         </div>
-                        <form action="#" method="post" class="signin-form mt-1" *ngIf="afficherIns">
+                        <form   class="signin-form mt-1" *ngIf="afficherIns">
                             <div class="row">
                                 <div class="col mb-3">
                                   <label>Prenom</label>
-                                  <input type="text" class="form-control" placeholder="Prenom" name="prenom" aria-label="First name">
+                                  <input type="text" class="form-control" placeholder="Prenom" name="prenom" [(ngModel)]="prenom">
                                 </div>
                                 <div class="col mb-3">
                                     <label>Nom</label>
-                                  <input type="text" class="form-control" placeholder="Nom" name="nom"  aria-label="Last name">
+                                  <input type="text" class="form-control" placeholder="Nom" name="nom"  [(ngModel)]="nom">
                                 </div>
                               </div><div class="row">
                                 <div class="col mb-3">
                                     <label>Numero telephone</label>
-                                  <input type="text" class="form-control" placeholder="Numero telephone" name="tel" aria-label="First name">
+                                  <input type="text" class="form-control" placeholder="Numero telephone" name="tel" [(ngModel)]="telephone">
                                 </div>
                                 <div class="col mb-3">
                                     <label>Numero  proche</label>
-                                  <input type="text" class="form-control" placeholder="Numero  proche" name="numero" aria-label="Last name">
+                                  <input type="text" class="form-control" placeholder="Numero  proche" name="numero" [(ngModel)]="numProche">
                                 </div>
                               </div><div class="row">
                                 <div class="col mb-3">
                                     <label>Email</label>
-                                  <input type="text" class="form-control" placeholder="Email" name="email" aria-label="First name">
+                                  <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email">
                                 </div>
                                 <div class="col mb-3">
                                     <label>Adresse</label>
-                                  <input type="text" class="form-control" placeholder="Adresse"  name="adresse" aria-label="Last name">
+                                  <input type="text" class="form-control" placeholder="Adresse" name="adresse"  [(ngModel)]="adresse">
                                 </div>
                              
                               </div> 
@@ -82,18 +82,18 @@
                         <form action="#" class="signin-form mt-1" *ngIf="!afficherIns">
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Numero d'identification nationale</label>
-                                <input type="text" class="form-control" placeholder="Numero d'identification nationale" required name="nin" >
+                                <input type="text" class="form-control" placeholder="Numero d'identification nationale"  name="nin"  [(ngModel)]="nin">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="prenom">Mot de passe</label>
-                                <input type="text" class="form-control" placeholder="Mot de passe" required name="password">
+                                <input type="text" class="form-control" placeholder="Mot de passe"  name="password" [(ngModel)]="password">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="email">Mot de passe de confirmation</label>
-                                <input type="text" class="form-control" placeholder="Mot de passe de confirmation" required name="passwordConf">
+                                <input type="text" class="form-control" placeholder="Mot de passe de confirmation"  name="passwordConf" [(ngModel)]="passwordConf">
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="afficherFormIns2()">S'inscrire</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="inscription()">S'inscrire</button>
                             </div>
                         </form>
                         <p class="mt-2">Vous avez deja un  compte ? <span class="fw-bold" (click)="afficherFormIns()">Se connecter </span></p>

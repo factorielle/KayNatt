@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-relation-gerant',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./relation-gerant.component.css']
 })
 export class RelationGerantComponent implements OnInit {
+  raison: string='';
+  message: string='';
   ngOnInit() {
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -24,6 +27,21 @@ export class RelationGerantComponent implements OnInit {
             wrapper?.classList.add("toggled");
         }
     });
+  }
+
+  envoi(){
+    if(this.raison=='' || this.message==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+    }
+  }
+
+  showMessage(icon:any, titre:any, texte:any){
+    Swal.fire({
+      icon: icon,
+      title: titre,
+      text: texte,
+    })
   }
 
 }

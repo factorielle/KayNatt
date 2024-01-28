@@ -30,6 +30,7 @@ import { GestionUserComponent } from './admin/gestion-user/gestion-user.componen
 import { ListeCycleTontineComponent } from './admin/liste-cycle-tontine/liste-cycle-tontine.component';
 import { ListeParticipantTontineComponent } from './admin/liste-participant-tontine/liste-participant-tontine.component';
 import { DetailTontineAdminComponent } from './admin/detail-tontine-admin/detail-tontine-admin.component';
+import { ErreurComponent } from './erreur/erreur/erreur.component';
 
 const routes: Routes = [
   {path:'auth', component:LoginComponent},
@@ -68,6 +69,8 @@ const routes: Routes = [
   {path:'cycleTontine', component:ListeCycleTontineComponent},
   {path:'participantTontine', component:ListeParticipantTontineComponent},
   {path:'detailTontineAdmin', component:DetailTontineAdminComponent},
+  // 404 not found
+  {path:'**', component:ErreurComponent},
 ];
 
 @NgModule({

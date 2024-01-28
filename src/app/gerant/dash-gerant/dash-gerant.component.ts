@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dash-gerant',
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dash-gerant.component.css']
 })
 export class DashGerantComponent implements OnInit {
+  nomTontine:string='';
+  nbrPart:string='';
+  cotisation:string='';
+  type:string='';
+  dDebut:string='';
+  dFin:string='';
+  regle:string='';
+  description:string='';
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
 
@@ -42,4 +51,18 @@ export class DashGerantComponent implements OnInit {
       
   }
 
+  ajoutTontine(){
+    if(this.nomTontine=='' || this.nbrPart=='' || this.cotisation=='' || this.type=='' || this.dDebut=='' || this.dFin=='' || this.regle=='' || this.description==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+    }
+
+}
+showMessage(icon:any, titre:any, texte:any){
+  Swal.fire({
+    icon: icon,
+    title: titre,
+    text: texte,
+  })
+}
 }

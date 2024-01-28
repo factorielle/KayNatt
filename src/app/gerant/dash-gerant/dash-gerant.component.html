@@ -243,45 +243,45 @@
         <div class="row">
           <div class="col mb-3">
             <label>Nom tontine</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="text" name="nom" class="form-control" [(ngModel)]="nomTontine" >
           </div>
           <div class="col mb-3">
             <label>Nombre de Participants</label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <input type="text" name="nbr" class="form-control" [(ngModel)]="nbrPart">
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Cotisation par cycle</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="text" name="cout" class="form-control" [(ngModel)]="cotisation">
           </div>
           <div class="col mb-3">
             <label>Type de tontine </label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <input type="text" class="form-control" name="type" [(ngModel)]="type" >
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Date debut</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="text" class="form-control" name="debut" [(ngModel)]="dDebut" >
           </div>
           <div class="col mb-3">
             <label>Date fin</label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <input type="text" class="form-control" name="fin" [(ngModel)]="dFin">
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Regle de la tontine </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="regle" rows="3" [(ngModel)]="regle"></textarea>
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Description de la tontine </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description"></textarea>
           </div>
 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Creer</button>
+        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" (click)="ajoutTontine()">Creer</button>
         <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>
