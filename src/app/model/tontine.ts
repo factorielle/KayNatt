@@ -18,7 +18,7 @@ export class Cycle{
     penalite:string='';
 }
 
-export class user{
+export class User{
     idUser:number=0;
     nom:string='';
     prenom:string='';

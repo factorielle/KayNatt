@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import {  User } from '../model/tontine';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +21,10 @@ export class LoginComponent implements OnInit{
   numProche:string='';
   password:string='';
   passwordConf:string='';
+ 
+ 
+
+  constructor(private authService:AuthService, private route:Router){}
 
   ngOnInit() {
 
@@ -35,14 +42,54 @@ inscription(){
    
   }
 else {
-alert('ho')
+const   user={
+    name:this.prenom + this.nom,
+    email:this.email,
+    adresse:this.adresse,
+    password:this.password,
+    passwordConf:this.passwordConf,
+    telephone:this.telephone,
+    num_carte_d_identite:this.nin,
+    telephone_d_un_proche:this.numProche,
+    role:'participant_tontine'
+
+    
   }
+  this.authService.register(user).subscribe(
+    (response:any) => {
+     
+      console.log(response)
+      this.showMessage('success','Felicitation','Bienvenu sur KayNatt')
+      this.route.navigate(['/auth'])
+    },
+    (error:any) => {
+      // Gérez les erreurs d'inscription.
+      console.error('Erreur d\'inscription :', error);
+    }
+  )}
 }
 
 connexion(){
   if(this.email=='' || this.password==''){
     this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
 
+  } else{
+    const credentials={
+      email:this.email,
+      password:this.password
+    }
+    this.authService.login(credentials).subscribe(
+      (response:any) => {
+        // Stockez le token dans un service ou dans le stockage local (localStorage).
+        console.log(response)
+        
+        // this.route.navigate(['/accueil'])
+      },
+      (error:any) => {
+        // Gérez les erreurs de connexion.
+        console.error('Erreur de connexion :', error);
+      }
+    );
   }
 }
 // sweetalert

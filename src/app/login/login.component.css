@@ -8872,6 +8872,10 @@ body {
     .wrap .img {
         height: 250px;
     }
+    #carouselExampleSlidesOnly{
+        display: none;
+    }
+
 }
 
 .login-wrap {
@@ -8884,45 +8888,9 @@ body {
     position: relative;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 span{
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .btnlog{
