@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { TontineService } from 'src/app/services/tontine.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,18 +8,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  nomTontine:string='';
+  libelle:string='';
   nbrPart:string='';
-  cotisation:string='';
-  type:string='';
-  dDebut:string='';
-  dFin:string='';
+  montant:string='';
+  periode:string='';
+  date_de_debut:string='';
+  duree:string='';
   regle:string='';
   description:string='';
 
+  articlesParPage = 6; // Nombre d'articles par page
+  pageActuelle = 1; // Page actuelle
+
+
+  tontines:any;
+  constructor(private tontineService:TontineService){}
 
   ngOnInit() {
-   
+     this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      console.log(response);
+      this.tontines=response.data
+      console.log(this.tontines)
+
+      
+    })
   }
   isButtonVisible: boolean = false;
 
@@ -36,9 +49,25 @@ export class AccueilComponent implements OnInit {
   }
 
   ajoutTontine(){
-    if(this.nomTontine=='' || this.nbrPart=='' || this.cotisation=='' || this.type=='' || this.dDebut=='' || this.dFin=='' || this.regle=='' || this.description==''){
+    if(this.libelle=='' || this.nbrPart=='' || this.montant=='' || this.periode=='' || this.date_de_debut=='' || this.duree=='' || this.regle=='' || this.description==''){
     this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
 
+    }else{
+      const tontine={
+        libelle:this.libelle,
+        description:this.description,
+        montant:this.montant,
+        regles:this.regle,
+        date_de_debut:this.date_de_debut,
+        etat:'en_attente',
+        statutTontine:'en_attente',
+        periode:this.periode,
+        nombre_participant:this.nbrPart
+      }
+      this.tontineService.AjouterTontine(tontine).subscribe((response:any)=>{
+        console.log(response)
+      })
+   
     }
   }
 showMessage(icon:any, titre:any, texte:any){
@@ -48,4 +77,22 @@ showMessage(icon:any, titre:any, texte:any){
     text: texte,
   })
 }
+
+getArticlesPage(): any[] {
+  const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+  const indexFin = indexDebut + this.articlesParPage;
+  return this.tontines.slice(indexDebut, indexFin);
+}
+   // Méthode pour générer la liste des pages
+   get pages(): number[] {
+    const totalPages = Math.ceil(this.tontines.length / this.articlesParPage);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  // Méthode pour obtenir le nombre total de pages
+  get totalPages(): number {
+    return Math.ceil(this. tontines.length / this.articlesParPage);
+  }
+
+
 }

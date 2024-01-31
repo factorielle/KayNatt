@@ -41,7 +41,7 @@ const routes: Routes = [
   {path:'politique', component:PolitiqueComponent},
   {path:'condition', component:ConditionComponent},
   {path:'contact', component:ContactComponent},
-  {path:'detailTontine', component:DetailTontineComponent},
+  {path:'detailTontine/:id', component:DetailTontineComponent},
   // route pour les composant dans le dossier participant
   {path:'dashboardPart', component:DashParticipantComponent},
   {path:'detailCyclePart', component:DetailCycleTontineParticipantComponent},
@@ -68,7 +68,7 @@ const routes: Routes = [
   {path:'users', component:GestionUserComponent},
   {path:'cycleTontine', component:ListeCycleTontineComponent},
   {path:'participantTontine', component:ListeParticipantTontineComponent},
-  {path:'detailTontineAdmin', component:DetailTontineAdminComponent},
+  {path:'detailTontineAdmin/:id', component:DetailTontineAdminComponent},
   // 404 not found
   {path:'**', component:ErreurComponent},
 ];

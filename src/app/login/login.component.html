@@ -33,7 +33,7 @@
                                 <input type="password" class="form-control" placeholder="mot de passe"  name="password" [(ngModel)]="password">
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " (click)="connexion()">Connexion</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " (click)="connexionAdmin();connexion()">Connexion</button>
                             </div>
                         </form>
                         <p class="mt-2">Pas de compte ? <span class="fw-bold" (click)="afficherFormIns()">S'inscrire</span></p>
@@ -86,11 +86,11 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="prenom">Mot de passe</label>
-                                <input type="text" class="form-control" placeholder="Mot de passe"  name="password" [(ngModel)]="password">
+                                <input type="password" class="form-control" placeholder="Mot de passe"  name="password" [(ngModel)]="password">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="email">Mot de passe de confirmation</label>
-                                <input type="text" class="form-control" placeholder="Mot de passe de confirmation"  name="passwordConf" [(ngModel)]="passwordConf">
+                                <input type="password" class="form-control" placeholder="Mot de passe de confirmation"  name="passwordConf" [(ngModel)]="passwordConf">
                             </div>
                             <div class="form-group text-center">
                                 <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="inscription()">S'inscrire</button>

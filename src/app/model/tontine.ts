@@ -1,13 +1,15 @@
 export class Tontine{
- idTontine:number=0;
- nomTontine:string='';
+ id:number=0;
+ libelle:string='';
  nbrPart:string='';
- cotisation:string='';
- type:string='';
- dDebut:string='';
- dFin:string='';
+ montant:string='';
+ periode:string='';
+ date_de_debut:string='';
+ duree:string='';
  regle:string='';
  description:string='';
+ etat:string='';
+ statutTontine:string='';
 }
 
 export class Cycle{

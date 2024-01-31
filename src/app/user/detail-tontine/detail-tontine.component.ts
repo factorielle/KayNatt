@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TontineService } from 'src/app/services/tontine.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,8 +16,23 @@ export class DetailTontineComponent implements OnInit {
   nin:string='';
   email:string='';
   numProche:string='';
-  ngOnInit() {
 
+  tontineChoisi:any;
+  tontines:any;
+
+  constructor(private route: ActivatedRoute, private router: Router, private tontineService:TontineService){}
+  idTontineChoisi = this.route.snapshot.params['id'];
+  ngOnInit() {
+    this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      console.log(response);
+      this.tontines=response.data
+      console.log(this.tontines)
+      this.tontineChoisi = this.tontines.find((element: any) => element.id == this.idTontineChoisi);
+      console.log(this.tontineChoisi )
+    })
+    
+     console.log(this.tontines)
+   
   }
 
   integration(){

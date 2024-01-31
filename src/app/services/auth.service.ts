@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 import {url} from 'src/app/model/apiUrl'
 
 @Injectable({
@@ -18,6 +18,18 @@ export class AuthService {
   login(user:any){
     return this.http.post(`${url}loginUser`, user)
   }
+  loginAdmin(user:any){
+    return this.http.post(`${url}loginAdmin`, user)
+  }
+
+  // methode pour se deconnecter
+ logout(){
+  const token=localStorage.getItem('userOneline')
+  return  token? this.http.post<any>(`${url}logoutUser`,  {
+    headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
+  })
+: of(null);
+ }
 
  
 }

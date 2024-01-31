@@ -43,7 +43,7 @@ inscription(){
   }
 else {
 const   user={
-    name:this.prenom + this.nom,
+    name:this.prenom +''+ this.nom,
     email:this.email,
     adresse:this.adresse,
     password:this.password,
@@ -82,7 +82,22 @@ connexion(){
       (response:any) => {
         // Stockez le token dans un service ou dans le stockage local (localStorage).
         console.log(response)
-        
+        console.log(response.data.role)
+        localStorage.setItem('userOnline', response.token)
+        localStorage.setItem('userInfo', response.data)
+        if(response.token){
+          
+          if(response.data.role=='createur_tontine'){
+            this.route.navigate(['/dashboardGerant'])
+            
+          }else if(response.data.role=='participant_tontine'){
+            this.route.navigate(['/dashboardPart'])
+
+          }
+          else{
+            this.showMessage('error','Oops', 'Ce compte n\'existe pas')
+          }
+          }
         // this.route.navigate(['/accueil'])
       },
       (error:any) => {
@@ -92,6 +107,30 @@ connexion(){
     );
   }
 }
+
+
+// connexionAmin
+connexionAdmin(){
+  const credentials={
+    email_admin:this.email,
+    password:this.password
+  }
+  this.authService.loginAdmin(credentials).subscribe(
+    (response:any) => {
+      // Stockez le token dans un service ou dans le stockage local (localStorage).
+      console.log(response)
+      // console.log(response.data.role)
+      localStorage.setItem('userOnline', response.token)
+   if(response.token ){
+    this.route.navigate(['/accueilAdmin'])
+
+  }
+  else{
+    this.showMessage('error','Oops', 'Ce compte n\'existe pas');
+  }
+})
+}
+
 // sweetalert
 showMessage(icon:any, titre:any, texte:any){
   Swal.fire({
