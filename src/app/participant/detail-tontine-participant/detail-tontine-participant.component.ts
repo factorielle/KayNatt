@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-tontine-participant',
@@ -6,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail-tontine-participant.component.css']
 })
 export class DetailTontineParticipantComponent  implements OnInit{
+  raison:string='';
+  message:string='';
+
   ngOnInit() {
+
+
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
     // Attache un gestionnaire d'événements au clic de cet élément
@@ -26,6 +32,20 @@ export class DetailTontineParticipantComponent  implements OnInit{
     });
     
       
+  }
+  signaler(){
+    if(this.raison=='' || this.message==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+    }
+  }
+
+  showMessage(icon:any, titre:any, texte:any){
+    Swal.fire({
+      icon: icon,
+      title: titre,
+      text: texte,
+    })
   }
 
 }

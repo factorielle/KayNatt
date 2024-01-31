@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-liste-participant-tontine-gerant',
@@ -6,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liste-participant-tontine-gerant.component.css']
 })
 export class ListeParticipantTontineGerantComponent implements OnInit{
+  nom:string='';
+  prenom:string='';
+  adresse:string='';
+  telephone:string='';
+  nin:string='';
+  email:string='';
+  numProche:string='';
+
+  // variable modal retirer
+  raison:string='';
+  message:string='';
   dtOptions: DataTables.Settings = {};
   ngOnInit(){
     this.dtOptions = {
@@ -37,5 +49,27 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
         }
     });
   }
+ 
+  integration(){
+    if( this.telephone=='' || this.prenom=='' || this.nom=='' || this.adresse==''|| this.nin=='' || this.numProche=='' ||  this.email==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+    }
+  }
+  showMessage(icon:any, titre:any, texte:any){
+    Swal.fire({
+      icon: icon,
+      title: titre,
+      text: texte,
+    })
+  }
+  envoi(){
+    if(this.raison=='' || this.message==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+
+    }
+  }
+
+ 
 
 }

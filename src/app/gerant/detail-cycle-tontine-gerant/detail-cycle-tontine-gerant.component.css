@@ -173,3 +173,40 @@ th{
     background-color: var(--couleurPrincipal) !important;
     
 }
+
+.modal-content {
+    overflow: hidden; /* Empêche le contenu de dépasser les limites du modal */
+  }
+  
+  .tirage-container {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    margin-bottom: 20px;
+    animation: scroll-participants 5s linear infinite;
+  }
+  
+  @keyframes scroll-participants {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .participant {
+    margin-right: 40px;
+  }
+  
+  .selected {
+    font-weight: bold;
+    font-size: 20px ;
+    text-align: center;
+  }
+  
+  .scrolling {
+    animation: scroll-participants 5s linear infinite;
+  }
+  

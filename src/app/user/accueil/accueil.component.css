@@ -202,7 +202,14 @@ body{
     background-color: var(--couleurPrincipal);
   }
   
-
+  .pagiColor{
+   outline: 1px solid var(--couleurSecondaire);
+   color: var(--couleurSeconaire);
+  }
+  .pagi{
+    background-color: var(--couleurPrincipal);
+    color: var(--couleurSeconaire);
+  }
  
   .containerCardTontine{
     display: grid ;
@@ -395,11 +402,26 @@ body{
   background-color: var(--couleurPrincipal);
   color: var(--couleurSeconaire);
 }
-input, textarea{
+input, textarea, select{
   border-left: 3px solid var(--couleurSecondaire);
 }
 .btnRetour{
   outline: 1px solid var(--couleurPrincipal);
   color: var(--couleurSeconaire);
 
+}
+.back-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--couleurPrincipal);
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight:bold ;
 }

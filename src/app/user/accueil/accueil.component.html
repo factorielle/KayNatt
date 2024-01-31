@@ -1,4 +1,7 @@
 <app-header></app-header>
+<div *ngIf="isButtonVisible" class="back-to-top-button" (click)="scrollToTop()">
+  <i class="bi bi-chevron-up" style="color: var(--couleurSecondaire);"></i>
+</div>
 <body>
     <div class="baniere">
         <img src="assets/banniere.png" alt="" id="banner">
@@ -212,59 +215,38 @@
     </section>
     <section class="container" id="tontines">
       <h4 class="text-center titreTon mt-5 mb-4">Nos tontines</h4>
-      <div class="containerCardTontine">
-        <div class="card carteTontineItem1" style="width: 18rem;">
-          <div class="quart-de-cercle1"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem1" [routerLink]="['/detailTontine']">Detail</a>
+      <div class="containerCardTontine" >
+        <div *ngFor="let tontine of getArticlesPage(); let i = index " >
+          <div class="card carteTontineItem1" *ngIf="tontine.statutTontine=='accepte'" [ngClass]="i % 2 === 0 ? 'carteTontineItem1' : 'carteTontineItem2'" style="width: 18rem;">
+            <div class="quart-de-cercle1"  [ngClass]="i % 2 === 0 ? 'quart-de-cercle1' : 'quart-de-cercle2'"> </div>
+            <div class="card-body">
+              <h5 class="card-title fw-bold item1title">{{tontine.libelle}}</h5>
+              <p class="card-text">{{tontine.description}}</p>
+              <a class="btn btnItem1" [routerLink]="['/detailTontine',tontine.id]"  [ngClass]="i % 2 === 0 ? 'btnItem1' : 'btnItem2'">Detail</a>
+            </div>
           </div>
-        </div>
-        <div class="card carteTontineItem2" style="width: 18rem;">
-          <div class="quart-de-cercle2"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem2">Detail</a>
-          </div>
-        </div>
-        <div class="card carteTontineItem1" style="width: 18rem;">
-          <div class="quart-de-cercle1"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem1">Detail</a>
-          </div>
-        </div>
-        <div class="card carteTontineItem2" style="width: 18rem;">
-          <div class="quart-de-cercle2"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem2">Detail</a>
-          </div>
-        </div>
-        <div class="card carteTontineItem1" style="width: 18rem;">
-          <div class="quart-de-cercle1"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem1">Detail</a>
-          </div>
-        </div>
-        <div class="card carteTontineItem2" style="width: 18rem;">
-          <div class="quart-de-cercle2"> </div>
-          <div class="card-body">
-            <h5 class="card-title fw-bold item1title">CaisSocial</h5>
-            <p class="card-text">SoliCaisse est bien plus qu'une tontine ; c'est une vision partagée de l'avenir financier. Notre mission est d</p>
-            <a class="btn btnItem2">Detail</a>
-          </div>
-        </div>
-     
         
+          
+        
+        
+          
+       
+          
+  
+        </div>
 
       </div>
+      <div class="d-flex flex-wrap justify-content-center my-5" >
+        <button class="btn pagiColor me-2" [disabled]="pageActuelle === 1" (click)="pageActuelle = pageActuelle - 1">
+          Précédent
+        </button>
+        <button class="btn pagi  ms-2 " *ngFor="let page of pages" (click)="pageActuelle = page">
+          {{ page }}
+        </button>
+        <button class="btn pagiColor  ms-2 " [disabled]="pageActuelle === totalPages" (click)="pageActuelle = pageActuelle + 1">
+          Suivant
+        </button>
+    </div>
     </section>
 </body>
 
@@ -282,45 +264,51 @@
         <div class="row">
           <div class="col mb-3">
             <label>Nom tontine</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="text" name="nom" class="form-control" [(ngModel)]="libelle" >
           </div>
           <div class="col mb-3">
             <label>Nombre de Participants</label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <input type="text" name="nbr" class="form-control" [(ngModel)]="nbrPart">
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Cotisation par cycle</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="text" name="cout" class="form-control" [(ngModel)]="montant">
           </div>
           <div class="col mb-3">
             <label>Type de tontine </label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example">
+              <option value="quotidien">Quotidien</option>
+              <option value="hebdomaire">Hedomadaire</option>
+              <option value="mensuel">Mensuel</option>
+              <option value="annuel">Annuel</option>
+            </select>
+         
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Date debut</label>
-            <input type="text" class="form-control" aria-label="First name">
+            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" >
           </div>
           <div class="col mb-3">
             <label>Date fin</label>
-            <input type="text" class="form-control" aria-label="Last name">
+            <input type="text" class="form-control" name="fin" [(ngModel)]="duree">
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Regle de la tontine </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="regle" rows="3" [(ngModel)]="regle"></textarea>
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Description de la tontine </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description"></textarea>
           </div>
 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal">Creer</button>
+        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" (click)="ajoutTontine()">Creer</button>
         <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>

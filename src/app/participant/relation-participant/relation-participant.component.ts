@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-relation-participant',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./relation-participant.component.css']
 })
 export class RelationParticipantComponent implements OnInit {
+  message: string='';
+  raison: string='';
   ngOnInit() {
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -27,5 +30,19 @@ export class RelationParticipantComponent implements OnInit {
     
       
   }
+  
+  envoi(){
+    if(this.raison=='' || this.message==''){
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
 
+    }
+  }
+
+  showMessage(icon:any, titre:any, texte:any){
+    Swal.fire({
+      icon: icon,
+      title: titre,
+      text: texte,
+    })
+  }
 }

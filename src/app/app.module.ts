@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from "angular-datatables";
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +38,7 @@ import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header-footer/header/header.component';
 import { FooterComponent } from './header-footer/footer/footer.component';
 import { DetailTontineAdminComponent } from './admin/detail-tontine-admin/detail-tontine-admin.component';
+import { ErreurComponent } from './erreur/erreur/erreur.component';
 
 @NgModule({
   declarations: [
@@ -71,12 +74,15 @@ import { DetailTontineAdminComponent } from './admin/detail-tontine-admin/detail
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    DetailTontineAdminComponent
+    DetailTontineAdminComponent,
+    ErreurComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
