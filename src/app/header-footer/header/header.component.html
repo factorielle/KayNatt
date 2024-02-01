@@ -23,7 +23,8 @@
         </li>
       </ul>
       <div class="me-5  " >
-         <button class="border-0 btnConnexion px-2 pb-1" [routerLink]="['/auth']">Connexion</button>
+         <button class="border-0 btnConnexion px-2 pb-1" *ngIf="loggedOut"  [routerLink]="['/auth']">Connexion</button>
+         <button class="border-0 btnConnexion px-2 pb-1" *ngIf="loggedIn" (click)="deconnexion()">Deconnexion</button>
       </div>
       
     </div>

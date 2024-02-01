@@ -151,18 +151,18 @@
                     </div>
                     <div class="text-container ">
                       <ul class="border"> 
-                        <li> <span class="fw-bold ">Nom  Complet:</span> Fatou Seye Dia</li>
+                        <li> <span class="fw-bold ">Nom  Complet:</span> {{userChoisi.name}}</li>
                         <li> <span class="fw-bold ">Nom  tontines pris part:</span> CaisSos</li>
-                        <li> <span class="fw-bold ">Statut:</span> Participant</li>
+                        <li> <span class="fw-bold ">Statut:</span> {{userChoisi.role}}</li>
                         <li> <span class="fw-bold ">Nombre de tontine initie:</span> 0</li>
                       </ul>
                       <ul class="border">
-                        <li> <span class="fw-bold">Adresse:</span> Fass Delorme</li>
-                        <li> <span class="fw-bold">Telephone:</span> 77 123 45 67</li>
+                        <li> <span class="fw-bold">Adresse:</span> {{userChoisi.adresse}}</li>
+                        <li> <span class="fw-bold">Telephone:</span> {{userChoisi.telephone}}</li>
                         <li> <span class="fw-bold">Situation:</span> à jour </li>
                       </ul>
                       <div class="bouton  ">
-                          <button class="btn btnContact fw-bold w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">Contacter</button>
+                          <button class="btn btnContact fw-bold w-25" (click)="SupprimerUser()">Supprimer</button>
 
                       </div>
                   </div>

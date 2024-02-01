@@ -20,7 +20,7 @@ export class TontineService {
     : of(null);
     }
        
-    tontineAccueil():Observable<any>{
+    tontineAccepter():Observable<any>{
         const token=localStorage.getItem('userOnline');
         return token? this.http.get<any>(`${url}ListeTontineAccepte`,  {
           headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
@@ -37,13 +37,14 @@ export class TontineService {
     })
   : of(null);
   }
-    ApprouverTontine(tontine:any){
-      const token=localStorage.getItem('userOnline');
-      return token
+    ApprouverTontine(tontine:any):Observable<any>{
+      const token=localStorage.getItem('userOnline')
+      return   token
       ? this.http.post<any>(`${url}admin/AcceptedTontine/${tontine}`,  {
           headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
         })
       : of(null);
+        
     }
 
     DesapprouverTontine(tontine:any){
@@ -54,7 +55,15 @@ export class TontineService {
         })
       : of(null);
     }
-    
+
+    IntegrerTontine(tontine:any){
+      return this.http.post(`${url}auth/ParticiperTontine`,tontine)
+    }
+
+    listeTontineByUsr(user:any){
+      return this.http.get(`${url}createur_tontine/ListeTontineparCreateur/${user}`)
+    }
+     
   }
 
 

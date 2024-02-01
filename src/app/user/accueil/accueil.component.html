@@ -217,7 +217,7 @@
       <h4 class="text-center titreTon mt-5 mb-4">Nos tontines</h4>
       <div class="containerCardTontine" >
         <div *ngFor="let tontine of getArticlesPage(); let i = index " >
-          <div class="card carteTontineItem1" *ngIf="tontine.statutTontine=='accepte'" [ngClass]="i % 2 === 0 ? 'carteTontineItem1' : 'carteTontineItem2'" style="width: 18rem;">
+          <div class="card carteTontineItem1"  [ngClass]="i % 2 === 0 ? 'carteTontineItem1' : 'carteTontineItem2'" style="width: 18rem;">
             <div class="quart-de-cercle1"  [ngClass]="i % 2 === 0 ? 'quart-de-cercle1' : 'quart-de-cercle2'"> </div>
             <div class="card-body">
               <h5 class="card-title fw-bold item1title">{{tontine.libelle}}</h5>
@@ -280,7 +280,7 @@
             <label>Type de tontine </label>
             <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example">
               <option value="quotidien">Quotidien</option>
-              <option value="hebdomaire">Hedomadaire</option>
+              <option value="hebdomadaire">Hedomadaire</option>
               <option value="mensuel">Mensuel</option>
               <option value="annuel">Annuel</option>
             </select>

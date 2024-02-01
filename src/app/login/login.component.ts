@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit{
   constructor(private authService:AuthService, private route:Router){}
 
   ngOnInit() {
-
+   
   }
   
 afficherFormIns(){
@@ -84,11 +84,15 @@ connexion(){
         console.log(response)
         console.log(response.data.role)
         localStorage.setItem('userOnline', response.token)
-        localStorage.setItem('userInfo', response.data)
+        localStorage.setItem('userInfo', JSON.stringify(response.data));
         if(response.token){
           
+          this.showMessage("success", "Bienvenu",`${response.data.name}`);
           if(response.data.role=='createur_tontine'){
-            this.route.navigate(['/dashboardGerant'])
+           
+
+            this.route.navigate(['/dashboardGerant']);
+
             
           }else if(response.data.role=='participant_tontine'){
             this.route.navigate(['/dashboardPart'])
@@ -111,24 +115,33 @@ connexion(){
 
 // connexionAmin
 connexionAdmin(){
-  const credentials={
-    email_admin:this.email,
-    password:this.password
-  }
-  this.authService.loginAdmin(credentials).subscribe(
-    (response:any) => {
-      // Stockez le token dans un service ou dans le stockage local (localStorage).
-      console.log(response)
-      // console.log(response.data.role)
-      localStorage.setItem('userOnline', response.token)
-   if(response.token ){
-    this.route.navigate(['/accueilAdmin'])
+  if ( this.password=='' || this.email=='')  {
+    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+   
+  }else{
+    const credentials={
+      email_admin:this.email,
+      password:this.password
+    }
+    this.authService.loginAdmin(credentials).subscribe(
+      (response:any) => {
+        // Stockez le token dans un service ou dans le stockage local (localStorage).
+        console.log(response)
+        // console.log(response.data.role)
+        localStorage.setItem('Admin',JSON.stringify(response.data) )
+        localStorage.setItem('Admintoken', response.token)
+     if(response.token ){
+      this.route.navigate(['/accueilAdmin'])
+    this.showMessage("success", "Bienvenu",`${response.data.name}`);
+      
+  
+    }
+    else{
+      this.showMessage('error','Oops', 'Ce compte n\'existe pas');
+    }
+  })
 
   }
-  else{
-    this.showMessage('error','Oops', 'Ce compte n\'existe pas');
-  }
-})
 }
 
 // sweetalert

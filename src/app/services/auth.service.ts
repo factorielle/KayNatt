@@ -30,6 +30,13 @@ export class AuthService {
   })
 : of(null);
  }
+ logoutAdmin(){
+  const token=localStorage.getItem('userOneline')
+  return  token? this.http.post<any>(`${url}logoutAdmin`,  {
+    headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
+  })
+: of(null);
+ }
 
  
 }

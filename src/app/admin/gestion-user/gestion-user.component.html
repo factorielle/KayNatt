@@ -142,11 +142,10 @@
               <div class="circ">
                 <h5 class="text-center fw-bold mb-4">Liste des utilisateurs</h5>
                 <div class="tableau ">
-                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left"  class="table pt-3" *ngIf="users.length>0">
                       <thead  >
                         <tr>
-                            <th>Prenom</th>
-                            <th>Nom</th>
+                            <th>Nom Complet</th>
                             <th>Etat</th>
                             <th>Date d'integration </th>
                             <th>status</th>
@@ -155,64 +154,36 @@
                     </thead>
               
                     <tbody>
-                      <tr>
-                          <td>Fatima</td>
-                          <td>Tall </td>
+                      <tr *ngFor="let user of users">
+                          <td>{{user.name}}</td>
                           <td>recu</td>
-                          <td>5 janvier 2023</td>
-                          <td>gerant</td>
+                          <td>{{user.created_at |  date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                          <td>{{user.role}}</td>
                           <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold" [routerLink]="['/detailUser']">Detail</button>    
+                            <button class="btn btnAjout fw-bold" [routerLink]="['/detailUser',user.id]">Detail</button>    
                           </span>
                           </td>
                       </tr>
-                      <tr>
-                          <td>Khadija</td>
-                          <td>Cissé </td>
-                          <td>recu</td>
-                          <td>5 fevrier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold">Detail</button>    
-                          </span>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Rokhaya</td>
-                          <td>Ndiaye </td>
-                          <td>recu</td>
-                          <td>5 janvier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold">Detail</button>    
-                          </span>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Aicha</td>
-                          <td>Ba </td>
-                          <td>recu</td>
-                          <td>5 janvier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold">Detail</button>    
-                          </span>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Astou</td>
-                          <td>Diouf </td>
-                          <td>pas recu</td>
-                          <td>5 janvier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold ">Detail</button>    
-                          </span>
-                          </td>
-                      </tr>
-                     
-                     
+
+  
                       
+                    </tbody>
+                      </table>
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left"  class="table pt-3" *ngIf="users.length<0">
+                      <thead  >
+                        <tr>
+                            <th>Nom Complet</th>
+                            <th>Etat</th>
+                            <th>Date d'integration </th>
+                            <th>status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+              
+                    <tbody>
+                    <tr>
+                        <td class="text-center">Aucun utilisateur disponible</td>
+                    </tr>
                       
                     </tbody>
                       </table>

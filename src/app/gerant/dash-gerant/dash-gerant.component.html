@@ -144,11 +144,11 @@
 
         <h5 class="text-center">Liste des tontines</h5>
         <div class="tableau container">
-          <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+          <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="tontines.length>0">
             <thead  style="background-color: var(--couleurPrincipal) !important;">
               <tr>
                   <th>Nom</th>
-                  <th>Durée</th>
+                  <th>Date de debut</th>
                   <th>Participants</th>
                   <th>Tirage </th>
                   <th>Etat</th>
@@ -157,61 +157,19 @@
           </thead>
     
           <tbody>
-            <tr>
-                <td>CaisSos</td>
-                <td>1 ans </td>
-                <td>12</td>
+            <tr *ngFor="let tontine of tontines">
+                <td>{{tontine.libelle}}</td>
+                <td>{{tontine.date_de_debut}}</td>
+                <td>{{tontine.nombre_participant}}</td>
                 <td>5</td>
-                <td>En cours</td>
+                <td>{{tontine.statutTontine}}</td>
                 <td><span class="status action-icon">
-                  <button class="btn btnAjout fw-bold" [routerLink]="['/detailTontineGerant']">Detail</button>    
+                  <button class="btn btnAjout fw-bold" [routerLink]="['/detailTontineGerant', tontine.id]">Detail</button>    
                 </span>
                 </td>
             </tr>
-            <tr>
-                <td>CaisSos</td>
-                <td>1 ans </td>
-                <td>12</td>
-                <td>5</td>
-                <td>En cours</td>
-                <td><span class="status action-icon">
-                  <button class="btn btnAjout fw-bold">Detail</button>    
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td>CaisSos</td>
-                <td>1 ans </td>
-                <td>12</td>
-                <td>5</td>
-                <td>En cours</td>
-                <td><span class="status action-icon">
-                  <button class="btn btnAjout fw-bold">Detail</button>    
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td>CaisSos</td>
-                <td>1 ans </td>
-                <td>12</td>
-                <td>5</td>
-                <td>En cours</td>
-                <td><span class="status action-icon">
-                  <button class="btn btnAjout fw-bold">Detail</button>    
-                </span>
-                </td>
-            </tr>
-            <tr>
-                <td>CaisSos</td>
-                <td>1 ans </td>
-                <td>12</td>
-                <td>5</td>
-                <td>En cours</td>
-                <td><span class="status action-icon">
-                  <button class="btn btnAjout fw-bold ">Detail</button>    
-                </span>
-                </td>
-            </tr>
+         
+
            
            
             
@@ -243,7 +201,7 @@
         <div class="row">
           <div class="col mb-3">
             <label>Nom tontine</label>
-            <input type="text" name="nom" class="form-control" [(ngModel)]="nomTontine" >
+            <input type="text" name="nom" class="form-control" [(ngModel)]="libelle" >
           </div>
           <div class="col mb-3">
             <label>Nombre de Participants</label>
@@ -253,21 +211,27 @@
         <div class="row">
           <div class="col mb-3">
             <label>Cotisation par cycle</label>
-            <input type="text" name="cout" class="form-control" [(ngModel)]="cotisation">
+            <input type="text" name="cout" class="form-control" [(ngModel)]="montant">
           </div>
           <div class="col mb-3">
             <label>Type de tontine </label>
-            <input type="text" class="form-control" name="type" [(ngModel)]="type" >
+            <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example">
+              <option value="quotidien">Quotidien</option>
+              <option value="hebdomadaire">Hedomadaire</option>
+              <option value="mensuel">Mensuel</option>
+              <option value="annuel">Annuel</option>
+            </select>
+         
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Date debut</label>
-            <input type="text" class="form-control" name="debut" [(ngModel)]="dDebut" >
+            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" >
           </div>
           <div class="col mb-3">
             <label>Date fin</label>
-            <input type="text" class="form-control" name="fin" [(ngModel)]="dFin">
+            <input type="text" class="form-control" name="fin" [(ngModel)]="duree">
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Regle de la tontine </label>

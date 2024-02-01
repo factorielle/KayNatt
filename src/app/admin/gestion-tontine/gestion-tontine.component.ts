@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tontine } from 'src/app/model/tontine';
 import { AuthService } from 'src/app/services/auth.service';
 import { TontineService } from 'src/app/services/tontine.service';
@@ -12,7 +13,7 @@ export class GestionTontineComponent implements OnInit{
   dtOptions: DataTables.Settings = {};
   tontines:Tontine[]=[];
 
-  constructor(private tontintService:TontineService, private logoutService:AuthService){}
+  constructor(private tontintService:TontineService, private logoutService:AuthService, private route:Router){}
 
   ngOnInit() {
     this.dtOptions = {
@@ -43,7 +44,13 @@ export class GestionTontineComponent implements OnInit{
       console.log(response)
     })
   }
-   
-  
+
+  DeconnexionAdmin(){
+    this.logoutService.logoutAdmin().subscribe((response:any)=>{
+      console.log(response)
+      localStorage.removeItem('Admintoken')
+      this.route.navigate(['/accueil'])
+    })
+  }
  
 }

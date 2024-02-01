@@ -25,6 +25,13 @@ export class AccueilComponent implements OnInit {
   constructor(private tontineService:TontineService){}
 
   ngOnInit() {
+    //  this.tontineService.tontineAccepter().subscribe((response:any)=>{
+    //   console.log(response);
+    //   this.tontines=response.data
+    //   console.log(this.tontines)
+
+      
+    // })
      this.tontineService.AfficherTontine().subscribe((response:any)=>{
       console.log(response);
       this.tontines=response.data
@@ -49,9 +56,11 @@ export class AccueilComponent implements OnInit {
   }
 
   ajoutTontine(){
-    if(this.libelle=='' || this.nbrPart=='' || this.montant=='' || this.periode=='' || this.date_de_debut=='' || this.duree=='' || this.regle=='' || this.description==''){
-    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
-
+    const token=localStorage.getItem('userOnline')
+    if(token){
+      if(this.libelle=='' || this.nbrPart=='' || this.montant=='' || this.periode=='' || this.date_de_debut==''  || this.regle=='' || this.description==''){
+      this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+      
     }else{
       const tontine={
         libelle:this.libelle,
@@ -67,7 +76,13 @@ export class AccueilComponent implements OnInit {
       this.tontineService.AjouterTontine(tontine).subscribe((response:any)=>{
         console.log(response)
       })
-   
+      
+    }
+    
+  }
+  else{
+    this.showMessage("error", "Oops","Veuillez vous connecter pour creer une tontine ");
+    
     }
   }
 showMessage(icon:any, titre:any, texte:any){
