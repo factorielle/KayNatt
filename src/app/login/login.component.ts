@@ -83,7 +83,7 @@ connexion(){
         // Stockez le token dans un service ou dans le stockage local (localStorage).
         console.log(response)
         console.log(response.data.role)
-        localStorage.setItem('userOnline', response.token)
+        localStorage.setItem('token', response.token)
         localStorage.setItem('userInfo', JSON.stringify(response.data));
         if(response.token){
           
@@ -128,11 +128,11 @@ connexionAdmin(){
         // Stockez le token dans un service ou dans le stockage local (localStorage).
         console.log(response)
         // console.log(response.data.role)
-        localStorage.setItem('Admin',JSON.stringify(response.data) )
-        localStorage.setItem('Admintoken', response.token)
+        localStorage.setItem('userInfo',JSON.stringify(response.data) )
+        localStorage.setItem('token', response.token)
      if(response.token ){
       this.route.navigate(['/accueilAdmin'])
-    this.showMessage("success", "Bienvenu",`${response.data.name}`);
+    this.showMessage("success", "Bienvenu",`${response.data.name_admin}`);
       
   
     }

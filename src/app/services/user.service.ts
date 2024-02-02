@@ -12,19 +12,15 @@ export class UserService {
 
   // afficher utilisateurs
   getUsers(){
-    const token=localStorage.getItem('userOnline');
-    return token? this.http.get<any>(`${url}ListeUser`,  {
-      headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
-    })
-  : of(null);
+  
+    return this.http.get<any>(`${url}ListeUser`)
+
   }
   // supprimer user
   deleteUser(users:any){
-    const token=localStorage.getItem('userOnline');
-    return token? this.http.delete<any>(`${url}admin/supprimerUser/${users}`,  {
-      headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
-    })
-  : of(null);
+   
+    return this.http.delete<any>(`${url}admin/supprimerUser/${users}`)
+ 
   }
 
 }

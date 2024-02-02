@@ -25,20 +25,14 @@ export class AccueilComponent implements OnInit {
   constructor(private tontineService:TontineService){}
 
   ngOnInit() {
-    //  this.tontineService.tontineAccepter().subscribe((response:any)=>{
+    this.listeTontineAccepter();
+    //  this.tontineService.AfficherTontine().subscribe((response:any)=>{
     //   console.log(response);
     //   this.tontines=response.data
     //   console.log(this.tontines)
 
       
     // })
-     this.tontineService.AfficherTontine().subscribe((response:any)=>{
-      console.log(response);
-      this.tontines=response.data
-      console.log(this.tontines)
-
-      
-    })
   }
   isButtonVisible: boolean = false;
 
@@ -109,5 +103,14 @@ getArticlesPage(): any[] {
     return Math.ceil(this. tontines.length / this.articlesParPage);
   }
 
+  listeTontineAccepter(){
+    this.tontineService.tontineAccepter().subscribe((response:any)=>{
+      console.log(response);
+      this.tontines=response.data
+      console.log(this.tontines)
+
+      
+    })
+  }
 
 }

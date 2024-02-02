@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class GestionUserComponent implements OnInit{
  
   users:any;
 
-  constructor(private userService:UserService){}
+  constructor(private userService:UserService, private logoutService:AuthService, private route:Router){}
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
     this.dtOptions = {
@@ -33,5 +35,13 @@ export class GestionUserComponent implements OnInit{
       console.log(this.users)
   })
 
+}
+
+DeconnexionAdmin(){
+  this.logoutService.logoutAdmin().subscribe((response:any)=>{
+    console.log(response)
+    localStorage.removeItem('token')
+    this.route.navigate(['/accueil'])
+  })
 }
 }

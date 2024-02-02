@@ -120,7 +120,7 @@
             <div class="middle mt-5">
                 
                 <!-- Button trigger modal -->
-                <button type="button" class="ms-5 btn btnAjout fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="ms-5 btn btnAjout fw-bold" (click)="getCycle()">
                     Ajouter  cycle
                 </button>
                 <h5 class="text-center">Liste des cycle de la tontines CaisSos</h5>
@@ -146,8 +146,6 @@
                         <td>terminé</td>
                         <td><span class="status action-icon">
                           <button class="btn btnAjout fw-bold me-2" [routerLink]="['/detailcycleGerant']">Detail</button>    
-                          <button class="btn btnRetour fw-bold me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2">Modifier</button>    
-                          <button class="btn btnRetirer fw-bold">Retirer</button>    
                         </span>
                         </td>
                     </tr>
@@ -159,8 +157,7 @@
                         <td>En cours</td>
                         <td><span class="status action-icon">
                           <button class="btn btnAjout fw-bold me-2">Detail</button>  
-                          <button class="btn btnRetour fw-bold me-2">Modifier</button>    
-                          <button class="btn btnRetirer fw-bold">Retirer</button>    
+   
                         </span>
                         </td>
                     </tr>
@@ -172,8 +169,7 @@
                         <td>En cours</td>
                         <td><span class="status action-icon">
                           <button class="btn btnAjout fw-bold me-2">Detail</button>
-                          <button class="btn btnRetour fw-bold me-2">Modifier</button>    
-                          <button class="btn btnRetirer fw-bold">Retirer</button>      
+ 
                         </span>
                         </td>
                     </tr>
@@ -184,9 +180,7 @@
                         <td>non alloué</td>
                         <td>En cours</td>
                         <td><span class="status action-icon">
-                          <button class="btn btnAjout fw-bold me-2">Detail</button>
-                          <button class="btn btnRetour fw-bold me-2">Modifier</button>    
-                          <button class="btn btnRetirer fw-bold">Retirer</button>      
+                          <button class="btn btnAjout fw-bold me-2">Detail</button>   
                         </span>
                         </td>
                     </tr>

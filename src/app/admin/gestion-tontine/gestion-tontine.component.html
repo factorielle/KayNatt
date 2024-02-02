@@ -149,7 +149,7 @@
               <div class="circ">
                 <h6 class="text-center fw-bold mb-3">Liste des tontines</h6>
                 <div class="tableau ">
-                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="tontines.length>0">
                       <thead  style="background-color: var(--couleurPrincipal) !important;">
                         <tr>
                             <th>Nom</th>
@@ -165,7 +165,7 @@
                       <tr *ngFor="let tontine of tontines" >
                           <td>{{tontine.libelle}}</td>
                           <td>{{tontine.date_de_debut}} </td>
-                          <td>{{tontine.nbrPart}}</td>
+                          <td>{{tontine.nombre_participant}}</td>
                           <td>{{tontine.periode}}</td>
                           <td>{{tontine.statutTontine}}</td>
                           <td><span class="status action-icon">

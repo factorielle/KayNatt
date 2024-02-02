@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,6 +10,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./liste-participant-tontine-gerant.component.css']
 })
 export class ListeParticipantTontineGerantComponent implements OnInit{
+  users: any;
+
+  constructor(private participantTontineService:TontineService, private route:ActivatedRoute , private userService:UserService){}
+  idTontineChoisi=this.route.snapshot.params['id']
   nom:string='';
   prenom:string='';
   adresse:string='';
@@ -14,6 +21,8 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
   nin:string='';
   email:string='';
   numProche:string='';
+
+  partTontine:any;
 
   // variable modal retirer
   raison:string='';
@@ -30,6 +39,9 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
+
+    this.getParticipantEnattente();
+    this. getUserId();
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -63,6 +75,13 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
       text: texte,
     })
   }
+   
+  getParticipantEnattente(){
+    this.participantTontineService.listeParticipantEnAttente(this.idTontineChoisi).subscribe((response:any)=>{
+      console.log(response.data)
+      this.partTontine=response.data;
+    })
+  }
   envoi(){
     if(this.raison=='' || this.message==''){
     this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
@@ -70,6 +89,13 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
     }
   }
 
- 
+  getUserId(){
+    this.userService.getUsers().subscribe((response:any)=>{
+      this.users=response.data
+      console.log(this.users)
+      // this.demandeur = this.users.find((element: any) => element.id == this.user_id);
+      
+  })
+  }
 
 }

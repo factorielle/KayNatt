@@ -10,6 +10,7 @@ export class Tontine{
  description:string='';
  etat:string='';
  statutTontine:string='';
+nombre_participant: any;
 }
 
 export class Cycle{

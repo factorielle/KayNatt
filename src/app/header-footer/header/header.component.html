@@ -24,7 +24,17 @@
       </ul>
       <div class="me-5  " >
          <button class="border-0 btnConnexion px-2 pb-1" *ngIf="loggedOut"  [routerLink]="['/auth']">Connexion</button>
-         <button class="border-0 btnConnexion px-2 pb-1" *ngIf="loggedIn" (click)="deconnexion()">Deconnexion</button>
+         <div class="dropdown-center">
+          <button class="border-0 btnConnexion px-2 pb-1dropdown-toggle" *ngIf="loggedIn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Compte
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item btn" (click)="redirection()" >Espace</a></li>
+            <li><a class="dropdown-item btn" (click)="deconnexion()">Deconnexion</a></li>
+           
+          </ul>
+        </div>
+         
       </div>
       
     </div>

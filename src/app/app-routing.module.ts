@@ -53,9 +53,9 @@ const routes: Routes = [
   {path:'dashboardGerant', component:DashGerantComponent},
   {path:'relationGerant', component:RelationGerantComponent},
   {path:'tontinesGerant', component:ListeTontineGerantComponent},
-  {path:'participantTontinesGerant', component:ListeParticipantTontineGerantComponent},
+  {path:'participantTontinesGerant/:id', component:ListeParticipantTontineGerantComponent},
   {path:'paiement', component:PaiementComponent},
-  {path:'cycleTontineGerant', component:ListeCycleTontineGerantComponent},
+  {path:'cycleTontineGerant/:id', component:ListeCycleTontineGerantComponent},
   {path:'detailTontineGerant/:id', component:DetailTontineGerantComponent},
   {path:'detailcycleGerant', component:DetailCycleTontineGerantComponent},
   // route pour les composant dans le dossier admin

@@ -16,7 +16,7 @@ export class IntercepteurInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log(request);
     // Récupérer le token JWT depuis le service d'authentification
-    const token = localStorage.getItem('userOnline');
+    const token = localStorage.getItem('token');
 
     // Cloner la requête et ajouter le token JWT aux en-têtes de la requête clonée
     if (token) {

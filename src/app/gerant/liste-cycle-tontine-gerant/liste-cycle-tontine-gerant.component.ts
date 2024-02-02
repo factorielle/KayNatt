@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CycleService } from 'src/app/services/cycle.service';
+import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -7,6 +11,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./liste-cycle-tontine-gerant.component.css']
 })
 export class ListeCycleTontineGerantComponent implements OnInit{
+  users: any;
+  demandeur: any;
+
+  constructor(private cycleService:CycleService, private route:ActivatedRoute, private userService:UserService){}
+  idTontineChoisi=this.route.snapshot.params['id']
   numero:string='';
   correspondance:string='';
   dButoir:string='';
@@ -25,7 +34,7 @@ export class ListeCycleTontineGerantComponent implements OnInit{
       }
     };
 
-
+    
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -65,4 +74,12 @@ export class ListeCycleTontineGerantComponent implements OnInit{
     text: texte,
   })
 }
+
+getCycle(){
+ this.cycleService.gestionCycle(this.idTontineChoisi).subscribe((response:any)=>{
+  console.log(response)
+ })
+}
+
+
 }

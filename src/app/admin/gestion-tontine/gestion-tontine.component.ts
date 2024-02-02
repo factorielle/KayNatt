@@ -13,7 +13,7 @@ export class GestionTontineComponent implements OnInit{
   dtOptions: DataTables.Settings = {};
   tontines:Tontine[]=[];
 
-  constructor(private tontintService:TontineService, private logoutService:AuthService, private route:Router){}
+constructor(private tontintService:TontineService, private logoutService:AuthService, private route:Router){}
 
   ngOnInit() {
     this.dtOptions = {
@@ -26,31 +26,38 @@ export class GestionTontineComponent implements OnInit{
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
+    this. listeTontines();
+  }
+
+  listeTontines(){
     this.tontintService.AfficherTontine().subscribe((response:any)=>{
       this.tontines=response.data;
-    console.log(this.tontines);
-      
-  })
+      console.log(this.tontines); 
+    });
   }
 
   AccepterTontine(tontine:any){
     this.tontintService.ApprouverTontine(tontine).subscribe((response:any)=>{
-      console.log(response)
+      console.log(response);
+      this. listeTontines();
     })
   }
 
   RefuserTontine(tontine:any){
     this.tontintService.DesapprouverTontine(tontine).subscribe((response:any)=>{
-      console.log(response)
+      console.log(response);
+      this. listeTontines();
     })
   }
 
   DeconnexionAdmin(){
     this.logoutService.logoutAdmin().subscribe((response:any)=>{
       console.log(response)
-      localStorage.removeItem('Admintoken')
+      localStorage.removeItem('token')
       this.route.navigate(['/accueil'])
     })
   }
+
+
  
 }

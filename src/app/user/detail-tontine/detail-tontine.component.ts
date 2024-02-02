@@ -94,12 +94,12 @@ export class DetailTontineComponent implements OnInit {
 
   integration(tontine:any){
     const part={
-      date:new Date(),
+      date:new Date().toISOString().split('T')[0],
       tontine_id:tontine.id
    }
    this.tontineService.IntegrerTontine(part).subscribe((response:any)=>{
     console.log(response)
-    this.showMessage('error', 'Oops', `${response.status_message}`)
+    this.showMessage('success', 'Felicitation', `${response.status_message}`)
    })
   }
   showMessage(icon:any, titre:any, texte:any){
@@ -109,4 +109,5 @@ export class DetailTontineComponent implements OnInit {
       text: texte,
     })
   }
+
 }

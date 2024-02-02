@@ -125,7 +125,7 @@
 
             <h5 class="text-center">Liste des participants tontines CaisSos</h5>
             <div class="tableau container">
-              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="partTontine.length>0">
                 <thead  >
                   <tr>
                       <th>Prenom</th>
@@ -138,12 +138,12 @@
               </thead>
         
               <tbody>
-                <tr>
-                    <td>Fatima</td>
+                <tr *ngFor="let participant of partTontine">
+                    <td>{{participant.name}}</td>
                     <td>Tall </td>
                     <td>recu</td>
-                    <td>5 janvier 2023</td>
-                    <td>gerant</td>
+                    <td>{{participant.date}}</td>
+                    <td>{{participant.statutParticipation}}</td>
                     <td><span class="status action-icon">
                       <button class="btn btnAjout fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2">Detail</button>    
                     </span>
