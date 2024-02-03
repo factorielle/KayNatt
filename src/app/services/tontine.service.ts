@@ -51,6 +51,17 @@ export class TontineService {
     listeParticipantEnAttente(tontine:any){
       return this.http.get(`${url}createur_tontine/ListeparticipationEnattentePartontine/${tontine}`)
     }
+    listeParticipantAccepte(tontine:any){
+      return this.http.get(`${url}createur_tontine/ListeparticipationAcceptePartontine/${tontine}`)
+    }
+
+    ApprouverIntegration(user:any){
+      return this.http.post(`${url}createur_tontine/AcceptedParticipationUser/${user}`,user)
+    }
+    DesapprouverIntegration(user:any){
+      return this.http.post(`${url}createur_tontine/RefuseParticipationUser/${user}`,user)
+    }
+    
      
   }
 

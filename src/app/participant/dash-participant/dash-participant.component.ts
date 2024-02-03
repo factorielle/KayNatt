@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-dash-participant',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashParticipantComponent implements  OnInit{
   dtOptions: DataTables.Settings = {};
+
+  constructor(private authService:AuthService, private route:Router){}
   ngOnInit() {
     
     this.dtOptions = {
@@ -41,7 +45,14 @@ menuToggle?.addEventListener("click", (e: Event) => {
   }
 
 
-  
+  deconnexion(){
+    this.authService.logout().subscribe((response:any)=>{
+      console.log(response);
+      localStorage.removeItem('token')
+      this.route.navigate(['/accueil'])
+
+    })
+  }
 
 
 }

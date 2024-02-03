@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,6 +11,8 @@ import Swal from 'sweetalert2';
 export class DetailTontineParticipantComponent  implements OnInit{
   raison:string='';
   message:string='';
+
+  constructor(private authService:AuthService, private route:Router){}
 
   ngOnInit() {
 
@@ -45,6 +49,14 @@ export class DetailTontineParticipantComponent  implements OnInit{
       icon: icon,
       title: titre,
       text: texte,
+    })
+  }
+  deconnexion(){
+    this.authService.logout().subscribe((response:any)=>{
+      console.log(response);
+      localStorage.removeItem('token')
+      this.route.navigate(['/accueil'])
+
     })
   }
 

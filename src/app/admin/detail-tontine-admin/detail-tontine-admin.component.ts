@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail-tontine-admin',
@@ -10,22 +12,45 @@ import { TontineService } from 'src/app/services/tontine.service';
 export class DetailTontineAdminComponent  implements OnInit{
   tontines:any;
   tontineChoisi:any;
+  idUser: any;
+  users: any;
+  createur: any;
 
-  constructor(private route: ActivatedRoute, private tontineService:TontineService){}
+  constructor(private route: ActivatedRoute, private tontineService:TontineService, private userService:UserService, private authSercice:AuthService, private router:Router){}
   idTontineChoisi = this.route.snapshot.params['id'];
   dureeTontine:any;
   cagnotte:any;
 
   ngOnInit(): void {
+  this. detailTontine();
+  }
+  detailTontine(){
     this.tontineService.AfficherTontine().subscribe((response:any)=>{
       console.log(response);
       this.tontines=response.data
       console.log(this.tontines)
       this.tontineChoisi = this.tontines.find((element: any) => element.id == this.idTontineChoisi);
       this.dureeTontine=this.calculerDureeTontine(this.tontineChoisi.periode,  this.tontineChoisi.nombre_participant,this.tontineChoisi.date_de_debut);
-      this.cagnotte=this.calculerMontantCagnotte(this.tontineChoisi.nombre_participant, this.tontineChoisi.montant)
+      this.idUser=this.tontineChoisi.user_id ;
+      console.log(this.idUser );
+      // recuperation des utilisateurs
+      this.userService.getUsers().subscribe((response:any)=>{
+        this.users=response.data
+        console.log(this.users)
+        this.createur = this.users.find((element: any) => element.id == this.idUser);
+        console.log(this.users.find((element: any) => element.id == this.idUser))
+  
+      })
       console.log(this.tontineChoisi)
 
+    })
+  }
+
+  DeconnexionAdmin(){
+    this.authSercice.logoutAdmin().subscribe((response:any)=>{
+      console.log(response)
+      localStorage.removeItem('token')
+      this.router.navigate(['/accueil'])
     })
   }
 
@@ -67,14 +92,7 @@ export class DetailTontineAdminComponent  implements OnInit{
     return duree;
   }
 
-  calculerMontantCagnotte(mensualite: string, nombreParticipants: number) {
-   
   
-    // Calculer le montant total de la cagnotte
-    const montantTotal =parseFloat(mensualite.trim().replace(/[^0-9.]/g, ""))  * nombreParticipants;
-  
-    return montantTotal;
-  }
 
 
 }

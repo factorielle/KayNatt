@@ -151,7 +151,7 @@ input, textarea{
     border-left: 3px solid var(--couleurSecondaire);
 }
 .btnRetour{
-    outline: 1px solid var(--couleurPrincipal);
+    outline: 1px solid var(--couleurSecondaire);
     color: var(--couleurSeconaire);
 
 }

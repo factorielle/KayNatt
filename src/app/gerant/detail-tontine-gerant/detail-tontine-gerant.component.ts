@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { param } from 'jquery';
+import { AuthService } from 'src/app/services/auth.service';
 import { TontineService } from 'src/app/services/tontine.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class DetailTontineGerantComponent  implements OnInit{
   tontines:any;
   tontineChoisi:any;
 
-  constructor(private route: ActivatedRoute, private tontineService:TontineService){}
+  constructor(private route: ActivatedRoute, private tontineService:TontineService, private authService:AuthService, private router:Router){}
   idTontineChoisi = this.route.snapshot.params['id'];
   dureeTontine:any;
 
@@ -86,4 +87,12 @@ export class DetailTontineGerantComponent  implements OnInit{
     return duree;
   }
 
+  deconnexion(){
+    this.authService.logout().subscribe((response:any)=>{
+      console.log(response);
+      localStorage.removeItem('token')
+      this.router.navigate(['/accueil'])
+
+    })
+  }
 }

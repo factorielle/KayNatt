@@ -31,6 +31,7 @@ import { ListeCycleTontineComponent } from './admin/liste-cycle-tontine/liste-cy
 import { ListeParticipantTontineComponent } from './admin/liste-participant-tontine/liste-participant-tontine.component';
 import { DetailTontineAdminComponent } from './admin/detail-tontine-admin/detail-tontine-admin.component';
 import { ErreurComponent } from './erreur/erreur/erreur.component';
+import { adminGuardGuard } from './garde/admin-guard.guard';
 
 const routes: Routes = [
   {path:'auth', component:LoginComponent},
@@ -43,14 +44,14 @@ const routes: Routes = [
   {path:'contact', component:ContactComponent},
   {path:'detailTontine/:id', component:DetailTontineComponent},
   // route pour les composant dans le dossier participant
-  {path:'dashboardPart', component:DashParticipantComponent},
+  {path:'dashboardPart', component:DashParticipantComponent, canActivate:[adminGuardGuard]},
   {path:'detailCyclePart', component:DetailCycleTontineParticipantComponent},
   {path:'tontinesPart', component:ListeTontineParticipantComponent},
   {path:'relationPart', component:RelationParticipantComponent},
   {path:'cyclesPart', component:ListeCycleTontineParticipantComponent},
   {path:'detailTontinePart', component:DetailTontineParticipantComponent},
   // route pour les composant dans le dossier gerant
-  {path:'dashboardGerant', component:DashGerantComponent},
+  {path:'dashboardGerant', component:DashGerantComponent, canActivate:[adminGuardGuard]},
   {path:'relationGerant', component:RelationGerantComponent},
   {path:'tontinesGerant', component:ListeTontineGerantComponent},
   {path:'participantTontinesGerant/:id', component:ListeParticipantTontineGerantComponent},
@@ -60,14 +61,14 @@ const routes: Routes = [
   {path:'detailcycleGerant', component:DetailCycleTontineGerantComponent},
   // route pour les composant dans le dossier admin
   {path:'assistance', component:AssistanceComponent},
-  {path:'accueilAdmin', component:DashAccueilComponent},
+  {path:'accueilAdmin', component:DashAccueilComponent, canActivate:[adminGuardGuard]},
   {path:'detailCycleAdmin', component:DetailCycleTontineComponent},
   {path:'detailUser/:id', component:DetailUserComponent},
   {path:'role', component:GestionRoleComponent},
   {path:'gestionTontine', component:GestionTontineComponent},
   {path:'users', component:GestionUserComponent},
   {path:'cycleTontine', component:ListeCycleTontineComponent},
-  {path:'participantTontine', component:ListeParticipantTontineComponent},
+  {path:'participantTontine/:id', component:ListeParticipantTontineComponent},
   {path:'detailTontineAdmin/:id', component:DetailTontineAdminComponent},
   // 404 not found
   {path:'**', component:ErreurComponent},

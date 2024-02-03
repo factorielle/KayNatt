@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-detail-cycle-tontine-gerant',
@@ -12,6 +14,7 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   participants: string[] = ['Participant1', 'Participant2', 'Participant3', 'Participant4', 'Participant5', 'Participant6'];
   gagnant: any;
  
+  constructor(private authService:AuthService, private router:Router){}
 
 
   ngOnInit() {
@@ -57,6 +60,14 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     }
   }
   
+  deconnexion(){
+    this.authService.logout().subscribe((response:any)=>{
+      console.log(response);
+      localStorage.removeItem('token')
+      this.router.navigate(['/accueil'])
+
+    })
+  }
   
   
   

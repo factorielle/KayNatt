@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { TontineService } from 'src/app/services/tontine.service';
 import Swal from 'sweetalert2';
 
@@ -21,7 +23,7 @@ export class DashGerantComponent implements OnInit {
 
   tontines:any;
 
-  constructor(private tontineService:TontineService){}
+  constructor(private tontineService:TontineService, private authService:AuthService, private route:Router){}
   ngOnInit() {
     this.getTontineByUser();
     this.dtOptions = {
@@ -99,4 +101,14 @@ getTontineByUser(){
     console.log(this.tontines);
   })
 }
+
+deconnexion(){
+  this.authService.logout().subscribe((response:any)=>{
+    console.log(response);
+    localStorage.removeItem('token')
+    this.route.navigate(['/accueil'])
+
+  })
+}
+
 }

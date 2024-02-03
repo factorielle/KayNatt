@@ -506,3 +506,6 @@ main .analytics .item{
   input, textarea{
     border-left: 3px solid var(--couleurSecondaire);
 }
+p{
+    cursor: pointer;
+}

@@ -10,8 +10,8 @@ export class CycleService {
 
   constructor(private http: HttpClient) {}
   
-  gestionCycle(tontine:any){
-    return this.http.post(`${url}createur_tontine/gererCycle/${tontine}`, tontine)
+  gestionCycle(tontine:any, ){
+    return this.http.post(`${url}createur_tontine/gererCycle/${tontine}`,tontine)
 
   }
 }

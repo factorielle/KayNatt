@@ -444,3 +444,6 @@ th{
     color: var(--couleurSeconaire);
     padding: 0 3px;
 }
+p{
+    cursor: pointer;
+}

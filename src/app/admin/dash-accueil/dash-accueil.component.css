@@ -420,4 +420,8 @@ main .analytics .item{
     height: 50vh;
     box-shadow: 1px 1px 5px lightgray;
     border-radius: 20px;
+    background-color: #F0F0F0;    
+}
+p{
+    cursor: pointer;
 }

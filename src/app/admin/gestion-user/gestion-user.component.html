@@ -75,8 +75,7 @@
                 <button class="menu-btn" id="menu-open">
                     <i class="bi bi-list"></i>
                 </button>
-                <h5 style="color: var(--couleurSecondaire);">Salut <i class="fw-bold">Amina</i>, Rebienvenu!</h5>
-            </header>
+                </header>
 
        
 
@@ -146,7 +145,7 @@
                       <thead  >
                         <tr>
                             <th>Nom Complet</th>
-                            <th>Etat</th>
+                            <th>Email</th>
                             <th>Date d'integration </th>
                             <th>status</th>
                             <th>Action</th>
@@ -156,7 +155,7 @@
                     <tbody>
                       <tr *ngFor="let user of users">
                           <td>{{user.name}}</td>
-                          <td>recu</td>
+                          <td>{{user.email}}</td>
                           <td>{{user.created_at |  date: 'dd/MM/yyyy HH:mm:ss'}}</td>
                           <td>{{user.role}}</td>
                           <td><span class="status action-icon">
@@ -173,7 +172,7 @@
                       <thead  >
                         <tr>
                             <th>Nom Complet</th>
-                            <th>Etat</th>
+                            <th>Email</th>
                             <th>Date d'integration </th>
                             <th>status</th>
                             <th>Action</th>
@@ -203,9 +202,9 @@
                     </svg>
                 <div class="profile">
                     <div class="left ">
-                        <img class="mt-1" src="https://img.freepik.com/free-photo/young-woman-with-curly-hair-glass-red-wine_273609-16313.jpg?size=626&ext=jpg&ga=GA1.2.522834921.1700648147&semt=ais">
+                        <img class="" src="https://img.freepik.com/free-photo/young-woman-with-curly-hair-glass-red-wine_273609-16313.jpg?size=626&ext=jpg&ga=GA1.2.522834921.1700648147&semt=ais">
                         <div class="user ">
-                            <p class="fw-bold " style="font-size: 16px;">Aminata <br> Diouf</p>
+                            <p class="fw-bold mt-2" style="font-size: 16px;">Profil</p>
                            
                         </div>
                     </div>

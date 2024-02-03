@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -14,7 +15,7 @@ export class DetailUserComponent implements OnInit{
   userChoisi:any;
   users:any;
 
-  constructor(private route: ActivatedRoute, private userService:UserService){}
+  constructor(private route: ActivatedRoute, private userService:UserService, private authService:AuthService, private router:Router){}
   idUserChoisi = this.route.snapshot.params['id'];
   ngOnInit(){
     this.userService.getUsers().subscribe((response:any)=>{
@@ -23,6 +24,14 @@ export class DetailUserComponent implements OnInit{
       console.log(this.users)
       this.userChoisi = this.users.find((element: any) => element.id == this.idUserChoisi);
 
+    })
+  }
+
+  DeconnexionAdmin(){
+    this.authService.logoutAdmin().subscribe((response:any)=>{
+      console.log(response)
+      localStorage.removeItem('token')
+      this.router.navigate(['/accueil'])
     })
   }
 

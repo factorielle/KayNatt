@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DataTablesModule } from "angular-datatables";
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './user/accueil/accueil.component';
@@ -83,7 +83,8 @@ import { TokenInterceptorProvider } from './intercepteur/intercepteur.intercepto
     AppRoutingModule,
     DataTablesModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-liste-cycle-tontine-participant',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeCycleTontineParticipantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
+
+  constructor(private authService:AuthService, private route:Router){}
   ngOnInit(){
 
     this.dtOptions = {
@@ -40,6 +44,14 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
     });
     
      
+  }
+  deconnexion(){
+    this.authService.logout().subscribe((response:any)=>{
+      console.log(response);
+      localStorage.removeItem('token')
+      this.route.navigate(['/accueil'])
+
+    })
   }
 
 }

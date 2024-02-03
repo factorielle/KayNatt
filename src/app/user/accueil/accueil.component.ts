@@ -26,13 +26,7 @@ export class AccueilComponent implements OnInit {
 
   ngOnInit() {
     this.listeTontineAccepter();
-    //  this.tontineService.AfficherTontine().subscribe((response:any)=>{
-    //   console.log(response);
-    //   this.tontines=response.data
-    //   console.log(this.tontines)
-
-      
-    // })
+    
   }
   isButtonVisible: boolean = false;
 
@@ -69,8 +63,8 @@ export class AccueilComponent implements OnInit {
       }
       this.tontineService.AjouterTontine(tontine).subscribe((response:any)=>{
         console.log(response)
+        this.showMessage('success','Felicitation',`${response.status_message}`)
       })
-      
     }
     
   }
