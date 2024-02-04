@@ -13,8 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class DetailCycleTontineGerantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
-  // tirage
-  participants: string[] = ['Participant1', 'Participant2', 'Participant3', 'Participant4', 'Participant5', 'Participant6'];
+  
   gagnant: any;
   cycleChoisi:any;
   tontineId:any;
@@ -24,8 +23,9 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   tontineChoisi: any;
   users: any;
   demandeurAccepter: any;
-  tabParticipantAccepter: any;
+  tabParticipantAccepter: any[]=[];
   partTontineAccepte: any;
+  details = { name: '', email: '', adresse: '', telephone:'', num_carte_d_identite:'', telephone_d_un_proche:'', };
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
 
@@ -40,6 +40,7 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     });
 
     this.getParticipantAccepte();
+    this.getUserAccepter();
 
 
     // liste cycle
@@ -82,8 +83,8 @@ export class DetailCycleTontineGerantComponent implements OnInit {
 
   effectuerTirage() {
     if (!this.gagnant) {
-      const indexGagnant = Math.floor(Math.random() * this.participants.length);
-      this.gagnant = this.participants[indexGagnant];
+      const indexGagnant = Math.floor(Math.random() * this.tabParticipantAccepter.length);
+      this.gagnant = this.tabParticipantAccepter[indexGagnant]
       this.tirageEffectue = true;
     }
   }
@@ -118,8 +119,43 @@ export class DetailCycleTontineGerantComponent implements OnInit {
       console.log( 'liste participation',this.partTontineAccepte)
     })
   }
-
+  getUserAccepter(){
+    this.userService.getUsers().subscribe((response:any)=>{
+      this.users=response.data
+      console.log(this.users)
+      this.demandeurAccepter = this.obtenirNomsParticipantsTontineAccepter(this.tontineId);
+      console.log('participant accepteee',this.demandeurAccepter)
+      
+  })
+  }
+  obtenirNomsParticipantsTontineAccepter(idTontine: any) {
+    // Filtrer les participations pour obtenir celles liées à la tontine spécifiée
+    const participationsTontine = this.partTontineAccepte.filter((participation: any) => participation.tontine_id === idTontine);
+  
+    console.log('Participations de la tontine  accepter:', participationsTontine);
+  
+    // Obtenir les noms des participants en utilisant les informations du tableau des utilisateurs
+    const nomsParticipants = this.partTontineAccepte.map((participation: any) => {
+      // Rechercher l'utilisateur correspondant dans le tableau des utilisateurs
+      const utilisateur = this.users.find((user: any) => user.id === participation.user_id);
+  
+      console.log('Participation actuelle :', participation);
+      console.log('Utilisateur trouvé  accepter:', utilisateur);
+       this.tabParticipantAccepter.push(utilisateur)
+  
+      return utilisateur ? utilisateur.nom : 'Utilisateur inconnu';
+    });
+  
+    console.log('Noms des participants  :', this.tabParticipantAccepter);
+  
+    return this.tabParticipantAccepter;
+  }
  
+  // detailUser
+  showDetails(article: any) {
+    this.details = article;
+    console.warn(this.details);
+  }
 
 
   deconnexion(){
