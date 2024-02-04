@@ -14,4 +14,7 @@ export class CycleService {
     return this.http.post(`${url}createur_tontine/gererCycle/${tontine}`,tontine)
 
   }
+  listeCycles(tontine:any):Observable<any>{
+    return this.http.get<any>(`${url}createur_tontine/listeCycle/${tontine}`)
+  }
 }

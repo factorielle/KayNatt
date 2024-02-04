@@ -58,7 +58,7 @@ const routes: Routes = [
   {path:'paiement', component:PaiementComponent},
   {path:'cycleTontineGerant/:id', component:ListeCycleTontineGerantComponent},
   {path:'detailTontineGerant/:id', component:DetailTontineGerantComponent},
-  {path:'detailcycleGerant', component:DetailCycleTontineGerantComponent},
+  {path:'cycles/:idTontine/detailcycleGerant/:idcycle', component:DetailCycleTontineGerantComponent},
   // route pour les composant dans le dossier admin
   {path:'assistance', component:AssistanceComponent},
   {path:'accueilAdmin', component:DashAccueilComponent, canActivate:[adminGuardGuard]},

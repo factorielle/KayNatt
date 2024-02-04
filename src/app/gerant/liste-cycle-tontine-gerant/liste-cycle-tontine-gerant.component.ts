@@ -16,6 +16,9 @@ export class ListeCycleTontineGerantComponent implements OnInit{
   demandeur: any;
   tontineChoisi: any;
   tontines: any;
+  listeCycles:any;
+  listeParticipants:any;
+  dates:any;
 
   constructor(private cycleService:CycleService, private route:ActivatedRoute, private userService:UserService, private tontineService:TontineService, private authService:AuthService, private router:Router){}
   idTontineChoisi=this.route.snapshot.params['id']
@@ -26,6 +29,7 @@ export class ListeCycleTontineGerantComponent implements OnInit{
 
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
+    this.getTontine();
     this.dtOptions = {
       searching: true,
       lengthChange: true,
@@ -37,7 +41,9 @@ export class ListeCycleTontineGerantComponent implements OnInit{
       }
     };
 
-    this.getTontine();
+    // liste cycle
+    this.afficherCycle()
+  
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -81,11 +87,21 @@ export class ListeCycleTontineGerantComponent implements OnInit{
 getCycle(){
 
  this.cycleService.gestionCycle(this.idTontineChoisi).subscribe((response:any)=>{
-  console.log(response);
+  console.log(response.cycles);
   this.showMessage('info','',`${response.status_message}`);
- })
+})
 }
-
+afficherCycle(){
+  this.cycleService.listeCycles(this.idTontineChoisi).subscribe((response:any)=>{
+    console.log("Response reçue:", response); // Affiche la structure de l'objet response
+    if (response.data && response.data.length > 0) {
+      this.listeCycles = response.data;
+      console.log("Liste des cycles:", this.listeCycles); // Affiche les données du cycle
+    } else {
+      console.log("Aucune donnée de cycle trouvée");
+    }
+  })
+}
 
 getTontine(){
   this.tontineService.AfficherTontine().subscribe((response:any)=>{

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CycleService } from 'src/app/services/cycle.service';
+import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail-cycle-tontine-gerant',
@@ -13,13 +16,38 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   // tirage
   participants: string[] = ['Participant1', 'Participant2', 'Participant3', 'Participant4', 'Participant5', 'Participant6'];
   gagnant: any;
- 
-  constructor(private authService:AuthService, private router:Router){}
+  cycleChoisi:any;
+  tontineId:any;
+  cycleId:any;
+  listeCycles: any;
+  tontines: any;
+  tontineChoisi: any;
+  users: any;
+  demandeurAccepter: any;
+  tabParticipantAccepter: any;
+  partTontineAccepte: any;
+  constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
 
   ngOnInit() {
-   
+    // recuperation des id 
+    this.route.paramMap.subscribe(params => {
+      this.tontineId = params.get('idTontine');
+      this.cycleId = params.get('idcycle');
+      console.log(this.tontineId);
+       console.log(this.cycleId);
+      
+    });
 
+    this.getParticipantAccepte();
+
+
+    // liste cycle
+    this.getCycle();
+    // liste tontine
+    this.getTontine();
+
+    // dataTables
     this.dtOptions = {
       searching: true,
       lengthChange: true,
@@ -60,6 +88,40 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     }
   }
   
+  getCycle(){
+    this.cycleService.listeCycles(this.tontineId).subscribe((response:any)=>{
+      console.log("Response reçue:", response); // Affiche la structure de l'objet response
+      if (response.data && response.data.length > 0) {
+        this.listeCycles = response.data;
+        console.log("Liste des cycles:", this.listeCycles); // Affiche les données du cycle
+        this.cycleChoisi = this.listeCycles.find((element: any) => element.id == this.cycleId);
+        console.log(" cycleChoisi:", this.cycleChoisi); 
+      } else {
+        console.log("Aucune donnée de cycle trouvée");
+      }
+    })
+  }
+
+  getTontine(){
+    this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      this.tontines=response.data
+      console.log(this.tontines)
+      this.tontineChoisi = this.tontines.find((element: any) => element.id == this.tontineId);
+      console.log( this.tontineChoisi);
+  })
+  }
+
+  getParticipantAccepte(){
+    this.tontineService.listeParticipantAccepte(this.tontineId).subscribe((response:any)=>{
+      console.log(response.data)
+      this.partTontineAccepte=response.data;
+      console.log( 'liste participation',this.partTontineAccepte)
+    })
+  }
+
+ 
+
+
   deconnexion(){
     this.authService.logout().subscribe((response:any)=>{
       console.log(response);
