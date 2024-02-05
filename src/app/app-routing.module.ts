@@ -55,7 +55,7 @@ const routes: Routes = [
   {path:'relationGerant', component:RelationGerantComponent},
   {path:'tontinesGerant', component:ListeTontineGerantComponent},
   {path:'participantTontinesGerant/:id', component:ListeParticipantTontineGerantComponent},
-  {path:'paiement', component:PaiementComponent},
+  {path:'profil', component:PaiementComponent},
   {path:'cycleTontineGerant/:id', component:ListeCycleTontineGerantComponent},
   {path:'detailTontineGerant/:id', component:DetailTontineGerantComponent},
   {path:'cycles/:idTontine/detailcycleGerant/:idcycle', component:DetailCycleTontineGerantComponent},

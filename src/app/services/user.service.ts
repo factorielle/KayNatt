@@ -22,5 +22,9 @@ export class UserService {
     return this.http.delete<any>(`${url}admin/supprimerUser/${users}`)
  
   }
+  // modifier profil
+  updateUser(user:any){
+    return this.http.post(`${url}modifierUser`, user)
+  }
 
 }

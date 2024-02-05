@@ -42,7 +42,7 @@ export class ListeParticipantTontineComponent implements OnInit{
     this.participantTontineService.listeParticipantAccepte(this.idTontineChoisi).subscribe((response:any)=>{
       console.log(response.data)
       this.partTontineAccepte=response.data;
-      console.log( 'ko',this.partTontineAccepte)
+      console.log( 'participation',this.partTontineAccepte)
     })
   }
   obtenirNomsParticipantsTontineAccepter(idTontine: any) {

@@ -1,1 +1,88 @@
-<p>paiement works!</p>
+<app-header></app-header>
+<body>
+    <div class="container  mt-2">
+        <div class="top  d-flex">
+            <p class="topCard text-center  fw-bold ">
+               {{firstLetter}}
+            </p>
+            <p class="name ms-2">{{userConnect.name}}</p>
+
+        </div>
+        <div class=" card mx-auto ">
+            <ul class="mt-4">
+                <li> <span class="fw-bold">Nom Complet:</span>  {{userConnect.name}}</li>
+                <li><span class="fw-bold">Email:</span>  {{userConnect.email}}</li>
+                <li><span class="fw-bold">Numero d'identification national:</span> {{userConnect.num_carte_d_identite}}</li>
+                </ul>
+                <ul class="mt-4">
+                <li><span class="fw-bold">Telephone:</span>  {{userConnect.telephone}}</li>
+                <li><span class="fw-bold">Telephone d'un proche:</span>  {{userConnect.telephone_d_un_proche}}</li>
+                <li><span class="fw-bold">Role:</span>  {{userConnect.role}}</li>
+            </ul>
+            
+            
+        </div>
+        <button class="btn ms-3 btnPass fw-bold  " data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="chargerModal()">Modifier Profil</button>
+        
+    </div>
+
+</body>
+<app-footer></app-footer>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modification Profil</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form   class="signin-form mt-1" >
+                <div class="row">
+                    <div class="col mb-3">
+                      <label>Prenom</label>
+                      <input type="text" class="form-control"  name="prenom" [(ngModel)]="prenom">
+                    </div>
+                  
+                  </div><div class="row">
+                    <div class="col mb-3">
+                        <label>Numero telephone</label>
+                      <input type="text" class="form-control"  name="tel" [(ngModel)]="telephone">
+                    </div>
+                    <div class="col mb-3">
+                        <label>Numero  proche</label>
+                      <input type="text" class="form-control"  name="numero" [(ngModel)]="numProche">
+                    </div>
+                  </div><div class="row">
+                    <div class="col mb-3">
+                        <label>Email</label>
+                      <input type="text" class="form-control"  name="email" [(ngModel)]="email">
+                    </div>
+                    <div class="col mb-3">
+                        <label>Adresse</label>
+                      <input type="text" class="form-control"  name="adresse"  [(ngModel)]="adresse">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="name">Numero d'identification nationale</label>
+                        <input type="text" class="form-control"  name="nin"  [(ngModel)]="nin">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="label" for="prenom">Mot de passe</label>
+                        <input type="password" class="form-control"   name="password" [(ngModel)]="password">
+                    </div>
+                 
+                  </div> 
+   
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btnProf fw-bold" data-bs-dismiss="modal" (click)=" modifierUser()">Modifier</button>
+          <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -11,7 +11,7 @@
 .container{
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    height: 120vh;
+    height: 124vh;
 }
 
 .container .left-section{
@@ -482,7 +482,7 @@ main .analytics .item{
     width: 95vh;
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 40vh;
+    height: 43vh;
   }
   
   

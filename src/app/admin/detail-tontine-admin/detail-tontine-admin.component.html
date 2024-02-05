@@ -148,9 +148,9 @@
             <div class="separator">
               <div class="circ">
                 <div class="cycle d-flex justify-content-end ">
-                    <button class="btnInt btn " [routerLink]="['/cycleTontine']">Cycle</button>
+                    <button class="btnInt btn "  *ngIf="tontineChoisi.statutTontine=='accepte'" [routerLink]="['/cycleTontine']">Cycle</button>
                 </div>
-                <div class="a-box">
+                <div class="a-box mt-2">
                     <div class="img-container">
                       <div class="img-inner">
                         <div class="image">
@@ -166,7 +166,7 @@
                         <li> <span class="fw-bold ">Initié par:</span> {{createur.name}}</li>
                         <li> <span class="fw-bold ">Duree de la tontine:</span> {{dureeTontine}} <span *ngIf="tontineChoisi.periode=='mensuel'">mois</span><span *ngIf="tontineChoisi.periode=='hebdomaire'">semaines</span> <span *ngIf="tontineChoisi.periode=='quotidien'">jours</span> <span  *ngIf="tontineChoisi.periode=='annuel'">annee</span> </li>
                       </ul>
-                      <ul class="mt-1">
+                      <ul class="">
                         <li> <span class="fw-bold">Nombre de participants:</span> {{tontineChoisi.nombre_participant}}</li>
                         <li> <span class="fw-bold">Regle:</span> {{tontineChoisi.regles}}</li>
                         <li> <span class="fw-bold">Etat:</span> {{tontineChoisi.statutTontine}} </li>
@@ -175,8 +175,8 @@
                     
                   </div>
                   <div class="bouton d-flex mb-2 justify-content-end">
-                     <button class="btnInt btn me-3" [routerLink]="['/participantTontine',idTontineChoisi]">Voir participant</button>
-                     <button class="btnRetour btn">Fermer</button>
+                     <button class="btnInt btn me-3" *ngIf="tontineChoisi.statutTontine=='accepte'" [routerLink]="['/participantTontine',idTontineChoisi]">Voir participant</button>
+                     <button class="btnRetour btn" *ngIf="tontineChoisi.statutTontine=='accepte'">Fermer</button>
                   </div>
 
 
