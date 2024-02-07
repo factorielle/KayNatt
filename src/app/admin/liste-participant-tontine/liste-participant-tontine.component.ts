@@ -35,6 +35,7 @@ export class ListeParticipantTontineComponent implements OnInit{
     this.getParticipantAccepte();
     this.getUserAccepter();
     this.getTontine();
+    this.responsive();
 
   }
 
@@ -98,6 +99,38 @@ export class ListeParticipantTontineComponent implements OnInit{
       localStorage.removeItem('token')
       this.router.navigate(['/accueil'])
     })
+  }
+
+  responsive(){
+    // Sélection des éléments du DOM avec types
+const menuOpen: HTMLButtonElement = document.getElementById('menu-open') as HTMLButtonElement;
+const menuClose: HTMLButtonElement = document.getElementById('menu-close') as HTMLButtonElement;
+const sideBar: HTMLElement = document.querySelector('.container .left-section') as HTMLElement;
+const sidebarItems: NodeListOf<HTMLElement> = document.querySelectorAll('.container .left-section .sidebar .item');
+
+// Gestion des événements avec types
+menuOpen.addEventListener('click', () => {
+  sideBar.style.top = '0';
+});
+
+menuClose.addEventListener('click', () => {
+  sideBar.style.top = '-60vh';
+});
+
+// Gestion de l'élément actif avec types
+let activeItem: HTMLElement | null = sidebarItems[0];
+
+sidebarItems.forEach(element => {
+  element.addEventListener('click', () => {
+    if (activeItem) {
+      activeItem.removeAttribute('id');
+    }
+
+    element.setAttribute('id', 'active');
+    activeItem = element;
+  });
+});
+
   }
 
 }
