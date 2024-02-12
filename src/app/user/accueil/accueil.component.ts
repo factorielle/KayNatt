@@ -44,7 +44,7 @@ export class AccueilComponent implements OnInit {
   }
 
   ajoutTontine(){
-    const token=localStorage.getItem('userOnline')
+    const token=localStorage.getItem('token')
     if(token){
       if(this.libelle=='' || this.nbrPart=='' || this.montant=='' || this.periode=='' || this.date_de_debut==''  || this.regle=='' || this.description==''){
       this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
@@ -78,6 +78,7 @@ showMessage(icon:any, titre:any, texte:any){
     icon: icon,
     title: titre,
     text: texte,
+    confirmButtonColor: "#1E1E1E",
   })
 }
 

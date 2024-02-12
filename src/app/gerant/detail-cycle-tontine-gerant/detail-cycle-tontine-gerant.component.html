@@ -122,8 +122,8 @@
 
             <h5 class="text-center mb-3">Cycle {{cycleChoisi.nombre_de_cycle}} de la tontine {{tontineChoisi.libelle}}</h5>
             <div>
-                <button class="btn btnAjout ms-5 mb-3 fw-bold">Participer</button>
-                <button class="btn btnRetour ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Faire un tirage</button>
+                <button class="btn btnAjout ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paiement" >Participer</button>
+                <button class="btn btnRetour ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" >Faire un tirage</button>
 
             </div>
             <div class="info ms-5">
@@ -176,7 +176,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal  detail user-->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -198,7 +198,7 @@
 </div>
 
 
-<!-- Modal -->
+<!-- Modal tirage -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -220,7 +220,40 @@
     
       </div>
       <div class="modal-footer">
-        <button type="button" [disabled]="gagnant"  class="btn btnAjout fw-bold" (click)="effectuerTirage()">Effectuer le tirage</button>
+        <button type="button" [disabled]="gagnant"  class="btn btnAjout fw-bold" (click)="effectuerTirage();tirage()">Effectuer le tirage</button>
+        <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- modal paiement -->
+<div class="modal fade" id="paiement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Paiement du cycle {{cycleChoisi.nombre_de_cycle}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Montant cotisation</label>
+            <input type="text" class="form-control" name="paiement" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="paiement">
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail" class="form-label">Date paiement</label>
+            <input type="date" class="form-control" name="date" id="exampleInputEmail" [(ngModel)]="date">
+
+          </div>
+        
+        </form>
+       
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button"class="btn btnAjout fw-bold" (click)=" participerCycle()">Effectuer paiement</button>
         <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>

@@ -48,12 +48,34 @@ export class DetailUserComponent implements OnInit{
       icon: icon,
       title: titre,
       text: texte,
+      confirmButtonColor: "#1E1E1E",
     })
   }
   SupprimerUser(){
-    this.userService.deleteUser(this.idUserChoisi).subscribe((response:any)=>{
-      console.log(response)
-    })
+  
+   
+    Swal.fire({
+      title: "Voulez vous vraiment bloquer cet utilisateur?",
+      text: "Cette action est irreversible !",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#F0E9D8",
+      cancelButtonColor: "#1E1E1E",
+      confirmButtonText: "Oui, Bloquer!",
+      cancelButtonText: "Annuler",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.userService.deleteUser(this.idUserChoisi).subscribe((response:any)=>{
+          console.log(response)
+         
+        })
+        Swal.fire({
+          title: "Bloquer!",
+          text: "utilisateur bloqué!",
+          icon: "success"
+        });
+      }
+    });
   }
   responsive(){
     // Sélection des éléments du DOM avec types

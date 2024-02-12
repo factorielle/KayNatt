@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
 import { TontineService } from 'src/app/services/tontine.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-cycle-tontine-gerant',
@@ -26,6 +27,11 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   tabParticipantAccepter: any[]=[];
   partTontineAccepte: any;
   details = { name: '', email: '', adresse: '', telephone:'', num_carte_d_identite:'', telephone_d_un_proche:'', };
+  paiement: any;
+  idGagnant:any;
+  idParticipation:any;
+  participation: any;
+  date: any;
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
 
@@ -84,9 +90,28 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   effectuerTirage() {
     if (!this.gagnant) {
       const indexGagnant = Math.floor(Math.random() * this.tabParticipantAccepter.length);
-      this.gagnant = this.tabParticipantAccepter[indexGagnant]
       this.tirageEffectue = true;
     }
+  }
+  tirage(){
+    this.cycleService.faireTirage(this.tontineChoisi.id).subscribe((response:any)=>{
+      console.log(response)
+      Swal.fire({
+        icon:'info',
+        title:'',
+        text:`le tirage a été fait avec succes`
+      })
+      this.idParticipation=response.data.id;
+      console.log(this.idParticipation)
+      console.log(this.users)
+      this.participation=this.partTontineAccepte.find((element:any)=>element.id=this.idParticipation);
+      console.log(this.participation)
+      this.idGagnant=this.participation.user_id;
+      console.log(this.idGagnant)
+      this.gagnant=this.users.find((element:any)=>element.id=this.idGagnant);
+        console.log(this.gagnant)
+    
+    })
   }
   
   getCycle(){
@@ -155,6 +180,21 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   showDetails(article: any) {
     this.details = article;
     console.warn(this.details);
+  }
+
+
+  participerCycle(){
+    const paiement={
+      date_paiement:this.date,
+      montant_paiement:parseInt(this.paiement)
+    }
+    console.log(paiement)
+    this.cycleService.participerCycle(this.cycleId, paiement).subscribe((response:any)=>{
+      console.log(response)
+    }
+    )
+   
+  
   }
 
 

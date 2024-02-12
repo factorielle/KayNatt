@@ -91,6 +91,7 @@ showMessage(icon:any, titre:any, texte:any){
     icon: icon,
     title: titre,
     text: texte,
+    confirmButtonColor: "#1E1E1E",
   })
 }
 

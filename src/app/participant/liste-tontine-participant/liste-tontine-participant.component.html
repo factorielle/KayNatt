@@ -120,11 +120,47 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center">Liste des tontines</h5>
-
-            <div class="tableau">
+            <h5 class="text-center">Liste des participants de la  tontine {{tontineChoisi.libelle}}</h5>
+            <div>
+                <!-- <button class="btn btnAjout ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paiement" >Participer</button> -->
+       
 
             </div>
+            <div class="tableau container">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                  <thead>
+                    <tr>
+                        <th>Nom Complet</th>
+                        <th>Email</th>
+                        <th>Telephone</th>
+                        <th>Adresse </th>
+                        <th>status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+          
+                <tbody>
+                  <tr  *ngFor="let part of participants">
+                    <td> {{part.name }}</td>
+                    <td>{{part.email}}  </td>
+                    <td>{{part.telephone}}</td>
+                    <td>{{part.adresse}}</td>
+                    <td>{{part.role}} </td>
+                      <td><span class="status action-icon">
+                        <button class="btn btnAjout fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="showDetails(part)">Detail</button>    
+                      </span>
+                      </td>
+                  </tr>
+           
+
+                 
+                  
+                  
+                </tbody>
+                  </table>
+                  
+      
+              </div>
   
  
             </div>
@@ -138,3 +174,54 @@
 
    
  
+<!-- Modal participant accepter -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title  fs-5" id="exampleModalLabel">Information participant</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <p class="text-center fw-bold">{{details.name}}</p>
+        <p> <i class="bi bi-envelope "></i> {{details.email}}</p>
+        <p> <i class="bi bi-telephone"></i> {{details.telephone}}</p>
+        <p> <i class="bi bi-geo-alt"></i> {{details.adresse}}</p>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+
+  <!-- modal paiement -->
+<!-- <div class="modal fade" id="paiement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Paiement du cycle {{cycleChoisi.nombre_de_cycle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Montant cotisation</label>
+              <input type="text" class="form-control" name="paiement" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="paiement">
+  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail" class="form-label">Date paiement</label>
+              <input type="date" class="form-control" name="date" id="exampleInputEmail" [(ngModel)]="date">
+  
+            </div>
+          
+          </form>
+         
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button"class="btn btnAjout fw-bold" (click)=" participerCycle()">Effectuer paiement</button>
+          <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

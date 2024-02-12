@@ -120,7 +120,7 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center">La tontine CaisSos</h5>
+            <h5 class="text-center">La tontine {{tontineChoisi.libelle}}</h5>
             <div class="detail container ">
                 <div class="a-box ">
                     <div class="img-container">
@@ -132,22 +132,22 @@
                     </div>
                     <div class="text-container ">
                       <ul class="mt-1"> 
-                        <li> <span class="fw-bold ">Montant mensualite:</span> Fatou Seye Dia</li>
-                        <li> <span class="fw-bold ">Date de debut:</span> CaisSos</li>
-                        <li> <span class="fw-bold ">Date de fin:</span> Participant</li>
-                        <li> <span class="fw-bold ">Duree de la tontine:</span> 0</li>
+                        <li> <span class="fw-bold ">Montant mensualite:</span> {{tontineChoisi.montant}} Fcfa</li>
+                        <li> <span class="fw-bold ">Date de debut:</span> {{tontineChoisi.date_de_debut}}</li>
+                        <li> <span class="fw-bold ">Etat:</span> {{tontineChoisi.etat}}</li>
+                        <li> <span class="fw-bold ">Duree de la tontine:</span> {{dureeTontine}} <span *ngIf="tontineChoisi.periode=='mensuel'">mois</span><span *ngIf="tontineChoisi.periode=='hebdomaire'">semaines</span> <span *ngIf="tontineChoisi.periode=='quotidien'">jours</span> <span  *ngIf="tontineChoisi.periode=='annuel'">ans</span>  </li>
                       </ul>
                       <ul class="mt-1">
-                        <li> <span class="fw-bold">Nombre de participants:</span> Fass Delorme</li>
-                        <li> <span class="fw-bold">Montant cagnotte:</span> 77 123 45 67</li>
-                        <li> <span class="fw-bold">Nombre de tirage fait:</span> à jour </li>
-                        <li> <span class="fw-bold">Description de la tontine:</span> à jour </li>
+                        <li> <span class="fw-bold">Nombre de participants:</span> {{tontineChoisi.nombre_participant}}</li>
+                        <li> <span class="fw-bold">Createur:</span> {{createur.name}}</li>
+                        <li> <span class="fw-bold">Regle:</span> {{tontineChoisi.regles}} </li>
+                        <li> <span class="fw-bold">Description de la tontine:</span> {{tontineChoisi.description}} </li>
                       </ul>
                     
                   </div>
                   <div class="bouton d-flex mb-2 justify-content-end">
-                     <button class="btnInt btn me-3" [routerLink]="['/cyclesPart']">Voir cycle</button>
-                     <button class="btnRetour btn"  data-bs-toggle="modal" data-bs-target="#exampleModal">Signaler</button>
+                     <button class="btnInt btn me-3" [routerLink]="['/cyclesPart', tontineChoisi.id]">Voir cycle</button>
+                     <button class="btnRetour btn" [routerLink]="['/tontinesPart', idTontineChoisi]" >Voir Participant</button>
                   </div>
 
 

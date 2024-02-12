@@ -17,4 +17,14 @@ export class CycleService {
   listeCycles(tontine:any):Observable<any>{
     return this.http.get<any>(`${url}createur_tontine/listeCycle/${tontine}`)
   }
+  participerCycle(cycle:any, paiement:any){
+    return this.http.post(`${url}auth/fairePaiement/${cycle}`, cycle,paiement);
+  }
+  faireTirage(tontine:any){
+    return this.http.post(`${url}createur_tontine/faireTirage/${tontine}`, tontine)
+  }
+  listeCyclePart(idPart:any){
+    return this.http.get(`${url}participant_tontine/ListeCycleParparticipant/${idPart}`)
+  }
 }
+

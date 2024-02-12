@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Tontine } from 'src/app/model/tontine';
 import { AuthService } from 'src/app/services/auth.service';
 import { TontineService } from 'src/app/services/tontine.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-tontine',
@@ -26,7 +27,7 @@ constructor(private tontintService:TontineService, private logoutService:AuthSer
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
-    this. listeTontines();
+    this.listeTontines();
     this.responsive();
   }
 
@@ -40,14 +41,16 @@ constructor(private tontintService:TontineService, private logoutService:AuthSer
   AccepterTontine(tontine:any){
     this.tontintService.ApprouverTontine(tontine).subscribe((response:any)=>{
       console.log(response);
-      this. listeTontines();
+      this.showMessage('success','Felicitation','Creation tontine approuvée avec succes')
+      this.listeTontines();
     })
   }
 
   RefuserTontine(tontine:any){
     this.tontintService.DesapprouverTontine(tontine).subscribe((response:any)=>{
       console.log(response);
-      this. listeTontines();
+      this.showMessage('success','Felicitation','Creation de tontine refusée avec succes')
+      this.listeTontines();
     })
   }
 
@@ -55,6 +58,7 @@ constructor(private tontintService:TontineService, private logoutService:AuthSer
     this.logoutService.logoutAdmin().subscribe((response:any)=>{
       console.log(response)
       localStorage.removeItem('token')
+      this.showMessage('success','Felicitations','Deconnexion faite avec succes')
       this.route.navigate(['/accueil'])
     })
   }
@@ -89,6 +93,14 @@ sidebarItems.forEach(element => {
   });
 });
 
+  }
+  showMessage(icon:any, titre:any, texte:any){
+    Swal.fire({
+      icon: icon,
+      title: titre,
+      text: texte,
+      confirmButtonColor: "#1E1E1E",
+    })
   }
  
 }

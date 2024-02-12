@@ -12,9 +12,9 @@
                 <div class="infoTontine d-flex">
                     <ul class="me-5">
                         <li><span class="fw-bold">Nom:</span>  {{tontineChoisi.libelle}}</li>
-                        <li><span class="fw-bold">Montant par cycle:</span>  {{tontineChoisi.montant}}</li>
+                        <li><span class="fw-bold">Montant par cycle:</span>  {{tontineChoisi.montant}} FCFA</li>
                         <li><span class="fw-bold">Date debut:</span>  {{tontineChoisi.date_de_debut}}</li>
-                        <li><span class="fw-bold">Duree de la tontine :</span> {{dureeTontine}} <span *ngIf="tontineChoisi.periode=='mensuel'">mois</span><span *ngIf="tontineChoisi.periode=='hebdomaire'">semaines</span> <span *ngIf="tontineChoisi.periode=='quotidien'">jours</span> <span  *ngIf="tontineChoisi.periode=='annuel'">annee</span>    </li>
+                        <li><span class="fw-bold">Duree de la tontine :</span> {{dureeTontine}} <span *ngIf="tontineChoisi.periode=='mensuel'">mois</span><span *ngIf="tontineChoisi.periode=='hebdomaire'">semaines</span> <span *ngIf="tontineChoisi.periode=='quotidien'">jours</span> <span  *ngIf="tontineChoisi.periode=='annuel'">ans</span>    </li>
                         <li><span class="fw-bold">type de tontine:</span>  {{tontineChoisi.periode}}<span *ngIf="tontineChoisi.periode=='mensuel'">le</span> <span *ngIf="tontineChoisi.periode=='quotidien'">ne</span> <span  *ngIf="tontineChoisi.periode=='annuel'">le</span>  </li>
                     </ul>
                     <ul class="ms-5">
@@ -24,8 +24,8 @@
                         <li><span class="fw-bold">Initié par:</span> {{createur.name}}</li>
                     </ul>
                         <div class="mt-5 boutons mb-3 ms-4">
-                            <button class="btn btnInt fw-bold me-2 "(click)="integration(tontineChoisi)">Integrer</button>
-                            <button class="btn btnRetour fw-bold " [routerLink]="['/accueil']">Retour</button>
+                            <button class="btn btnInt fw-bold me-2 mb-1"(click)="integration(tontineChoisi)">Integrer</button>
+                            <button class="btn btnRetour fw-bold mb-1" [routerLink]="['/accueil']">Retour</button>
                         </div>
                 </div>
         </div>

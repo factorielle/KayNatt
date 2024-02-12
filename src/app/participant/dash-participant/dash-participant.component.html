@@ -120,76 +120,34 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center">Liste des tontines</h5>
+            <h5 class="text-center">Liste des tontines pris part</h5>
             <div class="tableau container">
-                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="tontines.length>0">
                   <thead  style="background-color: var(--couleurPrincipal) !important;">
                     <tr>
                         <th>Nom</th>
-                        <th>Durée</th>
+                        <th>Type</th>
                         <th>Participants</th>
-                        <th>Tirage </th>
+                        <th>Statut </th>
                         <th>Etat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
           
                 <tbody>
-                  <tr>
-                      <td>CaisSos</td>
-                      <td>1 ans </td>
-                      <td>12</td>
-                      <td>5</td>
-                      <td>En cours</td>
+                  <tr *ngFor="let tontine of tontines">
+                      <td>{{tontine.libelle}}</td>
+                      <td>{{tontine.periode}} </td>
+                      <td>{{tontine.nombre_participant}}</td>
+                      <td>{{tontine.statutTontine}}</td>
+                      <td>{{tontine.etat}}</td>
                       <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold" [routerLink]="['/detailTontinePart']">Detail</button>    
+                        <button class="btn btnAjout fw-bold" [routerLink]="['/detailTontinePart', tontine.id]">Detail</button>    
                       </span>
                       </td>
                   </tr>
-                  <tr>
-                      <td>CaisSos</td>
-                      <td>1 ans </td>
-                      <td>12</td>
-                      <td>5</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>CaisSos</td>
-                      <td>1 ans </td>
-                      <td>12</td>
-                      <td>5</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>CaisSos</td>
-                      <td>1 ans </td>
-                      <td>12</td>
-                      <td>5</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>CaisSos</td>
-                      <td>1 ans </td>
-                      <td>12</td>
-                      <td>5</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold ">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
+                 
+             
                  
                  
                   

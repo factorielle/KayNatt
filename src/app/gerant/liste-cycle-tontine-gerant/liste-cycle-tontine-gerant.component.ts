@@ -81,6 +81,7 @@ export class ListeCycleTontineGerantComponent implements OnInit{
     icon: icon,
     title: titre,
     text: texte,
+    confirmButtonColor: "#1E1E1E",
   })
 }
 

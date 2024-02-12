@@ -93,20 +93,43 @@ export class DetailTontineComponent implements OnInit {
   
 
   integration(tontine:any){
-    const part={
-      date:new Date().toISOString().split('T')[0],
-      tontine_id:tontine.id
-   }
-   this.tontineService.IntegrerTontine(part).subscribe((response:any)=>{
-    console.log(response)
-    this.showMessage('success', 'Felicitation', `${response.status_message}`)
-   })
+    if(!localStorage.getItem('token')){
+      this.showMessage('error','Oops','Conectez vous pour integrer une tontine')
+
+    }
+    else{
+      Swal.fire({
+        title: "Voulez vous vraiment integrer cette tontine?",
+        text: "",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#F0E9D8",
+        cancelButtonColor: "#1E1E1E",
+        confirmButtonText: "Oui, Integrer!",
+        cancelButtonText: "Annuler",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const part={
+            date:new Date().toISOString().split('T')[0],
+            tontine_id:tontine.id
+         }
+         this.tontineService.IntegrerTontine(part).subscribe((response:any)=>{
+          console.log(response)
+          this.showMessage('success', 'Felicitation', `${response.status_message}`)
+         })
+         
+        }
+      });
+
+   
+    }
   }
   showMessage(icon:any, titre:any, texte:any){
     Swal.fire({
       icon: icon,
       title: titre,
       text: texte,
+      confirmButtonColor: "#1E1E1E",
     })
   }
 

@@ -43,7 +43,7 @@ inscription(){
   }
 else {
 const   user={
-    name:this.prenom +''+ this.nom,
+    name:this.prenom +' '+ this.nom,
     email:this.email,
     adresse:this.adresse,
     password:this.password,
@@ -60,6 +60,7 @@ const   user={
      
       console.log(response)
       this.showMessage('success','Felicitation','Bienvenu sur KayNatt')
+      this.afficherLogin=true;
       this.route.navigate(['/auth'])
     },
     (error:any) => {
@@ -150,6 +151,7 @@ showMessage(icon:any, titre:any, texte:any){
     icon: icon,
     title: titre,
     text: texte,
+    confirmButtonColor: "#1E1E1E",
   })
 }
 

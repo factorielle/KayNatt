@@ -425,7 +425,7 @@ main .analytics .item{
 }
 .circ{
     width: 100%;
-    height: 50vh;
+    /* height: 50vh; */
 
 
 }
@@ -500,12 +500,12 @@ main .analytics .item{
 .bouton{
  width: 79vh !important;
 }
-.btnInt{
+.btnInt, .confirmButtonText{
     background-color: var(--couleurSecondaire);
     color: var(--couleurPrincipal);
     padding: 2px 3px;
   }
-  .btnRetour{
+  .btnRetour, .denyButtonText{
     outline: 1px solid var(--couleurSecondaire);
     background-color: white;
     padding: 2px 3px;

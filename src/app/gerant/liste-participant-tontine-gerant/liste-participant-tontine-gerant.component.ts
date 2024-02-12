@@ -87,6 +87,7 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
       icon: icon,
       title: titre,
       text: texte,
+      confirmButtonColor: "#1E1E1E",
     })
   }
    
@@ -208,6 +209,7 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
 
       this.showMessage('success','Felicitation..', `${response.message}`);
     })
+    this.getParticipantEnattente();
     this.getParticipantAccepte();
   }
   showDetails(article: any) {

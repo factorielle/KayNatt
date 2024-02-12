@@ -155,3 +155,29 @@ input, textarea{
     color: var(--couleurSeconaire);
 
 }
+.isActive{
+    width: 30vh;
+    height: 5.4vh;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--couleurSecondaire);
+    color: var(--couleurPrincipal);
+}
+.listeTon{
+    margin-top: -29% !important;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnRetour{
+    outline: 1px solid var(--couleurSecondaire);
+}
+tr td{
+    text-align: left !important;
+}
+
+th{
+    background-color: var(--couleurPrincipal) !important;
+    
+}

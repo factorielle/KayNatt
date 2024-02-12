@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CycleService } from 'src/app/services/cycle.service';
+import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-liste-cycle-tontine-participant',
@@ -10,7 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ListeCycleTontineParticipantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
-  constructor(private authService:AuthService, private route:Router){}
+  constructor(private authService:AuthService, private router:Router, private route:ActivatedRoute, private tontineService:TontineService, private userService:UserService, private cycleService:CycleService){}
   ngOnInit(){
 
     this.dtOptions = {
@@ -49,7 +52,7 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
     this.authService.logout().subscribe((response:any)=>{
       console.log(response);
       localStorage.removeItem('token')
-      this.route.navigate(['/accueil'])
+      this.router.navigate(['/accueil'])
 
     })
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { TontineService } from 'src/app/services/tontine.service';
 
 @Component({
   selector: 'app-dash-participant',
@@ -9,9 +10,16 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashParticipantComponent implements  OnInit{
   dtOptions: DataTables.Settings = {};
+  userConnect:any;
+  idUser:any;
+  tontines:any;
 
-  constructor(private authService:AuthService, private route:Router){}
+  constructor(private authService:AuthService, private route:Router, private tontineService: TontineService){}
   ngOnInit() {
+    this.userConnect=JSON.parse(localStorage.getItem('userInfo') || '{}')
+    console.log(this.userConnect)
+    this.idUser=this.userConnect.id;
+    console.log(this.idUser)
     
     this.dtOptions = {
       searching: true,
@@ -23,6 +31,8 @@ export class DashParticipantComponent implements  OnInit{
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
+
+    this.getTontine();
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -53,6 +63,13 @@ menuToggle?.addEventListener("click", (e: Event) => {
 
     })
   }
+  getTontine(){
+    this.tontineService.listeTontineParPart(this.idUser).subscribe((response:any)=>{
+      console.log(response);
+      this.tontines=response.data;
+      console.log(this.tontines)
+    })
 
+  }
 
 }

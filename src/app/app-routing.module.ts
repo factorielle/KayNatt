@@ -46,10 +46,10 @@ const routes: Routes = [
   // route pour les composant dans le dossier participant
   {path:'dashboardPart', component:DashParticipantComponent, canActivate:[adminGuardGuard]},
   {path:'detailCyclePart', component:DetailCycleTontineParticipantComponent},
-  {path:'tontinesPart', component:ListeTontineParticipantComponent},
+  {path:'tontinesPart/:id', component:ListeTontineParticipantComponent},
   {path:'relationPart', component:RelationParticipantComponent},
-  {path:'cyclesPart', component:ListeCycleTontineParticipantComponent},
-  {path:'detailTontinePart', component:DetailTontineParticipantComponent},
+  {path:'cyclesPart/:id', component:ListeCycleTontineParticipantComponent},
+  {path:'detailTontinePart/:id', component:DetailTontineParticipantComponent},
   // route pour les composant dans le dossier gerant
   {path:'dashboardGerant', component:DashGerantComponent, canActivate:[adminGuardGuard]},
   {path:'relationGerant', component:RelationGerantComponent},
@@ -66,7 +66,7 @@ const routes: Routes = [
   {path:'detailUser/:id', component:DetailUserComponent},
   {path:'role', component:GestionRoleComponent},
   {path:'gestionTontine', component:GestionTontineComponent},
-  {path:'users', component:GestionUserComponent},
+  {path:'users', component:GestionUserComponent, canActivate:[adminGuardGuard]},
   {path:'cycleTontine', component:ListeCycleTontineComponent},
   {path:'participantTontine/:id', component:ListeParticipantTontineComponent},
   {path:'detailTontineAdmin/:id', component:DetailTontineAdminComponent},

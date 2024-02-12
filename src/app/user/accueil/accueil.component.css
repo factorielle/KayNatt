@@ -2,8 +2,9 @@ body{
   scroll-behavior: smooth;
   /* scroll-margin-top: -50px !important; */
 }
+
 #banner {
-    width: 207vh;
+    width: 100%;
     height: 90vh;
     margin-top: 4%;
 
@@ -262,7 +263,7 @@ body{
 /* Les medias queries */
 @media (max-width:776px){
   #banner{
-    width: 152vh;
+    width: 130vh;
     /* height: 60vh; */
   }
   .contenuBan img{

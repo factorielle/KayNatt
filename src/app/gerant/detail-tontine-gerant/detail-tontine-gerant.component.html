@@ -120,10 +120,10 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center">La tontine CaisSos</h5>
+            <h5 class="text-center">La tontine {{tontineChoisi.libelle}}</h5>
             <div class="detail container ">
                 <div class="bouton d-flex justify-content-end">
-                    <button class="btn btnInt" [routerLink]="['/cycleTontineGerant',idTontineChoisi]">Voir Cycle</button>
+                    <button class="btn btnInt" *ngIf="tontineChoisi.statutTontine=='accepte'" [routerLink]="['/cycleTontineGerant',idTontineChoisi]">Voir Cycle</button>
                 </div>
                 <div class="a-box ">
                     <div class="img-container">
@@ -135,7 +135,7 @@
                     </div>
                     <div class="text-container ">
                       <ul class="mt-1"> 
-                        <li> <span class="fw-bold ">Montant mensualite:</span> {{tontineChoisi.montant}}</li>
+                        <li> <span class="fw-bold ">Montant mensualite:</span> {{tontineChoisi.montant}} FCFA</li>
                         <li> <span class="fw-bold ">Date de debut:</span> {{tontineChoisi.date_de_debut | date }}</li>
                         <li> <span class="fw-bold ">Regle:</span> {{tontineChoisi.regles}}</li>
                         <li> <span class="fw-bold ">Duree de la tontine:</span> {{dureeTontine}}</li>
@@ -149,12 +149,9 @@
                     
                   </div>
                   <div class="bouton d-flex mb-2 justify-content-end">
-                     <button class="btnInt btn me-3" [routerLink]="['/participantTontinesGerant',idTontineChoisi]">Voir participant</button>
-                     <button class="btnRetour btn"  data-bs-toggle="modal" data-bs-target="#exampleModal">Fermer</button>
+                     <button class="btnInt btn me-3" *ngIf="tontineChoisi.statutTontine=='accepte'" [routerLink]="['/participantTontinesGerant',idTontineChoisi]">Voir participant</button>
+                     <button class="btnRetour btn"*ngIf="tontineChoisi.statutTontine=='accepte'"   data-bs-toggle="modal" data-bs-target="#exampleModal">Fermer</button>
                   </div>
-
-
-
               </div>
             </div>
   

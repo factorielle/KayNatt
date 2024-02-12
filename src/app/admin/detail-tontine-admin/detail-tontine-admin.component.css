@@ -425,7 +425,7 @@ main .analytics .item{
 }
 .circ{
     width: 100%;
-    height: 50vh;
+    /* height: 50vh; */
 
 
 }
@@ -490,7 +490,7 @@ main .analytics .item{
     width: 95vh;
     display: grid;
     grid-template-columns: 50% 50%;
-    height: 43vh;
+    /* height: 43vh; */
   }
   
   

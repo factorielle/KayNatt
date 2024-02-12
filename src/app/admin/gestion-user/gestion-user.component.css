@@ -152,7 +152,7 @@ main .analytics .item{
 
 
 .container .right-section{
-    padding: 40px 40px 0 40px;
+    padding: 40px 20px 0 40px;
 }
 
 .container .right-section .top{
@@ -389,6 +389,10 @@ main .analytics .item{
     .logo img{
         display: none;
     }
+    .isActive{
+        background-color: var(--couleurPrincipal);
+        color: var(--couleurSecondaire);
+    }
 
     .container .right-section > .top{
         position: absolute;
@@ -424,8 +428,8 @@ main .analytics .item{
     width: 100px;
 }
 .circ{
-    width: 100%;
-    height: 50vh;
+    /* width: 99%; */
+    /* height: 50vh; */
 
 
 }
