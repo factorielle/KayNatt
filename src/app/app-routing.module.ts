@@ -45,7 +45,7 @@ const routes: Routes = [
   {path:'detailTontine/:id', component:DetailTontineComponent},
   // route pour les composant dans le dossier participant
   {path:'dashboardPart', component:DashParticipantComponent, canActivate:[adminGuardGuard]},
-  {path:'detailCyclePart', component:DetailCycleTontineParticipantComponent},
+  {path:'cyclesPart/:idTontine/detailCyclePart/:idcycle', component:DetailCycleTontineParticipantComponent},
   {path:'tontinesPart/:id', component:ListeTontineParticipantComponent},
   {path:'relationPart', component:RelationParticipantComponent},
   {path:'cyclesPart/:id', component:ListeCycleTontineParticipantComponent},

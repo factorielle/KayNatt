@@ -52,7 +52,7 @@ export class TontineService {
       return this.http.get(`${url}createur_tontine/ListeparticipationEnattentePartontine/${tontine}`)
   }
   listeParticipantAccepte(tontine:any){
-      return this.http.get(`${url}createur_tontine/ListeparticipationAcceptePartontine/${tontine}`)
+      return this.http.get(`${url}auth/ListeparticipationAcceptePartontine/${tontine}`)
   }
 
   ApprouverIntegration(user:any){
@@ -68,7 +68,7 @@ export class TontineService {
   }
 
   participantTontine(tontine:any){
-    return this.http.get(`${url}participant_tontine/ListeparticipationAcceptePartontine/${tontine}`)
+    return this.http.get(`${url}auth/ListeparticipationAcceptePartontine/${tontine}`)
   }
      
   }

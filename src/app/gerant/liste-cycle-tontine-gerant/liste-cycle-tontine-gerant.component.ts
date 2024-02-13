@@ -63,18 +63,9 @@ export class ListeCycleTontineGerantComponent implements OnInit{
         }
     });
   }
-//  AjoutCycle(){
-//   if(this.numero=='' || this.correspondance=='' || this.dButoir=='' || this.penalite==''){
-//     this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
 
-//   }
-//  }
-//  ModifCycle(){
-//   if(this.numero=='' || this.correspondance=='' || this.dButoir=='' || this.penalite==''){
-//     this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+  
 
-//   }
-//  }
 
  showMessage(icon:any, titre:any, texte:any){
   Swal.fire({

@@ -12,9 +12,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListeCycleTontineParticipantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
+  userConnect: any;
+  idUser: any;
+  cycles: any;
+
+  tontines: any;
+  tontineChoisi: any;
+  participants: any;
+  userChoisi: any;
+  participation_tontine_id: any;
 
   constructor(private authService:AuthService, private router:Router, private route:ActivatedRoute, private tontineService:TontineService, private userService:UserService, private cycleService:CycleService){}
+  idtontine=this.route.snapshot.params['id']
   ngOnInit(){
+    this.userConnect=JSON.parse(localStorage.getItem('userInfo')||'{}')
+    this.idUser=this.userConnect.id;
+    console.log(this.userConnect);
+    console.log(this.idUser)
 
     this.dtOptions = {
       searching: true,
@@ -26,6 +40,7 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
+    this.getParticipant();
 
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
@@ -46,7 +61,7 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
         }
     });
     
-     
+     this.getCycles();
   }
   deconnexion(){
     this.authService.logout().subscribe((response:any)=>{
@@ -55,6 +70,36 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
       this.router.navigate(['/accueil'])
 
     })
+  }
+
+  getParticipant(){
+    this.tontineService.participantTontine(this.idtontine).subscribe((response:any)=>{
+      console.log(response)
+      this.participants=response.data
+      console.log('participants',this.participants)
+      this.userChoisi=this.participants.find((element:any)=>element.user_id==this.idUser);
+      console.log('userChoisi', this.userChoisi)
+      this.participation_tontine_id=this.userChoisi.id;
+      console.log(this.participation_tontine_id)
+      this.cycleService.listeCyclePart(this.participation_tontine_id).subscribe((response:any)=>{
+        console.log(response);
+        this.cycles=response.data
+        console.log(this.cycles)
+    
+        this.tontineService.tontineAccepter().subscribe((response:any)=>{
+          console.log(response)
+          this.tontines=response.data
+          console.log(this.tontines);
+          this.tontineChoisi=this.tontines.find((element:any)=>element.id==this.idtontine);
+          console.log(this.tontineChoisi)
+  
+        })
+      })
+    })
+  }
+
+  getCycles(){
+   
   }
 
 }

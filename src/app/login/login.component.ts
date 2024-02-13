@@ -37,44 +37,57 @@ afficherFormIns2(){
   this.afficherIns=!this.afficherIns
 }
 inscription(){
-  if (this.telephone=='' || this.prenom=='' || this.nom=='' || this.adresse=='' || this.numProche=='' || this.nin=='' || this.password=='' || this.passwordConf=='' || this.email=='')  {
-    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
-   
-  }
-else {
-const   user={
-    name:this.prenom +' '+ this.nom,
-    email:this.email,
-    adresse:this.adresse,
-    password:this.password,
-    passwordConf:this.passwordConf,
-    telephone:this.telephone,
-    num_carte_d_identite:this.nin,
-    telephone_d_un_proche:this.numProche,
-    role:'participant_tontine'
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
 
-    
+  if (this.nom == "" || this.prenom == "" || this.email == "" || this.password == "") {
+    this.showMessage("Desole", "Veuillez remplir tous les champs", "error");
+  } else if (!this.email.match(emailPattern)) {
+    this.showMessage("desole", "l'email n'est pas valide", "error");
+  } else if (this.password.length < 5) {
+    this.showMessage("desole", "Le mot de passe doit être supérieur ou égal à 5", "error");
   }
-  this.authService.register(user).subscribe(
-    (response:any) => {
-     
-      console.log(response)
-      this.showMessage('success','Felicitation','Bienvenu sur KayNatt')
-      this.afficherLogin=true;
-      this.route.navigate(['/auth'])
-    },
-    (error:any) => {
-      // Gérez les erreurs d'inscription.
-      console.error('Erreur d\'inscription :', error);
-    }
-  )}
+  else{
+
+    const user={
+        name:this.prenom +' '+ this.nom,
+        email:this.email,
+        adresse:this.adresse,
+        password:this.password,
+        passwordConf:this.passwordConf,
+        telephone:this.telephone,
+        num_carte_d_identite:this.nin,
+        telephone_d_un_proche:this.numProche,
+        role:'participant_tontine'
+    
+        
+      }
+      this.authService.register(user).subscribe(
+        (response:any) => {
+         
+          console.log(response)
+          this.showMessage('success','Felicitation','Bienvenu sur KayNatt')
+          this.afficherLogin=true;
+          this.route.navigate(['/auth'])
+        },
+        (error:any) => {
+          // Gérez les erreurs d'inscription.
+          console.error('Erreur d\'inscription :', error);
+        }
+      )
+  }
+
 }
 
 connexion(){
-  if(this.email=='' || this.password==''){
-    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
+  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
 
-  } else{
+  if (this.email == "" || this.password == "") {
+    this.showMessage("Desole", "Veuillez remplir tous les champs", "error");
+  } else if (!this.email.match(emailPattern)) {
+    this.showMessage("desole", "l'email n'est pas valide", "error");
+  } else if (this.password.length < 5) {
+    this.showMessage("desole", "Le mot de passe doit être supérieur ou égal à 5", "error");
+  }else{
     const credentials={
       email:this.email,
       password:this.password
@@ -153,6 +166,19 @@ showMessage(icon:any, titre:any, texte:any){
     text: texte,
     confirmButtonColor: "#1E1E1E",
   })
+}
+
+validation(){
+
+    const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
+
+    if (this.nom == "" || this.prenom == "" || this.email == "" || this.password == "") {
+      this.showMessage("Desole", "Veuillez remplir tous les champs", "error");
+    } else if (!this.email.match(emailPattern)) {
+      this.showMessage("desole", "l'email n'est pas valide", "error");
+    } else if (this.password.length < 5) {
+      this.showMessage("desole", "Le mot de passe doit être supérieur ou égal à 5", "error");
+    }
 }
 
 }

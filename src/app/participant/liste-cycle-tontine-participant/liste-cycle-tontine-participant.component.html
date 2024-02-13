@@ -120,66 +120,32 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center">Liste des  cycle de la tontine CaisSos</h5>
+            <h5 class="text-center">Liste des  cycles de la tontine {{tontineChoisi.libelle}}</h5>
             <div class="tableau container">
                 <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
                   <thead  style="background-color: var(--couleurPrincipal) !important;">
                     <tr>
-                        <th>Nom</th>
-                        <th>Tirage</th>
-                        <th>Mois</th>
-                        <th>Fonds</th>
+                        <th>Numero</th>
+                        <th>statut</th>
+                        <th>Date</th>
                         <th>Etat</th>
                         <th>Action</th>
                     </tr>
                 </thead>
           
                 <tbody>
-                  <tr>
-                      <td>cycle 1</td>
-                      <td>fait </td>
-                      <td>janvier</td>
-                      <td>alloué</td>
-                      <td>terminé</td>
+                  <tr *ngFor="let cycle of cycles">
+                      <td>cycle {{cycle.nombre_de_cycle}}</td>
+                      <td>{{cycle.statut}} </td>
+                      <td>{{cycle.date_cycle}}</td>
+                      <td>{{cycle.statutCotisation}}</td>
                       <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold me-2" [routerLink]="['/detailCyclePart']">Detail</button>      
+                        <button class="btn btnAjout fw-bold me-2" [routerLink]="[ '/cyclesPart', tontineChoisi.id,'detailCyclePart', cycle.id]">Detail</button>      
                       </span>
                       </td>
                   </tr>
-                  <tr>
-                      <td>cycle 2 </td>
-                      <td>fait </td>
-                      <td>Fevrier</td>
-                      <td>alloué</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold me-2">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>cycle 3</td>
-                      <td>fait </td>
-                      <td>Mars</td>
-                      <td>alloué</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold me-2">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>cycle 4</td>
-                      <td>fait</td>
-                      <td>avril</td>
-                      <td>non alloué</td>
-                      <td>En cours</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold me-2">Detail</button>
-                  
-                      </span>
-                      </td>
-                  </tr>
+        
+              
                 
                  
                  

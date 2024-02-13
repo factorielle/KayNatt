@@ -120,82 +120,37 @@
             <div class="middle mt-5">
              
 
-            <h5 class="text-center mb-4">Cycle 3 de la tontine CaisSos</h5>
-            <button class="btn btnAjout ms-5 mb-3 fw-bold">Participer</button>
+            <h5 class="text-center mb-4">Cycle {{CycleChoisi.nombre_de_cycle}} de la tontine {{tontineChoisi.libelle}} </h5>
+            <button class="btn btnAjout ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paiement">Participer</button>
             <div class="info ms-5">
-                <p> <span  class="fw-bold">Date de tirage :</span>20 janvier 2024
+                <p> <span  class="fw-bold">Date de tirage :</span>{{CycleChoisi.date_cycle}}
                 <br> <span class="fw-bold">Fonds : </span>Non alloué
-                <br> <span class="fw-bold">Montant : </span>600000FCFA</p>
+                <br> <span class="fw-bold">Montant : </span>{{tontineChoisi.nombre_participant*tontineChoisi.montant}} FCFA</p>
             </div>
             <div class="tableau container">
-                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="participants.length>0">
                   <thead  >
                     <tr>
-                        <th>Prenom</th>
-                        <th>Nom</th>
-                        <th>Etat</th>
-                        <th>Date paiement </th>
-                        <th>status</th>
-                        <th>Action</th>
+                        <th>Nom Complet</th>
+                        <th>Email</th>
+                        <th>Adresse</th>
+                        <th>Telephone </th>
+                        <th>Role</th>
+                        
                     </tr>
                 </thead>
           
                 <tbody>
-                  <tr>
-                      <td>Fatima</td>
-                      <td>Tall </td>
-                      <td>recu</td>
-                      <td>5 janvier 2023</td>
-                      <td>gerant</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2">Detail</button>    
-                      </span>
-                      </td>
+                  <tr *ngFor="let part of participants">
+                      <td>{{part.name}}</td>
+                      <td>{{part.email}} </td>
+                      <td>{{part.adresse}}</td>
+                      <td>{{part.telephone}}</td>
+                      <td>{{part.role}}</td>
+                    
                   </tr>
-                  <tr>
-                      <td>Khadija</td>
-                      <td>Cissé </td>
-                      <td>recu</td>
-                      <td>5 fevrier 2023</td>
-                      <td>participant</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Rokhaya</td>
-                      <td>Ndiaye </td>
-                      <td>recu</td>
-                      <td>5 janvier 2023</td>
-                      <td>participant</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Aicha</td>
-                      <td>Ba </td>
-                      <td>recu</td>
-                      <td>5 janvier 2023</td>
-                      <td>participant</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>Astou</td>
-                      <td>Diouf </td>
-                      <td>pas recu</td>
-                      <td>5 janvier 2023</td>
-                      <td>participant</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold ">Detail</button>    
-                      </span>
-                      </td>
-                  </tr>
+           
+        
                  
                  
                   
@@ -236,3 +191,36 @@
     </div>
   </div>
   
+
+  <!-- modal paiement -->
+<div class="modal fade" id="paiement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Paiement du cycle {{CycleChoisi.nombre_de_cycle}}</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Montant cotisation</label>
+              <input type="text" class="form-control" name="paiement" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="paiement">
+  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail" class="form-label">Date paiement</label>
+              <input type="date" class="form-control" name="date" id="exampleInputEmail" [(ngModel)]="date">
+  
+            </div>
+          
+          </form>
+         
+      
+        </div>
+        <div class="modal-footer">
+          <button type="button"class="btn btnAjout fw-bold" (click)=" participerCycle()">Effectuer paiement</button>
+          <button type="button" class="btn btnRetour fw-bold" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
