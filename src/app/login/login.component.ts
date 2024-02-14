@@ -65,7 +65,7 @@ inscription(){
         (response:any) => {
          
           console.log(response)
-          this.showMessage('success','Felicitation','Bienvenu sur KayNatt')
+          this.showMessage('success','Felicitation','Bienvenue sur KayNatt')
           this.afficherLogin=true;
           this.route.navigate(['/auth'])
         },
@@ -82,11 +82,9 @@ connexion(){
   const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
 
   if (this.email == "" || this.password == "") {
-    this.showMessage("Desole", "Veuillez remplir tous les champs", "error");
+    this.showMessage( "error","Desole", "Veuillez remplir tous les champs");
   } else if (!this.email.match(emailPattern)) {
-    this.showMessage("desole", "l'email n'est pas valide", "error");
-  } else if (this.password.length < 5) {
-    this.showMessage("desole", "Le mot de passe doit être supérieur ou égal à 5", "error");
+    this.showMessage("error","desole", "l'email n'est pas valide" );
   }else{
     const credentials={
       email:this.email,
@@ -101,7 +99,7 @@ connexion(){
         localStorage.setItem('userInfo', JSON.stringify(response.data));
         if(response.token){
           
-          this.showMessage("success", "Bienvenu",`${response.data.name}`);
+          this.showMessage("success", "Bienvenue",`${response.data.name}`);
           if(response.data.role=='createur_tontine'){
            
 
@@ -146,7 +144,7 @@ connexionAdmin(){
         localStorage.setItem('token', response.token)
      if(response.token ){
       this.route.navigate(['/accueilAdmin'])
-    this.showMessage("success", "Bienvenu",`${response.data.name_admin}`);
+    this.showMessage("success", "Bienvenue",`${response.data.name_admin}`);
       
   
     }

@@ -15,7 +15,6 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
   userConnect: any;
   idUser: any;
   cycles: any;
-
   tontines: any;
   tontineChoisi: any;
   participants: any;

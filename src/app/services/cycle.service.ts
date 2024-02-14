@@ -15,7 +15,7 @@ export class CycleService {
 
   }
   listeCycles(tontine:any):Observable<any>{
-    return this.http.get<any>(`${url}createur_tontine/listeCycle/${tontine}`)
+    return this.http.get<any>(`${url}auth/listeCycle/${tontine}`)
   }
   participerCycle(cycle:any, paiement:any){
     return this.http.post(`${url}auth/fairePaiement/${cycle}`, cycle,paiement);

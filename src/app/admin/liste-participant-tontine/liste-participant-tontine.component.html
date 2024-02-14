@@ -149,57 +149,32 @@
               <div class="circ">
                 <h6 class="text-center fw-bold mb-3">Liste  participants  de la tontine {{tontineChoisi.libelle}}</h6>
                 <div class="tableau ">
-                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="partTontineAccepte>0">
-                      <thead  >
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" >
+                      <thead >
                         <tr>
-                            <th>Prenom</th>
-                            <th>Nom</th>
-                            <th>Etat</th>
-                            <th>Date d'integration </th>
-                            <th>status</th>
+                            <th>Nom Complet</th>
+                            <th>Telephone</th>
+                            <th>Adresse </th>
+                            <th>Role</th>
                             <th>Action</th>4
                         </tr>
                     </thead>
               
                     <tbody>
                         <tr *ngFor="let participant of partTontineAccepte; let i =index">
-                            <td>{{ tabParticipantAccepter[i]?.name }}</td>
-                            <td>{{ tabParticipantAccepter[i]?.telephone }} </td>
-                            <td>recu</td>
-                            <td>{{participant.date}}</td>
-                            <td>{{participant.statutParticipation}}</td>
+                            <td>{{ participant.name }}</td>
+                            <td>{{participant.telephone }} </td>
+                            <td>{{participant.adresse}}</td>
+                            <td>{{participant.role}}</td>
                           <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold" [routerLink]="['/detailUser']">Detail</button>    
+                            <button class="btn btnAjout fw-bold" [routerLink]="['/detailUser', participant.user_id]"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2M4 19V5h16l.002 14z"/><path fill="currentColor" d="M6 7h12v2H6zm0 4h12v2H6zm0 4h6v2H6z"/></svg></button>    
                           </span>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td>Khadija</td>
-                          <td>Cissé </td>
-                          <td>recu</td>
-                          <td>5 fevrier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold">Detail</button>    
+                          <span class="status action-icon">
+                            <button class="btn btnAjout fw-bold ms-2" [routerLink]="['/cycleTontine',participant.user_id, 'cycles',idTontineChoisi]"><i class="bi bi-hourglass-top"></i></button>    
                           </span>
-                          </td>
+                       
                       </tr>
-                      <tr>
-                          <td>Rokhaya</td>
-                          <td>Ndiaye </td>
-                          <td>recu</td>
-                          <td>5 janvier 2023</td>
-                          <td>participant</td>
-                          <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold">Detail</button>    
-                          </span>
-                          </td>
-                      </tr>
-
                 
-                     
-                     
-                      
                       
                     </tbody>
                       </table>

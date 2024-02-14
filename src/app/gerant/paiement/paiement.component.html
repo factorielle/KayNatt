@@ -10,19 +10,19 @@
         </div>
         <div class=" card mx-auto ">
             <ul class="mt-4">
-                <li> <span class="fw-bold">Nom Complet:</span>  {{userConnect.name}}</li>
-                <li><span class="fw-bold">Email:</span>  {{userConnect.email}}</li>
-                <li><span class="fw-bold">Numero d'identification national:</span> {{userConnect.num_carte_d_identite}}</li>
+                <li> <span class="fw-bold">Nom Complet:</span>  {{userConnect.name || userConnect.name_admin}}</li>
+                <li><span class="fw-bold">Email:</span>  {{userConnect.email || userConnect.email_admin}}</li>
+                <li><span class="fw-bold"  *ngIf="userConnect.role!='admin'">Numero d'identification national:</span> {{userConnect.num_carte_d_identite}}</li>
                 </ul>
                 <ul class="mt-4">
-                <li><span class="fw-bold">Telephone:</span>  {{userConnect.telephone}}</li>
-                <li><span class="fw-bold">Telephone d'un proche:</span>  {{userConnect.telephone_d_un_proche}}</li>
+                <li><span class="fw-bold"  *ngIf="userConnect.role!='admin'" >Telephone:</span>  {{userConnect.telephone}}</li>
+                <li><span class="fw-bold"  *ngIf="userConnect.role!='admin'">Telephone d'un proche:</span>  {{userConnect.telephone_d_un_proche}}</li>
                 <li><span class="fw-bold">Role:</span>  {{userConnect.role}}</li>
             </ul>
             
             
         </div>
-        <button class="btn ms-3 btnPass fw-bold  " data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="chargerModal()">Modifier Profil</button>
+        <button class="btn ms-3 btnPass fw-bold" *ngIf="userConnect.role!='admin'" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="chargerModal()">Modifier Profil</button>
         
     </div>
 

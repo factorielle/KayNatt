@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CycleService } from 'src/app/services/cycle.service';
 import { TontineService } from 'src/app/services/tontine.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,8 +16,12 @@ export class DetailTontineAdminComponent  implements OnInit{
   idUser: any;
   users: any;
   createur: any;
+  participants: any;
+  userChoisi: any;
+  participation_tontine_id: any;
+  cycles: any;
 
-  constructor(private route: ActivatedRoute, private tontineService:TontineService, private userService:UserService, private authSercice:AuthService, private router:Router){}
+  constructor(private route: ActivatedRoute, private tontineService:TontineService, private userService:UserService, private authSercice:AuthService, private router:Router, private cycleService:CycleService){}
   idTontineChoisi = this.route.snapshot.params['id'];
   dureeTontine:any;
   cagnotte:any;
@@ -31,7 +36,7 @@ export class DetailTontineAdminComponent  implements OnInit{
       this.tontines=response.data
       console.log(this.tontines)
       this.tontineChoisi = this.tontines.find((element: any) => element.id == this.idTontineChoisi);
-      this.dureeTontine=this.calculerDureeTontine(this.tontineChoisi.periode,  this.tontineChoisi.nombre_participant,this.tontineChoisi.date_de_debut);
+      this.dureeTontine=this.calculerDureeTontine(this.tontineChoisi.periode,  this.tontineChoisi.nombre_participant);
       this.idUser=this.tontineChoisi.user_id ;
       console.log(this.idUser );
       // recuperation des utilisateurs
@@ -87,16 +92,16 @@ sidebarItems.forEach(element => {
 
   }
 
-  calculerDureeTontine(typeTontine: any, nombreParticipants: number, dateDebut: string | number | Date) {
-    // Convertir la date de début en timestamp
-    const timestampDebut = new Date(dateDebut).getTime();
+  calculerDureeTontine(typeTontine: any, nombreParticipants: number) {
+  
+
   
     // Initialiser nombreParticipantsParPeriode avec une valeur de départ
     let nombreParticipantsParPeriode = 1;
   
     // Calculer le nombre de participants par période
     switch (typeTontine) {
-      case "hebdomadaire":
+      case "hebdomaire":
         nombreParticipantsParPeriode = nombreParticipants / 7;
         break;
       case "mensuel":
@@ -125,7 +130,7 @@ sidebarItems.forEach(element => {
     return duree;
   }
 
-  
+ 
 
 
 }

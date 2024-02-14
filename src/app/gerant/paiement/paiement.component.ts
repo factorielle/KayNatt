@@ -32,12 +32,13 @@ password: any;
     if (this.userConnect && this.userConnect.name) {
       // Récupérer la première lettre de name_admin
       this.firstLetter= this.userConnect.name.charAt(0);
-     
-    
+      
+      
       // Afficher la première lettre
       console.log(this.firstLetter); 
     } else {
-      console.log("L'objet utilisateur ou sa propriété name_admin est undefined ou null.");
+      this.firstLetter= this.userConnect.name_admin.charAt(0);
+      
     }
   }
   chargerModal(){

@@ -33,7 +33,7 @@ export class ListeParticipantTontineComponent implements OnInit{
     };
 
     this.getParticipantAccepte();
-    this.getUserAccepter();
+    // this.getUserAccepter();
     this.getTontine();
     this.responsive();
 
@@ -43,7 +43,7 @@ export class ListeParticipantTontineComponent implements OnInit{
     this.participantTontineService.listeParticipantAccepte(this.idTontineChoisi).subscribe((response:any)=>{
       console.log(response.data)
       this.partTontineAccepte=response.data;
-      console.log( 'participation',this.partTontineAccepte)
+      console.log( 'participations',this.partTontineAccepte)
     })
   }
   obtenirNomsParticipantsTontineAccepter(idTontine: any) {

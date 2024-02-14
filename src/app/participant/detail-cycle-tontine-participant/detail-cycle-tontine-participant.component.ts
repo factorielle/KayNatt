@@ -19,7 +19,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
   idUser:any;
   userConnect:any;
   CycleChoisi:any;
-  date: any;
+  date: Date=new Date();
   paiement: any;
   userChoisi: any;
   participation_tontine_id: any;
@@ -35,6 +35,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
        console.log(this.idCycleChoisi);
       
     });
+    
     this.userConnect=JSON.parse(localStorage.getItem('userInfo')||'{}');
     this.idUser=this.userConnect.id; 
     // this.getCycle();
@@ -121,7 +122,7 @@ getParticipant(){
       console.log(response);
       this.cycles=response.data
       console.log(this.cycles)
-      this.CycleChoisi=this.cycles.find((element:any)=>element.id=this.idCycleChoisi)
+      this.CycleChoisi=this.cycles.find((element:any)=>element.id==this.idCycleChoisi)
       this.tontineService.tontineAccepter().subscribe((response:any)=>{
         console.log(response)
         this.tontines=response.data
@@ -135,7 +136,7 @@ getParticipant(){
 }
 participerCycle(){
   const paiement={
-    date_paiement:this.date,
+    date_paiement: new Date(this.date).toISOString().split('T')[0] ,
     montant_paiement:parseInt(this.paiement)
   }
   console.log(paiement)
@@ -146,5 +147,6 @@ participerCycle(){
  
 
 }
+
  
 }
