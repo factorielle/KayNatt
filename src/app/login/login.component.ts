@@ -101,7 +101,6 @@ connexion(){
           
           this.showMessage("success", "Bienvenue",`${response.data.name}`);
           if(response.data.role=='createur_tontine'){
-           
 
             this.route.navigate(['/dashboardGerant']);
 

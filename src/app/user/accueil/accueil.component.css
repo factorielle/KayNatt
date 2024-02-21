@@ -426,3 +426,8 @@ input, textarea, select{
   justify-content: center;
   font-weight:bold ;
 }
+@media (max-width:376px){
+  #banner{
+    width: 376px;
+  }
+}

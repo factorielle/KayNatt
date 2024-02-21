@@ -158,7 +158,7 @@
                     </div>
                     <div class="text-container ">
                       <ul class="mt-1"> 
-                        <li> <span class="fw-bold ">Montant mensualite:</span> {{tontineChoisi.montant}}</li>
+                        <li> <span class="fw-bold ">Montant mensualite:</span> {{tontineChoisi.montant}} FCFA</li>
                         <li> <span class="fw-bold ">Date de debut:</span>  {{tontineChoisi.date_de_debut | date }}</li>
                         <li> <span class="fw-bold ">Initié par:</span> {{createur.name}}</li>
                         <li> <span class="fw-bold ">Duree de la tontine:</span> {{dureeTontine}} <span *ngIf="tontineChoisi.periode=='mensuel'">mois</span><span *ngIf="tontineChoisi.periode=='hebdomaire'">semaines</span> <span *ngIf="tontineChoisi.periode=='quotidien'">jours</span> <span  *ngIf="tontineChoisi.periode=='annuel'">annee</span> </li>

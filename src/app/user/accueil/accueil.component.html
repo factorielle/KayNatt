@@ -280,7 +280,7 @@
             <label>Type de tontine </label>
             <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example">
               <option value="quotidien">Quotidienne</option>
-              <option value="hebdomadaire">Hedomadaire</option>
+              <option value="hebdomaire">Hedomadaire</option>
               <option value="mensuel">Mensuelle</option>
               <option value="annuel">Annuelle</option>
             </select>
@@ -290,7 +290,7 @@
         <div class="row">
           <div class="col mb-3">
             <label>Date debut</label>
-            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" >
+            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" min="{{tomorrow| date:'yyyy-MM-dd'}}">
           </div>
           
           <div class=" mb-3">

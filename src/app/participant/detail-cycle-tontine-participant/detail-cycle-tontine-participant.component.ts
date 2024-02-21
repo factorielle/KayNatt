@@ -19,7 +19,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
   idUser:any;
   userConnect:any;
   CycleChoisi:any;
-  date: Date=new Date();
+  date!: Date;
   paiement: any;
   userChoisi: any;
   participation_tontine_id: any;
@@ -135,13 +135,19 @@ getParticipant(){
   })
 }
 participerCycle(){
+  
+  // const cycle = new FormData();
+  // cycle.append('date_paiement', this.date);
+  // cycle.append('montant_paiement', this.paiement)
+
   const paiement={
-    date_paiement: new Date(this.date).toISOString().split('T')[0] ,
-    montant_paiement:parseInt(this.paiement)
+   date_paiement: this.date,
+   montant_paiement:parseInt(this.paiement)
   }
   console.log(paiement)
   this.cycleService.participerCycle(this.idCycleChoisi, paiement).subscribe((response:any)=>{
     console.log(response)
+    window.open(response.url,'_self');
   }
   )
  

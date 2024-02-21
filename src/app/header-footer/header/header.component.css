@@ -31,3 +31,8 @@
         height: 5vh;
     }
 }
+@media(max-width:375px){
+    #banner{
+        width: 375px !important;
+    }
+}

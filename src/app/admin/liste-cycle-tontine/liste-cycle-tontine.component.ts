@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListeCycleTontineComponent implements OnInit {
   idtontine: any;
-  idUser:any;
+  idPart:any;
   userChoisi:any;
   participants: any;
   participation_tontine_id: any;
@@ -23,9 +23,9 @@ export class ListeCycleTontineComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.idtontine = params.get('idTontine');
-      this.idUser = params.get('idUser');
+      this.idPart = params.get('idPart');
       console.log(this.idtontine);
-       console.log(this.idUser);
+       console.log(this.idPart);
       
     });
 
@@ -39,13 +39,30 @@ export class ListeCycleTontineComponent implements OnInit {
         url: 'https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
       }
     };
-
-    this.getParticipant();
-    
+    this.listeCycle();
+    console.log(this.cycles)
+    this.getTontine();
     this.responsive();
   }
 
-  responsive(){
+
+
+  listeCycle() {
+    this.cycleService.listeCycles(this.idtontine).subscribe((response:any) => {
+      this.cycles = response.data;
+      console.log(this.cycles);
+    });
+  }
+  getTontine(){
+    this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      console.log(response);
+      this.tontines=response.data
+      console.log(this.tontines)
+      this.tontineChoisi = this.tontines.find((element: any) => element.id == this.idtontine);
+  })
+  }
+
+responsive(){
     // Sélection des éléments du DOM avec types
 const menuOpen: HTMLButtonElement = document.getElementById('menu-open') as HTMLButtonElement;
 const menuClose: HTMLButtonElement = document.getElementById('menu-close') as HTMLButtonElement;
@@ -75,32 +92,5 @@ sidebarItems.forEach(element => {
   });
 });
 
-  }
-
-  getParticipant(){
-    this.tontineService.participantTontine(this.idtontine).subscribe((response:any)=>{
-      console.log(response)
-      this.participants=response.data
-      console.log('participants',this.participants)
-      this.userChoisi=this.participants.find((element:any)=>element.user_id==this.idUser);
-      console.log('userChoisi', this.userChoisi)
-      this.participation_tontine_id=this.userChoisi.id;
-      console.log(this.participation_tontine_id)
-      this.cycleService.listeCyclePart(this.participation_tontine_id).subscribe((response:any)=>{
-        console.log(response);
-        this.cycles=response.data
-        console.log(this.cycles)
-    
-        this.tontineService.tontineAccepter().subscribe((response:any)=>{
-          console.log(response)
-          this.tontines=response.data
-          console.log(this.tontines);
-          this.tontineChoisi=this.tontines.find((element:any)=>element.id==this.idtontine);
-          console.log(this.tontineChoisi)
-  
-        })
-      })
-    })
-  }
-
+}
 }

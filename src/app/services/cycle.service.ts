@@ -18,7 +18,7 @@ export class CycleService {
     return this.http.get<any>(`${url}auth/listeCycle/${tontine}`)
   }
   participerCycle(cycle:any, paiement:any){
-    return this.http.post(`${url}auth/fairePaiement/${cycle}`, cycle,paiement);
+    return this.http.post(`${url}auth/fairePaiement/${cycle}`,paiement);
   }
   faireTirage(tontine:any){
     return this.http.post(`${url}createur_tontine/faireTirage/${tontine}`, tontine)

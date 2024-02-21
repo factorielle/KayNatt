@@ -80,6 +80,7 @@
                             </div>
                         </form>
                         <form action="#" class="signin-form mt-1" *ngIf="!afficherIns">
+                            <p (click)="afficherFormIns2()"><i class="bi bi-arrow-left-square-fill" style="color: var(--couleurSecondaire);"></i></p>
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Numero d'identification nationale</label>
                                 <input type="text" class="form-control" placeholder="Numero d'identification nationale"  name="nin"  [(ngModel)]="nin">

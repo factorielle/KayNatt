@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+// import { log } from 'console';
 import { TontineService } from 'src/app/services/tontine.service';
 import Swal from 'sweetalert2';
 
@@ -9,8 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class AccueilComponent implements OnInit {
   libelle:string='';
-  nbrPart:string='';
-  montant:string='';
+  nbrPart:any;
+  montant:any;
   periode:string='';
   date_de_debut:string='';
   duree:string='';
@@ -19,6 +20,7 @@ export class AccueilComponent implements OnInit {
 
   articlesParPage = 6; // Nombre d'articles par page
   pageActuelle = 1; // Page actuelle
+  tomorrow:any = new Date(Date.now() + 24 *60*60*1000 );
 
 
   tontines:any;
@@ -49,7 +51,18 @@ export class AccueilComponent implements OnInit {
       if(this.libelle=='' || this.nbrPart=='' || this.montant=='' || this.periode=='' || this.date_de_debut==''  || this.regle=='' || this.description==''){
       this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
       
-    }else{
+    }else if(this.nbrPart <= 1){
+      this.showMessage("error", "Oops","Le nombre de participant ne doit pas etre  egal à 1");
+
+    }
+    else if(this.date_de_debut < this.tomorrow){
+      this.showMessage("error", "Oops","choisir une date valide");
+
+    }
+    else if(this.montant<=0 || isNaN(this.montant)){
+      this.showMessage("error", "Oops","choisir un montant valide");
+    }
+    else{
       const tontine={
         libelle:this.libelle,
         description:this.description,
@@ -59,8 +72,9 @@ export class AccueilComponent implements OnInit {
         etat:'en_attente',
         statutTontine:'en_attente',
         periode:this.periode,
-        nombre_participant:this.nbrPart
+        nombre_participant:parseInt(this.nbrPart)
       }
+      console.log('je suis',typeof parseInt(this.nbrPart))
       this.tontineService.AjouterTontine(tontine).subscribe((response:any)=>{
         console.log(response)
         this.showMessage('success','Felicitation',`${response.status_message}`)
@@ -79,6 +93,8 @@ showMessage(icon:any, titre:any, texte:any){
     title: titre,
     text: texte,
     confirmButtonColor: "#1E1E1E",
+    showConfirmButton: false,
+    timer:2000,
   })
 }
 
