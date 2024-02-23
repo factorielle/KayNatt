@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListeCycleTontineComponent } from './liste-cycle-tontine.component';
+import { DataTablesModule } from 'angular-datatables';
 
 describe('ListeCycleTontineComponent', () => {
   let component: ListeCycleTontineComponent;
@@ -8,7 +9,8 @@ describe('ListeCycleTontineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListeCycleTontineComponent]
+      declarations: [ListeCycleTontineComponent],
+      imports:[DataTablesModule]
     });
     fixture = TestBed.createComponent(ListeCycleTontineComponent);
     component = fixture.componentInstance;

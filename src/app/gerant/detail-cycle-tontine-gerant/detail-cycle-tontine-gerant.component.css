@@ -209,4 +209,6 @@ th{
   .scrolling {
     animation: scroll-participants 5s linear infinite;
   }
-  
+  input, textarea, select{
+    border-left: 3px solid var(--couleurSecondaire);
+  }

@@ -170,3 +170,6 @@ th{
     background-color: var(--couleurPrincipal) !important;
     
 }
+input, textarea, select{
+    border-left: 3px solid var(--couleurSecondaire);
+  }

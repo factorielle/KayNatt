@@ -190,6 +190,7 @@
 </div>
 
 <!-- Modal -->
+<!-- modal ajout tontine -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -201,47 +202,62 @@
         <div class="row">
           <div class="col mb-3">
             <label>Nom tontine</label>
-            <input type="text" name="nom" class="form-control" [(ngModel)]="libelle" >
+            <input type="text" name="nom" class="form-control" [(ngModel)]="libelle" (input)="verifNomFonction()">
+            <p class="text-danger" *ngIf="!exactNomTontine">{{verifNomTontine}}</p>
+            <p class="text-success" *ngIf="exactNomTontine"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
           <div class="col mb-3">
             <label>Nombre de Participants</label>
-            <input type="text" name="nbr" class="form-control" [(ngModel)]="nbrPart">
+            <input type="text" name="nbr" class="form-control" [(ngModel)]="nbrPart" (input)="verifPartFonction()">
+            <p class="text-danger" *ngIf="!exactPart">{{verifPart}}</p>
+            <p class="text-success" *ngIf="exactPart"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Cotisation par cycle</label>
-            <input type="text" name="cout" class="form-control" [(ngModel)]="montant">
+            <input type="text" name="cout" class="form-control" [(ngModel)]="montant" (input)="verifCotFonction()">
+            <p class="text-danger" *ngIf="!exactCotisation">{{verifCotisation}}</p>
+            <p class="text-success" *ngIf="exactCotisation"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
           <div class="col mb-3">
             <label>Type de tontine </label>
-            <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example">
-              <option value="quotidien">Quotidien</option>
-              <option value="hebdomadaire">Hedomadaire</option>
-              <option value="mensuel">Mensuel</option>
-              <option value="annuel">Annuel</option>
+            <select class="form-select" name="type" [(ngModel)]="periode"  aria-label="Default select example" (change)="verifTypeFonction()">
+              <option value="quotidien">Quotidienne</option>
+              <option value="hebdomaire">Hedomadaire</option>
+              <option value="mensuel">Mensuelle</option>
+              <option value="annuel">Annuelle</option>
             </select>
+            <p class="text-danger" *ngIf="!exactType">{{verifType}}</p>
+            <p class="text-success" *ngIf="exactType"><i class="bi bi-check2-all"></i> Exact !</p>
          
           </div>
         </div>
         <div class="row">
           <div class="col mb-3">
             <label>Date debut</label>
-            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" >
+            <input type="date" class="form-control" name="debut" [(ngModel)]="date_de_debut" min="{{tomorrow| date:'yyyy-MM-dd'}}" (change)="verifDateFonction()">
+            <p class="text-danger" *ngIf="!exactDate">{{verifDate}}</p>
+            <p class="text-success" *ngIf="exactDate"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
+          
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Regle de la tontine </label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="regle" rows="3" [(ngModel)]="regle"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="regle" rows="3" [(ngModel)]="regle"  (input)="verifRegleFonction()"></textarea>
+            <p class="text-danger" *ngIf="!exactRegle">{{verifRegle}}</p>
+            <p class="text-success" *ngIf="exactRegle"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
           <div class=" mb-3">
             <label for="exampleFormControlTextarea1" class="form-label"> Description de la tontine </label>
-            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description"></textarea>
+            <textarea name="desc" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="description" (input)="verifDescFonction()"></textarea>
+            <p class="text-danger" *ngIf="!exactDescription">{{verifDescription}}</p>
+            <p class="text-success" *ngIf="exactDescription"><i class="bi bi-check2-all"></i> Exact !</p>
           </div>
 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" (click)="ajoutTontine()">Creer</button>
+        <button type="button" class="btn btnAjout fw-bold" data-bs-dismiss="modal" [ngClass]="{disabled: exactCotisation==false || exactDate==false || exactDescription==false || exactRegle==false || exactNomTontine==false || exactPart== false || exactType==false}" (click)="ajoutTontine()">Creer</button>
         <button type="button" class="btn btnRetour" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>

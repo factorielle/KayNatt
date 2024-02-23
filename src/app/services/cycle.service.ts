@@ -20,11 +20,11 @@ export class CycleService {
   participerCycle(cycle:any, paiement:any){
     return this.http.post(`${url}auth/fairePaiement/${cycle}`,paiement);
   }
-  faireTirage(tontine:any){
-    return this.http.post(`${url}createur_tontine/faireTirage/${tontine}`, tontine)
+  faireTirage(cycle:any){
+    return this.http.post(`${url}createur_tontine/faireTirage/${cycle}`, cycle)
   }
-  listeCyclePart(idPart:any){
-    return this.http.get(`${url}participant_tontine/ListeCycleParparticipant/${idPart}`)
-  }
+  // listeCyclePart(idPart:any){
+  //   return this.http.get(`${url}participant_tontine/ListeCycleParparticipant/${idPart}`)
+  // }
 }
 

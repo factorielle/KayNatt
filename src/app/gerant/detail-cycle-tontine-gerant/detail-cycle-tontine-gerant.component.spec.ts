@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailCycleTontineGerantComponent } from './detail-cycle-tontine-gerant.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('DetailCycleTontineGerantComponent', () => {
   let component: DetailCycleTontineGerantComponent;
@@ -8,7 +9,10 @@ describe('DetailCycleTontineGerantComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailCycleTontineGerantComponent]
+      declarations: [DetailCycleTontineGerantComponent],
+      providers: [
+        { provide: ActivatedRoute, useValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(DetailCycleTontineGerantComponent);
     component = fixture.componentInstance;

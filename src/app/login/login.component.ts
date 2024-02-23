@@ -12,9 +12,9 @@ import {  User } from '../model/tontine';
 export class LoginComponent implements OnInit{
   afficherLogin:boolean=true;
   afficherIns:boolean=true;
-  nom:string='';
-  prenom:string='';
-  adresse:string='';
+  nom:any;
+  prenom:any;
+  adresse:any;
   telephone:string='';
   nin:string='';
   email:string='';
@@ -22,7 +22,35 @@ export class LoginComponent implements OnInit{
   password:string='';
   passwordConf:string='';
  
- 
+ // Variables pour faire la verifications
+ verifNom: String = '';
+ verifAdresse: String = '';
+ verifTel: String = '';
+ verifProche: String = '';
+ verifNin: String = '';
+ verifPrenom: String = '';
+ verifEmail: String = '';
+ verifPassword: String = '';
+ verifPasswordConf: String = '';
+
+   // Variables si les champs sont exacts
+   exactNom: boolean = false;
+   exactAdresse: boolean = false;
+   exactTel: boolean = false;
+   exactProche: boolean = false;
+   exactNin: boolean = false;
+   exactPrenom: boolean = false;
+   exactEmail: boolean = false;
+   exactPassword: boolean = false;
+   exactPasswordConf: boolean = false;
+
+   // Pour vÃ©rifier les champs pour la connexion
+  verifEmailCon: String = '';
+  verifPasswordCon: String = '';
+
+  // Variables Si les valeurs sont exactes
+  exactEmailCon: boolean = false;
+  exactPasswordCon: boolean = false;
 
   constructor(private authService:AuthService, private route:Router){}
 
@@ -177,5 +205,152 @@ validation(){
       this.showMessage("desole", "Le mot de passe doit être supérieur ou égal à 5", "error");
     }
 }
+
+ // Fonction de Verification du password pour la fonctionnalitÃ© connexion
+ verifPasswordConFonction() {
+  this.exactPasswordCon = false;
+  if (this.passwordConf == '') {
+    this.verifPasswordCon = '';
+    // this.verifPasswordCon = 'Veuillez renseigner votre mot de passe';
+  } else if (this.passwordConf.length < 5) {
+    this.verifPasswordCon = 'Mot de passe doit etre superieur a 5 caracteres';
+  } 
+   else if (this.passwordConf!= this.password) {
+    this.verifPasswordCon = 'Les deux mots de passe ne sont pas conformes';
+  } 
+  else {
+    this.verifPasswordCon = '';
+    this.exactPasswordCon = true;
+  }
+}
+verifEmailConFonction() {
+  const emailPattern =  /^[A-Za-z]+[A-Za-z0-9\._%+-]+@[A-Za-z][A-Za-z0-9\.-]+\.[A-Za-z]{2,}$/;
+  this.exactEmailCon = false;
+
+  if (this.email == '') {
+    // this.verifEmailCon = 'Veuillez renseigner votre email';
+    this.verifEmailCon = '';
+  } else if (
+    !this.email.match(emailPattern) ||
+    this.email.endsWith('@') ||
+    !this.email.includes('.')
+  ) {
+    this.verifEmailCon = 'Veuillez donner un email valide';
+  } else {
+    this.verifEmailCon = '';
+    this.exactEmailCon = true;
+  }
+}
+
+// Verification du nom
+NomPattern1 = /^[a-zA-Z ]+$/;
+verifNomFonction() {
+  this.exactNom = false;
+  if (this.nom == '') {
+    this.verifNom = '';
+    // this.verifNom = 'Veuillez renseigner votre nom';
+  } else if (!isNaN(this.nom)) {
+    this.verifNom = 'Le nom ne doit pas etre des numeriques';
+  } else if (this.nom.length < 2) {
+    this.verifNom = 'Le nom est trop court';
+  } else if (!this.nom.match(this.NomPattern1)) {
+    this.verifNom = 'Donner un nom valide';
+  } else {
+    this.verifNom = '';
+    this.exactNom = true;
+  }
+}
+telPattern = /^(77|78|76|70)\d{7}$/;
+verifTelFonction(){
+  this.exactTel=false;
+  if(this.telephone==''){
+    this.verifTel='';
+  } else if(!this.telephone.match(this.telPattern)){
+    this.verifTel='Donner un numero valide';
+  } 
+  else{
+    this.exactTel=true;
+    this.verifTel=''
+  }
+}
+verifTelProcheFonction(){
+  this.exactProche=false;
+  if(this.numProche==''){
+    this.verifProche='';
+  } else if(!this.numProche.match(this.telPattern)){
+    this.verifProche='Donner un numero valide';
+  }
+  else{
+    this.exactProche=true;
+    this.verifProche=''
+  }
+}
+
+
+ // Verification du prenom
+ verifPrenomFonction() {
+  this.exactPrenom = false;
+  if (this.prenom == '') {
+    this.verifPrenom = '';
+    // this.verifPrenom = 'Veuillez renseigner votre prenom';
+  } else if (!isNaN(this.prenom)) {
+    this.verifPrenom = 'Le prenom ne doit pas etre des numeriques';
+  } else if (this.prenom.length < 3) {
+    this.verifPrenom = 'Le prenom est trop court';
+  } else if (!this.prenom.match(this.NomPattern1)) {
+    this.verifPrenom = 'Donner un prenom valide';
+  } else {
+    this.verifPrenom = '';
+    this.exactPrenom = true;
+  }
+}
+ verifAdresseFonction() {
+  this.exactAdresse = false;
+  if (this.adresse == '') {
+    this.verifAdresse = '';
+    // this.verifPrenom = 'Veuillez renseigner votre prenom';
+  } else if (!isNaN(this.adresse)) {
+    this.verifAdresse = 'L\'adresse ne doit pas etre des numeriques';
+  } else if (this.adresse.length < 3) {
+    this.verifAdresse= 'L\'adresse est trop court';
+  } else if (!this.adresse.match(this.NomPattern1)) {
+    this.verifAdresse = 'Donner une adresse valide';
+  } else {
+    this.verifAdresse = '';
+    this.exactAdresse = true;
+  }
+}
+verifPasswordFonction() {
+  this.exactPassword = false;
+  if (this.password == '') {
+    this.verifPassword = '';
+  } else if (this.password.length < 5) {
+    this.verifPassword = 'Mot de passe doit etre superieur ou egal à  5';
+  } else {
+    this.exactPassword = true;
+    this.verifPassword = '';
+  }
+}
+
+// Verification du nin
+pattern = /^[0-9]+$/;
+
+verifNinFonction(){
+  this.exactNin = false;
+
+  // Gestion des cas vides
+  if (this.nin === null || this.nin === undefined || this.nin === '') {
+    this.verifNin = '';
+  } else if (this.nin.length <= 12) { // Remplacer 13 par la longueur du NIN
+    this.verifNin = 'Le numéro d\'identification doit comporter 13 chiffres'; // Adapter le message d'erreur
+  } else if (!this.nin.match(this.pattern)) {
+    this.verifNin = 'Le numéro d\'identification ne peut contenir que des chiffres';
+  } else {
+    this.exactNin = true;
+    this.verifNin = '';
+  }
+}
+
+
 
 }

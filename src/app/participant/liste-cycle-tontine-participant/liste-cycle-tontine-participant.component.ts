@@ -80,19 +80,20 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
       console.log('userChoisi', this.userChoisi)
       this.participation_tontine_id=this.userChoisi.id;
       console.log(this.participation_tontine_id)
-      this.cycleService.listeCyclePart(this.participation_tontine_id).subscribe((response:any)=>{
+      this.tontineService.tontineAccepter().subscribe((response:any)=>{
+        console.log(response)
+        this.tontines=response.data
+        console.log(this.tontines);
+        this.tontineChoisi=this.tontines.find((element:any)=>element.id==this.idtontine);
+        console.log(this.tontineChoisi)
+
+      })
+      this.cycleService.listeCycles(this.idtontine).subscribe((response:any)=>{
         console.log(response);
         this.cycles=response.data
         console.log(this.cycles)
     
-        this.tontineService.tontineAccepter().subscribe((response:any)=>{
-          console.log(response)
-          this.tontines=response.data
-          console.log(this.tontines);
-          this.tontineChoisi=this.tontines.find((element:any)=>element.id==this.idtontine);
-          console.log(this.tontineChoisi)
-  
-        })
+      
       })
     })
   }

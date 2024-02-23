@@ -32,6 +32,9 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   idParticipation:any;
   participation: any;
   date: any;
+  verifCotisation: String = '';
+  exactCotisation: boolean = false;
+
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
 
@@ -94,24 +97,21 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     }
   }
   tirage(){
-    this.cycleService.faireTirage(this.tontineChoisi.id).subscribe((response:any)=>{
+    this.cycleService.faireTirage(this.cycleId).subscribe((response:any)=>{
       console.log(response)
       Swal.fire({
         icon:'info',
         title:'',
-        text:`le tirage a été fait avec succes`
+        text:`${response.status_message}`
       })
-      this.idParticipation=response.data.id;
-      console.log(this.idParticipation)
-      console.log(this.users)
-      this.participation=this.partTontineAccepte.find((element:any)=>element.id=this.idParticipation);
-      console.log(this.participation)
-      this.idGagnant=this.participation.user_id;
+      this.idGagnant=response.data[0].user_id;
+    
       console.log(this.idGagnant)
-      this.gagnant=this.users.find((element:any)=>element.id=this.idGagnant);
-        console.log(this.gagnant)
+      this.gagnant=this.users.find((element:any)=>element.id==this.idGagnant);
+        console.log(this.gagnant);
     
     })
+
   }
   
   getCycle(){
@@ -185,7 +185,7 @@ export class DetailCycleTontineGerantComponent implements OnInit {
 
   participerCycle(){
     const paiement={
-      date_paiement:this.date,
+      date_paiement:this.cycleChoisi.date_cycle,
       montant_paiement:parseInt(this.paiement)
     }
     console.log(paiement)
@@ -207,7 +207,24 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     })
   }
   
+  pattern = /^[0-9]+$/;
+  verifCotFonction(){
+    this.exactCotisation = false;
   
+    // Gestion des cas vides
+    if (this.paiement === null || this.paiement === undefined || this.paiement === '') {
+      this.verifCotisation = '';
+    } else if (this.paiement <= 0) { // Remplacer 13 par la longueur du NIN
+      this.verifCotisation = 'La cotisationt ne doit pas etre  negatif ou nulle '; // Adapter le message d'erreur
+    }
+     else if(!this.paiement.match(this.pattern)){
+      this.verifCotisation = 'La cotisation ne doit  etre  qu\'un nombre';
+    }
+     else {
+      this.exactCotisation = true;
+      this.verifCotisation = '';
+    }
+  }  
   
 
 }

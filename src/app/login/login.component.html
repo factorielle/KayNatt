@@ -26,14 +26,18 @@
                         <form  class="signin-form mt-5">
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Email</label>
-                                <input type="text" class="form-control" placeholder="Email"  name="email" [(ngModel)]="email">
+                                <input type="text" class="form-control" placeholder="Email"  name="email" [(ngModel)]="email" (input)="verifEmailConFonction()">
+                                <p class="text-danger" *ngIf="!exactEmailCon">{{verifEmailCon}}</p>
+                             <p class="text-success" *ngIf="exactEmailCon"><i class="bi bi-check2-all"></i> Exact !</p>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="text">Mot de passe</label>
-                                <input type="password" class="form-control" placeholder="mot de passe"  name="password" [(ngModel)]="password">
+                                <input type="password" class="form-control" placeholder="mot de passe"  name="password" [(ngModel)]="password" (input)="verifPasswordFonction()">
+                                <p class="text-danger" *ngIf="!exactPassword">{{verifPassword}}</p>
+                                <p class="text-success" *ngIf="exactPassword"><i class="bi bi-check2-all"></i> Exact !</p>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " (click)="connexionAdmin();connexion()">Connexion</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-3 px-3 fw-bold w-50 " [ngClass]="{disabled: exactPassword==false ||  exactEmailCon==false}" (click)="connexionAdmin();connexion()">Connexion</button>
                             </div>
                         </form>
                         <p class="mt-2">Pas de compte ? <span class="fw-bold" (click)="afficherFormIns()">S'inscrire</span></p>
@@ -49,52 +53,70 @@
                             <div class="row">
                                 <div class="col mb-3">
                                   <label>Prenom</label>
-                                  <input type="text" class="form-control" placeholder="Prenom" name="prenom" [(ngModel)]="prenom">
+                                  <input type="text" class="form-control" placeholder="Prenom" name="prenom" [(ngModel)]="prenom" (input)="verifPrenomFonction()">
+                                  <p class="text-danger" *ngIf="!exactPrenom">{{verifPrenom}}</p>
+                                  <p class="text-success" *ngIf="exactPrenom"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                                 <div class="col mb-3">
                                     <label>Nom</label>
-                                  <input type="text" class="form-control" placeholder="Nom" name="nom"  [(ngModel)]="nom">
+                                  <input type="text" class="form-control" placeholder="Nom" name="nom"  [(ngModel)]="nom" (input)="verifNomFonction()">
+                                  <p class="text-danger" *ngIf="!exactNom">{{verifNom}}</p>
+                                  <p class="text-success" *ngIf="exactNom"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                               </div><div class="row">
                                 <div class="col mb-3">
                                     <label>Numero telephone</label>
-                                  <input type="text" class="form-control" placeholder="Numero telephone" name="tel" [(ngModel)]="telephone">
+                                  <input type="text" class="form-control" placeholder="Numero telephone" name="tel" [(ngModel)]="telephone" (input)="verifTelFonction()">
+                                  <p class="text-danger" *ngIf="!exactTel">{{verifTel}}</p>
+                                  <p class="text-success" *ngIf="exactTel"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                                 <div class="col mb-3">
                                     <label>Numero  proche</label>
-                                  <input type="text" class="form-control" placeholder="Numero  proche" name="numero" [(ngModel)]="numProche">
+                                  <input type="text" class="form-control" placeholder="Numero  proche" name="numero" [(ngModel)]="numProche" (input)="verifTelProcheFonction()">
+                                  <p class="text-danger" *ngIf="!exactProche">{{verifProche}}</p>
+                                  <p class="text-success" *ngIf="exactProche"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                               </div><div class="row">
                                 <div class="col mb-3">
                                     <label>Email</label>
-                                  <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email">
+                                  <input type="text" class="form-control" placeholder="Email" name="email" [(ngModel)]="email" (input)="verifEmailConFonction()">
+                                  <p class="text-danger" *ngIf="!exactEmailCon">{{verifEmailCon}}</p>
+                                  <p class="text-success" *ngIf="exactEmailCon"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                                 <div class="col mb-3">
                                     <label>Adresse</label>
-                                  <input type="text" class="form-control" placeholder="Adresse" name="adresse"  [(ngModel)]="adresse">
+                                  <input type="text" class="form-control" placeholder="Adresse" name="adresse"  [(ngModel)]="adresse" (input)="verifAdresseFonction()">
+                                  <p class="text-danger" *ngIf="!exactAdresse">{{verifAdresse}}</p>
+                                  <p class="text-success" *ngIf="exactAdresse"><i class="bi bi-check2-all"></i> Exact !</p>
                                 </div>
                              
                               </div> 
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="afficherFormIns2()">Suivant</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 "[ngClass]="{disabled:exactAdresse==false || exactEmailCon==false || exactProche==false || exactNom==false || exactPrenom==false || exactTel== false}" (click)="afficherFormIns2()">Suivant</button>
                             </div>
                         </form>
                         <form action="#" class="signin-form mt-1" *ngIf="!afficherIns">
                             <p (click)="afficherFormIns2()"><i class="bi bi-arrow-left-square-fill" style="color: var(--couleurSecondaire);"></i></p>
                             <div class="form-group mb-3">
                                 <label class="label" for="name">Numero d'identification nationale</label>
-                                <input type="text" class="form-control" placeholder="Numero d'identification nationale"  name="nin"  [(ngModel)]="nin">
+                                <input type="text" class="form-control" placeholder="Numero d'identification nationale"  name="nin"  [(ngModel)]="nin" (input)="verifNinFonction()">
+                                <p class="text-danger" *ngIf="!exactNin">{{verifNin}}</p>
+                                  <p class="text-success" *ngIf="exactNin"><i class="bi bi-check2-all"></i> Exact !</p>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="prenom">Mot de passe</label>
-                                <input type="password" class="form-control" placeholder="Mot de passe"  name="password" [(ngModel)]="password">
+                                <input type="password" class="form-control" placeholder="Mot de passe"  name="password" [(ngModel)]="password" (input)="verifPasswordFonction()">
+                                <p class="text-danger" *ngIf="!exactPassword">{{verifPassword}}</p>
+                                  <p class="text-success" *ngIf="exactPassword"><i class="bi bi-check2-all"></i> Exact !</p>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="label" for="email">Mot de passe de confirmation</label>
-                                <input type="password" class="form-control" placeholder="Mot de passe de confirmation"  name="passwordConf" [(ngModel)]="passwordConf">
+                                <input type="password" class="form-control" placeholder="Mot de passe de confirmation"  name="passwordConf" [(ngModel)]="passwordConf" (input)="verifPasswordConFonction()">
+                                <p class="text-danger" *ngIf="!exactPasswordCon">{{verifPasswordCon}}</p>
+                                  <p class="text-success" *ngIf="exactPasswordCon"><i class="bi bi-check2-all"></i> Exact !</p>
                             </div>
                             <div class="form-group text-center">
-                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " (click)="inscription()">S'inscrire</button>
+                                <button type="submit" class="form-control btn btnlog rounded submit mt-2  px-3 fw-bold w-50 " [ngClass]="{disabled: exactNin==false || exactPassword==false || exactPasswordCon==false }" (click)="inscription()">S'inscrire</button>
                             </div>
                         </form>
                         <p class="mt-2">Vous avez deja un  compte ? <span class="fw-bold" (click)="afficherFormIns()">Se connecter </span></p>

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GestionTontineComponent } from './gestion-tontine.component';
+import { DataTablesModule } from 'angular-datatables';
+import { ActivatedRoute } from '@angular/router';
 
 describe('GestionTontineComponent', () => {
   let component: GestionTontineComponent;
@@ -8,7 +10,11 @@ describe('GestionTontineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GestionTontineComponent]
+      declarations: [GestionTontineComponent],
+      imports:[DataTablesModule],
+      providers: [
+        { provide: ActivatedRoute, useValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(GestionTontineComponent);
     component = fixture.componentInstance;

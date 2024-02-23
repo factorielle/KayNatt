@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListeParticipantTontineComponent } from './liste-participant-tontine.component';
+import { DataTablesModule } from 'angular-datatables';
 
 describe('ListeParticipantTontineComponent', () => {
   let component: ListeParticipantTontineComponent;
@@ -8,7 +9,8 @@ describe('ListeParticipantTontineComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListeParticipantTontineComponent]
+      declarations: [ListeParticipantTontineComponent],
+      imports:[DataTablesModule]
     });
     fixture = TestBed.createComponent(ListeParticipantTontineComponent);
     component = fixture.componentInstance;

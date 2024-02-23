@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailTontineAdminComponent } from './detail-tontine-admin.component';
+import { ActivatedRoute } from '@angular/router';
 
 describe('DetailTontineAdminComponent', () => {
   let component: DetailTontineAdminComponent;
@@ -8,7 +9,10 @@ describe('DetailTontineAdminComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailTontineAdminComponent]
+      declarations: [DetailTontineAdminComponent],
+      providers: [
+        { provide: ActivatedRoute, useValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(DetailTontineAdminComponent);
     component = fixture.componentInstance;

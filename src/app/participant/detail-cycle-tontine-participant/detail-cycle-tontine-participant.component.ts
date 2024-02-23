@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
 import { TontineService } from 'src/app/services/tontine.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detail-cycle-tontine-participant',
@@ -24,6 +25,9 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
   userChoisi: any;
   participation_tontine_id: any;
   idCycleChoisi: any;
+
+  verifCotisation: String = '';
+  exactCotisation: boolean = false;
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
   
   dtOptions: DataTables.Settings = {};
@@ -83,7 +87,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
   }
 getCycle(){
   
-  this.cycleService.listeCyclePart(this.idUser).subscribe((response:any)=>{
+  this.cycleService.listeCycles(this.idtontine).subscribe((response:any)=>{
     console.log(response);
     this.cycles=response.data
     console.log('cycles get',this.cycles)
@@ -118,7 +122,7 @@ getParticipant(){
     console.log('userChoisi', this.userChoisi)
     this.participation_tontine_id=this.userChoisi.id;
     console.log(this.participation_tontine_id)
-    this.cycleService.listeCyclePart(this.participation_tontine_id).subscribe((response:any)=>{
+    this.cycleService.listeCycles(this.idtontine).subscribe((response:any)=>{
       console.log(response);
       this.cycles=response.data
       console.log(this.cycles)
@@ -141,18 +145,48 @@ participerCycle(){
   // cycle.append('montant_paiement', this.paiement)
 
   const paiement={
-   date_paiement: this.date,
+   date_paiement: this.CycleChoisi.date_cycle,
    montant_paiement:parseInt(this.paiement)
   }
   console.log(paiement)
   this.cycleService.participerCycle(this.idCycleChoisi, paiement).subscribe((response:any)=>{
     console.log(response)
+    this.showMessage('info','',`${response.statut_message}`)
     window.open(response.url,'_self');
   }
   )
  
 
 }
+showMessage(icon:any, titre:any, texte:any){
+  Swal.fire({
+    icon: icon,
+    title: titre,
+    text: texte,
+    confirmButtonColor: "#1E1E1E",
+    showConfirmButton: false,
+    timer:2000,
+  })
+}
+
+pattern = /^[0-9]+$/;
+verifCotFonction(){
+  this.exactCotisation = false;
+
+  // Gestion des cas vides
+  if (this.paiement === null || this.paiement === undefined || this.paiement === '') {
+    this.verifCotisation = '';
+  } else if (this.paiement <= 0) { // Remplacer 13 par la longueur du NIN
+    this.verifCotisation = 'La cotisationt ne doit pas etre  negatif ou nulle '; // Adapter le message d'erreur
+  }
+   else if(!this.paiement.match(this.pattern)){
+    this.verifCotisation = 'La cotisation ne doit  etre  qu\'un nombre';
+  }
+   else {
+    this.exactCotisation = true;
+    this.verifCotisation = '';
+  }
+}  
+}
 
  
-}

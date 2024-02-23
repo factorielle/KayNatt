@@ -74,6 +74,16 @@ getParticipant(){
   })
 }
 
+
+deconnexion(){
+  this.authService.logout().subscribe((response:any)=>{
+    console.log(response);
+    localStorage.removeItem('token')
+    this.router.navigate(['/accueil'])
+
+  })
+}
+
 showDetails(article: any) {
   this.details = article;
   console.warn(this.details);

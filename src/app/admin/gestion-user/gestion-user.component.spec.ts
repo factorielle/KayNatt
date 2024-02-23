@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GestionUserComponent } from './gestion-user.component';
+import { DataTablesModule } from 'angular-datatables';
 
 describe('GestionUserComponent', () => {
   let component: GestionUserComponent;
@@ -8,7 +9,8 @@ describe('GestionUserComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GestionUserComponent]
+      declarations: [GestionUserComponent],
+      imports:[DataTablesModule]
     });
     fixture = TestBed.createComponent(GestionUserComponent);
     component = fixture.componentInstance;
