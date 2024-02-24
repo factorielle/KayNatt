@@ -920,3 +920,633 @@ input, textarea, select{
     margin-right: 53vh;
   }
 }
+@media(min-width:432px) and (max-width:541){
+  #banner{
+    width: 41px !important;
+    height: 50vh;
+  }
+  #about{
+    margin-top: -35vh  !important;
+  
+  }
+  .containerAbout{
+    /* border: 1px solid red; */
+
+  }
+  .imgAbout{
+    /* border: 1px solid green; */
+    width: 45vh !important;
+    margin-left: 12vh;
+
+  }
+  .imgAbout img{
+    width: 35vh !important;
+    height: 35vh !important;
+    /* margin-left: -10vh !important; */
+  }
+  .carteAv{
+   
+    margin-left: 15vh !important;
+  }
+  .avantage{
+    width: 40vh !important;
+  }
+  .containerTon{
+    border: 1px solid green;
+    width: 50vh;
+    /* margin-left: -0.02px !important; */
+  }
+  .containerTon img{
+    width: 45vh !important;
+    height: 45vh !important;
+  }
+  .texton{
+    width: 50vh !important;
+    margin-top: -5vh !important;
+    margin-left: 3vh;
+
+  }
+  #tontine{
+    margin-top: -1vh !important;
+  }
+  .textAbout{
+    width: 50vh !important;
+    margin-left: 8vh;
+
+  }
+  .containerCardTontine{
+    /* border: 1px solid red; */
+    width: 30vh !important;
+  }
+  .card{
+    width: 40vh !important;
+  }
+  .titretem, .titreTon{
+    /* border: 1px solid red; */
+    margin-left: 18vh !important;
+    width: 30vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+  .titreAbout{
+    width: 30vh !important;
+    margin-left: 21vh !important;
+
+  }
+  .titreAv{
+    width: 30vh !important;
+    margin-left: 19vh !important;
+
+  }
+  .titreguide{
+    width: 30vh !important;
+    margin-left: 30vh !important;
+
+  }
+  #temoignage{
+    width: 40vh;
+    display: none;
+  }
+ 
+  #tontines{
+    margin-bottom: 10vh;
+    /* margin-left: -5vh !important; */
+  }
+  .pagination{
+    margin-top: 50vh !important;
+    margin-left: 5vh !important;
+  }
+  .btnItem1, .btnItem2{
+    font-size: 14px;
+    width: 10vh;
+  }
+  #accordionExample{
+    width: 50vh;
+    
+  }
+  #guide{
+    margin-left: -8.5vh !important;
+  }
+  .containerAv{
+    margin-right: 53vh;
+  }
+}
+@media(min-width:542) and (max-width:769px){
+  #banner{
+    width: 759px;
+    height: 50vh;
+  }
+  #about{
+    margin-top: -35vh  !important;
+  
+  }
+  .containerAbout{
+    /* border: 1px solid red; */
+
+  }
+  .imgAbout{
+    /* border: 1px solid green; */
+    width: 45vh !important;
+    margin-left: 12vh;
+
+  }
+  .imgAbout img{
+    width: 35vh !important;
+    height: 35vh !important;
+    /* margin-left: -10vh !important; */
+  }
+  .carteAv{
+   
+    margin-left: 15vh !important;
+  }
+  .avantage{
+    width: 40vh !important;
+  }
+  .containerTon{
+    border: 1px solid green;
+    width: 50vh;
+    /* margin-left: -0.02px !important; */
+  }
+  .containerTon img{
+    width: 45vh !important;
+    height: 45vh !important;
+  }
+  .texton{
+    width: 50vh !important;
+    margin-top: -5vh !important;
+    margin-left: 3vh;
+
+  }
+  #tontine{
+    margin-top: -1vh !important;
+  }
+  .textAbout{
+    width: 50vh !important;
+    margin-left: 8vh;
+
+  }
+  .containerCardTontine{
+    /* border: 1px solid red; */
+    width: 30vh !important;
+  }
+  .card{
+    width: 40vh !important;
+  }
+  .titretem, .titreTon{
+    /* border: 1px solid red; */
+    margin-left: 18vh !important;
+    width: 30vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+  .titreAbout{
+    width: 30vh !important;
+    margin-left: 21vh !important;
+
+  }
+  .titreAv{
+    width: 30vh !important;
+    margin-left: 19vh !important;
+
+  }
+  .titreguide{
+    width: 30vh !important;
+    margin-left: 30vh !important;
+
+  }
+  #temoignage{
+    width: 40vh;
+    display: none;
+  }
+ 
+  #tontines{
+    margin-bottom: 10vh;
+    /* margin-left: -5vh !important; */
+  }
+  .pagination{
+    margin-top: 50vh !important;
+    margin-left: 5vh !important;
+  }
+  .btnItem1, .btnItem2{
+    font-size: 14px;
+    width: 10vh;
+  }
+  #accordionExample{
+    width: 50vh;
+    
+  }
+  #guide{
+    margin-left: -8.5vh !important;
+  }
+  .containerAv{
+    margin-right: 53vh;
+  }
+}
+@media(min-width:770px) and (max-width:821px){
+  #banner{
+    width: 796px;
+    height: 50vh;
+  }
+  #about{
+    margin-top: -25vh  !important;
+    width: 60vh !important;
+    
+  }
+  .containerAbout{
+    /* border: 1px solid red; */
+    width: 60vh;
+    
+  }
+  .imgAbout{
+    /* border: 1px solid green; */
+    width: 45vh !important;
+    margin-left: 10vh;
+    
+  }
+  .imgAbout img{
+    width: 35vh !important;
+    height: 35vh !important;
+    /* margin-left: -10vh !important; */
+  }
+  .carteAv{
+    
+    /* border: 2px solid green; */
+    margin-left: 1vh !important;
+  }
+  .avantage{
+    width: 20vh !important;
+  }
+  .containerTon{
+    width: 40vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    /* margin-left: -0.02px !important; */
+  }
+  .containerTon img{
+    width: 45vh !important;
+    height: 45vh !important;
+    margin-left: -2vh;
+  }
+  .texton{
+    width: 45vh !important;
+    margin-top: -3vh !important;
+    /* margin-left: 3vh; */
+    
+  }
+  #tontine{
+    /* margin-top: -1vh !important; */
+  }
+  .textAbout{
+    width: 50vh !important;
+    margin-left: 4vh;
+    
+  }
+  .containerCardTontine{
+    /* border: 1px solid red; */
+    width: 30vh !important;
+    /* border: 2px solid red; */
+  }
+  .card{
+    width: 25vh !important;
+  }
+  .titretem {
+    /* border: 1px solid red; */
+    margin-left: 5vh !important;
+    width: 30vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+ .titreTon{
+    /* border: 1px solid red; */
+    margin-left: 26vh !important;
+    width: 30vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+  .titreAbout{
+    width: 30vh !important;
+    margin-left: 15vh !important;
+    
+  }
+  .titreAv{
+    width: 30vh !important;
+    margin-left: 15vh !important;
+    
+  }
+  .titreguide{
+    width: 30vh !important;
+    margin-left: 30vh !important;
+    
+  }
+  #temoignage{
+    width: 40vh;
+    /* display: none; */
+  }
+  .temoignage, .item{
+   
+    margin-left: -8vh;
+  }
+  
+  #tontines{
+    margin-bottom: 10vh;
+    margin-left: -8vh !important;
+  }
+  .pagination{
+    margin-top: 20vh !important;
+    margin-left: 25vh !important;
+  }
+  .btnItem1, .btnItem2{
+    font-size: 14px;
+    width: 10vh;
+  }
+  #accordionExample{
+    width: 50vh;
+    
+  }
+  #guide{
+    margin-top: 5vh;
+    margin-left: -13vh !important;
+  }
+  .containerAv{
+    margin-left: 3vh;
+  }
+}
+@media(min-width:822px) and (max-width:913px){
+  #banner{
+    width: 900px;
+    height: 50vh;
+  }
+  .contenuBan img{
+    margin-top: -3vh;
+  }
+  .contenuBan .texteBan{
+    margin-top: -10vh !important;
+  }
+  #about{
+    margin-top: -15vh  !important;
+    width: 60vh !important;
+    
+  }
+  .containerAbout{
+    /* border: 1px solid red; */
+    width: 55vh;
+    
+  }
+  .imgAbout{
+    /* border: 1px solid green; */
+    width: 45vh !important;
+    margin-left: 6vh;
+    
+  }
+  .imgAbout img{
+    width: 37vh !important;
+    height: 35vh !important;
+    /* margin-left: -10vh !important; */
+  }
+  .carteAv{
+    
+    /* border: 2px solid green; */
+    margin-left: -4vh !important;
+  }
+  .avantage{
+    width: 20vh !important;
+  }
+  .containerTon{
+    width: 40vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    /* margin-left: -0.02px !important; */
+  }
+  .containerTon img{
+    width: 45vh !important;
+    height: 45vh !important;
+    margin-left: -2vh;
+  }
+  .texton{
+    width: 45vh !important;
+    margin-top: -3vh !important;
+    margin-left: -2vh;
+    
+  }
+  #tontine{
+    /* margin-top: -1vh !important; */
+  }
+  .textAbout{
+    width: 50vh !important;
+    margin-left: 1vh;
+    
+  }
+  .containerCardTontine{
+    /* border: 1px solid red; */
+    width: 30vh !important;
+    /* border: 2px solid red; */
+  }
+  .card{
+    width: 25vh !important;
+  }
+  .titretem {
+    /* border: 1px solid red; */
+    margin-left: 3vh !important;
+    width: 32vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+ .titreTon{
+    /* border: 1px solid red; */
+    margin-left: 26vh !important;
+    width: 30vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+  .titreAbout{
+    width: 30vh !important;
+    margin-left: 11vh !important;
+    
+  }
+  .titreAv{
+    width: 30vh !important;
+    margin-left: 10vh !important;
+    
+  }
+  .titreguide{
+    width: 30vh !important;
+    margin-left: 28vh !important;
+    
+  }
+  #temoignage{
+    width: 40vh;
+    /* display: none; */
+  }
+  .temoignage, .item{
+   
+    margin-left: -8vh;
+  }
+  
+  #tontines{
+    margin-bottom: 10vh;
+    margin-left: -8vh !important;
+  }
+  .pagination{
+    margin-top: 10vh !important;
+    margin-left: 25vh !important;
+  }
+  .btnItem1, .btnItem2{
+    font-size: 14px;
+    width: 10vh;
+  }
+  #accordionExample{
+    width: 50vh;
+    
+  }
+  #guide{
+    margin-top: 5vh;
+    margin-left: -13vh !important;
+  }
+  .containerAv{
+    margin-left: 3vh;
+  }
+  .quart-de-cercle1, .quart-de-cercle2{
+    margin-right: -8vh !important;
+  }
+}
+@media(min-width:914px) and (max-width:1025px){
+  #banner{
+    width: 998px;
+    height: 45vh;
+  }
+  .contenuBan img{
+    margin-top: -3vh;
+  }
+  .contenuBan .texteBan{
+    margin-top: -10vh !important;
+  }
+  #about{
+    margin-top: -15vh  !important;
+    width: 60vh !important;
+    
+  }
+  .containerAbout{
+    /* border: 1px solid red; */
+    width: 60vh;
+    
+  }
+  .imgAbout{
+    /* border: 1px solid green; */
+    width: 45vh !important;
+    margin-left: 12vh;
+    
+  }
+  .imgAbout img{
+    width: 35vh !important;
+    height: 35vh !important;
+    /* margin-left: -10vh !important; */
+  }
+  .carteAv{
+    
+    /* border: 2px solid green; */
+    margin-left: 6vh !important;
+  }
+  .avantage{
+    width: 20vh !important;
+  }
+  .containerTon{
+    width: 40vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    /* margin-left: -0.02px !important; */
+  }
+  .containerTon img{
+    width: 45vh !important;
+    height: 45vh !important;
+    margin-left: -2vh;
+  }
+  .texton{
+    width: 45vh !important;
+    margin-top: -3vh !important;
+    margin-left: -2vh;
+    
+  }
+  #tontine{
+    /* margin-top: -1vh !important; */
+  }
+  .textAbout{
+    width: 50vh !important;
+    margin-left: 5vh;
+    
+  }
+  .containerCardTontine{
+    /* border: 1px solid red; */
+    width: 30vh !important;
+    /* border: 2px solid red; */
+  }
+  .card{
+    width: 25vh !important;
+  }
+  .titretem {
+    /* border: 1px solid red; */
+    margin-left: 2vh !important;
+    width: 64vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+ .titreTon{
+    /* border: 1px solid red; */
+    margin-left: 26vh !important;
+    width: 35vh !important;
+    /* margin-right: -15vh !important; */
+    
+  }
+  .titreAbout{
+    width: 30vh !important;
+    margin-left: 15vh !important;
+    
+  }
+  .titreAv{
+    width: 30vh !important;
+    margin-left: 20vh !important;
+    
+  }
+  .titreguide{
+    width: 38vh !important;
+    margin-left: 30vh !important;
+    
+  }
+  #temoignage{
+    width: 45vh;
+    /* display: none; */
+  }
+  .temoignage, .item{
+   
+    margin-left: -8vh;
+  }
+  
+  #tontines{
+    margin-bottom: 10vh;
+    margin-left: -7vh !important;
+  }
+  .quart-de-cercle1, .quart-de-cercle2{
+    margin-right: -3vh;
+  }
+  .pagination{
+    margin-top: 15vh !important;
+    margin-left: 25vh !important;
+  }
+  .btnItem1, .btnItem2{
+    font-size: 14px;
+    width: 10vh;
+  }
+  #accordionExample{
+    width: 50vh;
+    
+  }
+  #guide{
+    margin-top: 5vh;
+    margin-left: -13vh !important;
+  }
+  .containerAv{
+    margin-left: 3vh;
+  }
+}
