@@ -69,3 +69,19 @@ footer{
     margin-left: 30px;
     margin-top: 50px;
 }
+@media (max-width:282px){
+    footer{
+        width: 278px !important;
+    }
+    #Mentions{
+        margin-left: -0.05vh;
+    }
+    .Container_Footer{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .reseau{
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+    }
+}

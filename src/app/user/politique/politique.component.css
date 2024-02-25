@@ -20,11 +20,8 @@
 .contenu{
     margin-top: -19%;
 }
-@media (max-width:952px){
-    .icone{
+@media (max-width:1024px){
+    #banner{
         display: none;
-    }
-    .texteBan p{
-        font-size: 18px;
     }
 }
