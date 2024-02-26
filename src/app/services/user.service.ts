@@ -24,7 +24,7 @@ export class UserService {
   }
   // modifier profil
   updateUser(user:any){
-    return this.http.post(`${url}modifierUser`, user)
+    return this.http.post(`${url}auth/modifierUser`, user)
   }
 
 }

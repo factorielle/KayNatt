@@ -24,14 +24,14 @@ export class AuthService {
 
   // methode pour se deconnecter
  logout(){
-  const token=localStorage.getItem('userOneline')
+  const token=localStorage.getItem('token')
   return  token? this.http.post<any>(`${url}logoutUser`,  {
     headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
   })
 : of(null);
  }
  logoutAdmin(){
-  const token=localStorage.getItem('userOneline')
+  const token=localStorage.getItem('token')
   return  token? this.http.post<any>(`${url}logoutAdmin`,  {
     headers: new HttpHeaders({ Authorization:` Bearer ${token}` }),
   })

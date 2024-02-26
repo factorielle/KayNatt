@@ -128,6 +128,7 @@
                   <button type="button" class="ms-5 btn btnRetour fw-bold mb-3"  (click)="showTable()">
                    liste participants en attente
                   </button>
+                  <button type="button" class="ms-5 btnAjout btn fw-bold mb-3" [routerLink]="['/detailTontineGerant',idTontineChoisi]">Retour </button>
                 </div>
           <h5 class="text-center">Liste des participants en attente de la tontine {{tontineChoisi.libelle}} </h5>
               <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="partTontine.length>0">
@@ -169,6 +170,8 @@
                 <button type="button" class="ms-5 btn btnAjout fw-bold mb-3"  (click)="showTable()">
                 Voir liste participants en attente
                 </button>
+                <button type="button" class="ms-5 mb-3 btnRetour btn fw-bold" [routerLink]="['/detailTontineGerant',idTontineChoisi]">Retour </button>
+
               </div>
           <h5 class="text-center">Liste des participants acceptés de la tontine {{tontineChoisi.libelle}} </h5>
 

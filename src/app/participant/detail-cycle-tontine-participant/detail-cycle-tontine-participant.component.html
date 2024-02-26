@@ -121,31 +121,31 @@
              
 
             <h5 class="text-center mb-4">Cycle {{CycleChoisi.nombre_de_cycle}} de la tontine {{tontineChoisi.libelle}} </h5>
-            <button class="btn btnAjout ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paiement">Participer</button>
+            <button class="btn btnAjout ms-5 mb-3 fw-bold" data-bs-toggle="modal" data-bs-target="#paiement">Cotiser</button>
             <div class="info ms-5">
                 <p> <span  class="fw-bold">Date de tirage :</span>{{CycleChoisi.date_cycle}}
                 <br> <span class="fw-bold">Fonds : </span>Non alloué
                 <br> <span class="fw-bold">Montant : </span>{{tontineChoisi.nombre_participant*tontineChoisi.montant}} FCFA</p>
             </div>
             <div class="tableau container">
-                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="participants.length>0">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left table-responsive" class="table pt-3" *ngIf="participants.length>0">
                   <thead  >
                     <tr>
                         <th>Nom Complet</th>
-                        <th>Email</th>
-                        <th>Adresse</th>
-                        <th>Telephone </th>
+                        <th>Montant</th>
+                        <th>contribution</th>
+                        <th>Date de paiement </th>
                         <th>Role</th>
                         
                     </tr>
                 </thead>
           
                 <tbody>
-                  <tr *ngFor="let part of participants">
+                  <tr *ngFor="let part of contribution">
                       <td>{{part.name}}</td>
-                      <td>{{part.email}} </td>
-                      <td>{{part.adresse}}</td>
-                      <td>{{part.telephone}}</td>
+                      <td>{{part.montant_paiement}} </td>
+                      <td>{{part.statutCotisation}}</td>
+                      <td>{{part.date_paiement | date: 'dd/MM/yyyy' }}</td>
                       <td>{{part.role}}</td>
                     
                   </tr>

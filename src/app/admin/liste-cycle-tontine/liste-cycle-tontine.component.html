@@ -148,6 +148,7 @@
 
             <div class="separator">
               <div class="circ">
+                <div class="btn"><button class="btnAjout btn fw-bold" [routerLink]="['/detailTontineAdmin',idtontine]">Retour </button></div>
                 <h6 class="text-center fw-bold mb-3">Liste  des cycles  de la tontine {{tontineChoisi.libelle}}  </h6>
 
                 <div class="tableau ">
@@ -155,21 +156,19 @@
                       <thead  style="background-color: var(--couleurPrincipal) !important;">
                         <tr>
                             <th>Nom</th>
-                            <th>Cotisation</th>
                             <th>Date cycle</th>
-                            <th>Date tirage</th>
+                            <th>Statut tirage</th>
                             <th>Action</th>
                         </tr>
                     </thead>
               
-                    <tbody *ngFor="let cycle of cycles">
-                      <tr *ngIf="cycle.participation_Tontine_id==idPart">
+                    <tbody >
+                      <tr *ngFor="let cycle of cycles">
                           <td>cycle {{cycle.nombre_de_cycle}}</td>
-                          <td>{{cycle.statutCotisation}} </td>
                           <td>{{cycle.date_cycle}}</td>
                           <td>{{cycle.statut}}</td>
                           <td><span class="status action-icon">
-                            <button class="btn btnAjout fw-bold me-2" [routerLink]="['/detailCycleAdmin', cycle.id]">Detail</button>       
+                            <button class="btn btnAjout fw-bold me-2" [routerLink]="['/cycles', idtontine, 'detailCycleAdmin', cycle.id]">Detail</button>       
                           </span>
                           </td>
                       </tr>

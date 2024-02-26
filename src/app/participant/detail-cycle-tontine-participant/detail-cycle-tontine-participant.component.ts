@@ -28,6 +28,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
 
   verifCotisation: String = '';
   exactCotisation: boolean = false;
+  contribution: any;
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
   
   dtOptions: DataTables.Settings = {};
@@ -73,7 +74,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
             wrapper?.classList.add("toggled");
         }
     });
-  
+  this.cotisations();
   this.getParticipant();
   }
   
@@ -85,8 +86,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
 
     })
   }
-getCycle(){
-  
+ getCycle(){
   this.cycleService.listeCycles(this.idtontine).subscribe((response:any)=>{
     console.log(response);
     this.cycles=response.data
@@ -182,11 +182,24 @@ verifCotFonction(){
    else if(!this.paiement.match(this.pattern)){
     this.verifCotisation = 'La cotisation ne doit  etre  qu\'un nombre';
   }
-   else {
+  else if(this.paiement.length<2){
+    this.verifCotisation = 'La cotisation ne correspond pas';
+
+  }    
+  else {
     this.exactCotisation = true;
     this.verifCotisation = '';
   }
 }  
+
+cotisations(){
+  this.cycleService.listeCotisation(this.idCycleChoisi).subscribe((response:any)=>{
+    console.log('cotis',response);
+    this.contribution=response.data
+    console.log('sation',this.contribution)
+  })
+
+}
 }
 
  

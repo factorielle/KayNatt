@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./liste-cycle-tontine.component.css']
 })
 export class ListeCycleTontineComponent implements OnInit {
-  idtontine: any;
+
   idPart:any;
   userChoisi:any;
   participants: any;
@@ -20,14 +20,9 @@ export class ListeCycleTontineComponent implements OnInit {
   tontineChoisi: any;
   constructor(private route:ActivatedRoute, private userService:UserService, private tontineService:TontineService, private cycleService:CycleService){}
   dtOptions: DataTables.Settings = {};
+  idtontine=this.route.snapshot.params['id']
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.idtontine = params.get('idTontine');
-      this.idPart = params.get('idPart');
-      console.log(this.idtontine);
-       console.log(this.idPart);
-      
-    });
+ 
 
     this.dtOptions = {
       searching: true,
@@ -50,7 +45,7 @@ export class ListeCycleTontineComponent implements OnInit {
   listeCycle() {
     this.cycleService.listeCycles(this.idtontine).subscribe((response:any) => {
       this.cycles = response.data;
-      console.log(this.cycles);
+      console.log('cycle',this.cycles);
     });
   }
   getTontine(){

@@ -27,7 +27,7 @@ export class DetailTontineAdminComponent  implements OnInit{
   cagnotte:any;
 
   ngOnInit(): void {
-  this. detailTontine();
+  this.detailTontine();
   this.responsive();
   }
   detailTontine(){

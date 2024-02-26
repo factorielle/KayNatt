@@ -120,9 +120,10 @@
             <div class="middle mt-5">
                 
                 <!-- Button trigger modal -->
-                <button type="button" class="ms-5 btn btnAjout fw-bold" (click)="getCycle()">
+                <button type="button" class="ms-5 btn btnAjout fw-bold " (click)="getCycle()">
                     Generer  cycle
                 </button>
+                <button class="ms-4 btnRetour btn fw-bold" [routerLink]="['/detailTontineGerant',idTontineChoisi]">Retour </button>
                 <h5 class="text-center">Liste des cycle de la tontines {{tontineChoisi.libelle}}</h5>
                 <div class="tableau container">
                   <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="listeCycles.length>0">

@@ -62,12 +62,12 @@ const routes: Routes = [
   // route pour les composant dans le dossier admin
   {path:'assistance', component:AssistanceComponent},
   {path:'accueilAdmin', component:DashAccueilComponent, canActivate:[adminGuardGuard]},
-  {path:'detailCycleAdmin/:id', component:DetailCycleTontineComponent , canActivate:[adminGuardGuard]},
+  {path:'cycles/:idTontine/detailCycleAdmin/:idCycle', component:DetailCycleTontineComponent , canActivate:[adminGuardGuard]},
   {path:'detailUser/:id', component:DetailUserComponent , canActivate:[adminGuardGuard]},
   {path:'role', component:GestionRoleComponent , canActivate:[adminGuardGuard]},
   {path:'gestionTontine', component:GestionTontineComponent , canActivate:[adminGuardGuard]},
   {path:'users', component:GestionUserComponent, canActivate:[adminGuardGuard]},
-  {path:'cycleTontine/:idPart/cycles/:idTontine', component:ListeCycleTontineComponent , canActivate:[adminGuardGuard]},
+  {path:'cycles/:id', component:ListeCycleTontineComponent , canActivate:[adminGuardGuard]},
   {path:'participantTontine/:id', component:ListeParticipantTontineComponent , canActivate:[adminGuardGuard]},
   {path:'detailTontineAdmin/:id', component:DetailTontineAdminComponent , canActivate:[adminGuardGuard]},
   // 404 not found

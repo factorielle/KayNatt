@@ -212,7 +212,7 @@ validation(){
   if (this.passwordConf == '') {
     this.verifPasswordCon = '';
     // this.verifPasswordCon = 'Veuillez renseigner votre mot de passe';
-  } else if (this.passwordConf.length < 5) {
+  } else if (this.passwordConf.length < 3) {
     this.verifPasswordCon = 'Mot de passe doit etre superieur a 5 caracteres';
   } 
    else if (this.passwordConf!= this.password) {
@@ -324,8 +324,8 @@ verifPasswordFonction() {
   this.exactPassword = false;
   if (this.password == '') {
     this.verifPassword = '';
-  } else if (this.password.length < 5) {
-    this.verifPassword = 'Mot de passe doit etre superieur ou egal à  5';
+  } else if (this.password.length < 8) {
+    this.verifPassword = 'Mot de passe doit etre superieur ou egal à  8';
   } else {
     this.exactPassword = true;
     this.verifPassword = '';

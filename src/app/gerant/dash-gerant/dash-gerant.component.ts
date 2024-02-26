@@ -49,6 +49,7 @@ export class DashGerantComponent implements OnInit {
     this.dtOptions = {
       searching: true,
       lengthChange: true,
+      responsive:true,
       paging: true,
       info: false,
       pageLength: 5,

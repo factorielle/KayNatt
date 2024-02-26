@@ -26,5 +26,8 @@ export class CycleService {
   // listeCyclePart(idPart:any){
   //   return this.http.get(`${url}participant_tontine/ListeCycleParparticipant/${idPart}`)
   // }
+  listeCotisation(idCycle:any){
+    return this.http.get(`${url}auth/listeCotisationUser/${idCycle}`)
+  }
 }
 
