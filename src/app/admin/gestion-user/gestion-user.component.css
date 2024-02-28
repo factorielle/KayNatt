@@ -459,3 +459,20 @@ th{
 p{
     cursor: pointer;
 }
+.tableau{
+    overflow-x: auto
+  }
+  @media screen and (max-width: 768px) {
+    .responsive-table {
+      overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+    }
+    #menu-toggle{
+        margin-left: -5vh;
+    }
+    .listeTon{
+        /* margin-top: 0.2px !important; */
+        padding-top: 5px;
+        /* border: 1px solid red; */
+        /* color: blue; */
+    }
+  }
