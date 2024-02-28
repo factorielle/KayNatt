@@ -131,7 +131,7 @@
                   <button type="button" class="ms-5 btnAjout btn fw-bold mb-3" [routerLink]="['/detailTontineGerant',idTontineChoisi]">Retour </button>
                 </div>
           <h5 class="text-center">Liste des participants en attente de la tontine {{tontineChoisi.libelle}} </h5>
-              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="partTontine.length>0">
+              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left table-responsive" class="table pt-3" *ngIf="partTontine.length>0">
                 <thead  >
                   <tr>
                       <th>Prenom</th>
@@ -175,7 +175,7 @@
               </div>
           <h5 class="text-center">Liste des participants acceptés de la tontine {{tontineChoisi.libelle}} </h5>
 
-              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="partTontineAccepte.length>0">
+              <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left table-responsive" class="table pt-3" *ngIf="partTontineAccepte.length>0">
                 <thead  >
                   <tr>
                       <th>Prenom</th>

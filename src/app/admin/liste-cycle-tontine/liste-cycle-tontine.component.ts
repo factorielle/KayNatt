@@ -10,11 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./liste-cycle-tontine.component.css']
 })
 export class ListeCycleTontineComponent implements OnInit {
-
-  idPart:any;
-  userChoisi:any;
-  participants: any;
-  participation_tontine_id: any;
   cycles: any;
   tontines: any;
   tontineChoisi: any;
@@ -35,7 +30,7 @@ export class ListeCycleTontineComponent implements OnInit {
       }
     };
     this.listeCycle();
-    console.log(this.cycles)
+    // console.log(this.cycles)
     this.getTontine();
     this.responsive();
   }
@@ -44,8 +39,9 @@ export class ListeCycleTontineComponent implements OnInit {
 
   listeCycle() {
     this.cycleService.listeCycles(this.idtontine).subscribe((response:any) => {
+      console.log(response)
       this.cycles = response.data;
-      console.log('cycle',this.cycles);
+      console.warn('cycle',this.cycles);
     });
   }
   getTontine(){

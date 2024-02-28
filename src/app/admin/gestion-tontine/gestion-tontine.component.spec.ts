@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { GestionTontineComponent } from './gestion-tontine.component';
 import { DataTablesModule } from 'angular-datatables';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('GestionTontineComponent', () => {
   let component: GestionTontineComponent;
@@ -11,7 +12,7 @@ describe('GestionTontineComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [GestionTontineComponent],
-      imports:[DataTablesModule],
+      imports:[DataTablesModule, HttpClientModule],
       providers: [
         { provide: ActivatedRoute, useValue: {} }
       ]

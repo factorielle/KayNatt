@@ -129,30 +129,28 @@
             </div>
             <div class="info ms-5">
                 <p> <span  class="fw-bold">Date de tirage :</span>{{cycleChoisi.date_cycle}}
-                <br> <span class="fw-bold">Fonds : </span>Non alloué
+                <br> <span class="fw-bold">Fonds : </span>{{montant}} FCFA
                 <br> <span class="fw-bold">Montant : </span>{{tontineChoisi.nombre_participant*tontineChoisi.montant}} FCFA</p>
             </div>
             <div class="tableau container">
-                <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3">
+                <table datatable [dtOptions]="dtOptions" class="row-border hover table responsive-table text-left table-responsive" class="table pt-3" *ngIf="contribution.length">
                   <thead>
                     <tr>
                         <th>Nom Complet</th>
-                        <th>Telephone</th>
-                        <th>Adresse</th>
+                        <th>Montant</th>
+                        <th>Date paiement</th>
+                        <th>contribution</th>
                         <th>Role</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
           
                 <tbody>
-                  <tr  *ngFor="let participant of partTontineAccepte; let i =index">
-                    <td>{{ tabParticipantAccepter[i]?.name }}</td>
-                    <td>{{ tabParticipantAccepter[i]?.telephone }} </td>
-                    <td>{{tabParticipantAccepter[i]?.adresse }}</td>
-                    <td>{{tabParticipantAccepter[i]?.role }}</td>
-                      <td><span class="status action-icon">
-                        <button class="btn btnAjout fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="showDetails(tabParticipantAccepter[i])">Detail</button>    
-                      </span>
+                  <tr  *ngFor="let participant of contribution">
+                    <td>{{ participant.name }}</td>
+                    <td>{{ participant.montant_paiement }} </td>
+                    <td>{{participant.date_paiement | date:'dd/MM/yyyy'}}</td>
+                    <td>{{participant.statutCotisation}}</td>
+                      <td>{{participant.role}}
                       </td>
                   </tr>
            

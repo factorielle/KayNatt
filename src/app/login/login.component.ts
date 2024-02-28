@@ -324,7 +324,7 @@ verifPasswordFonction() {
   this.exactPassword = false;
   if (this.password == '') {
     this.verifPassword = '';
-  } else if (this.password.length < 8) {
+  } else if (this.password.length < 3) {
     this.verifPassword = 'Mot de passe doit etre superieur ou egal à  8';
   } else {
     this.exactPassword = true;

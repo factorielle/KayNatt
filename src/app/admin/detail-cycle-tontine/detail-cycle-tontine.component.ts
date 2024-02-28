@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
 import { TontineService } from 'src/app/services/tontine.service';
 
@@ -16,7 +17,9 @@ export class DetailCycleTontineComponent  implements OnInit{
   listeCycles: any;
   cycleChoisi: any;
   partTontineAccepte: any;
-  constructor(private route:ActivatedRoute, private tontineService:TontineService, private cycleService:CycleService){}
+  contribution: any;
+  montant: any;
+  constructor(private route:ActivatedRoute, private tontineService:TontineService, private cycleService:CycleService, private authService:AuthService, private router:Router){}
   dtOptions: DataTables.Settings = {};
   ngOnInit(){
     this.route.paramMap.subscribe(params => {
@@ -39,8 +42,9 @@ export class DetailCycleTontineComponent  implements OnInit{
     };
     this.getTontine();
     this.getCycle();
-    this.getParticipantAccepte()
+    this.getParticipantAccepte();
     this.responsive();
+    this.cotisations();
   }
 
   responsive(){
@@ -101,6 +105,24 @@ sidebarItems.forEach(element => {
       console.log(response.data)
       this.partTontineAccepte=response.data;
       console.log( 'liste participation',this.partTontineAccepte)
+    })
+  }
+  cotisations(){
+    this.cycleService.listeCotisation(this.idCycle).subscribe((response:any)=>{
+      console.log('cotis',response);
+      this.montant=response.montant_a_gagner
+      this.contribution=response.data
+      console.log('sation',this.contribution)
+    })
+  
+  }
+
+  
+  DeconnexionAdmin(){
+    this.authService.logoutAdmin().subscribe((response:any)=>{
+      console.log(response)
+      localStorage.removeItem('token')
+      this.router.navigate(['/accueil'])
     })
   }
 }

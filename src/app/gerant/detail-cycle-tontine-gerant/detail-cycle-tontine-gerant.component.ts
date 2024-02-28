@@ -34,6 +34,8 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   date: any;
   verifCotisation: String = '';
   exactCotisation: boolean = false;
+  contribution: any;
+  montant: any;
 
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
@@ -50,7 +52,7 @@ export class DetailCycleTontineGerantComponent implements OnInit {
 
     this.getParticipantAccepte();
     this.getUserAccepter();
-
+    this.cotisations();
 
     // liste cycle
     this.getCycle();
@@ -225,6 +227,16 @@ export class DetailCycleTontineGerantComponent implements OnInit {
       this.verifCotisation = '';
     }
   }  
+
+  cotisations(){
+    this.cycleService.listeCotisation(this.cycleId).subscribe((response:any)=>{
+      console.log('cotis',response);
+      this.contribution=response.data;
+      this.montant=response.montant_a_gagner
+      console.log('sation',this.contribution)
+    })
+  
+  }
   
 
 }

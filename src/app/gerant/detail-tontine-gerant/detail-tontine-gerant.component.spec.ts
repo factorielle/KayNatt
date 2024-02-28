@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailTontineGerantComponent } from './detail-tontine-gerant.component';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DetailTontineGerantComponent', () => {
   let component: DetailTontineGerantComponent;
@@ -9,7 +10,7 @@ describe('DetailTontineGerantComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailTontineGerantComponent],
+      declarations: [DetailTontineGerantComponent, HttpClientModule],
       providers: [
         { provide: ActivatedRoute, useValue: {} }
       ]

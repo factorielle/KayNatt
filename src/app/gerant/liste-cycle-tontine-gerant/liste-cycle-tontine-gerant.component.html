@@ -126,7 +126,7 @@
                 <button class="ms-4 btnRetour btn fw-bold" [routerLink]="['/detailTontineGerant',idTontineChoisi]">Retour </button>
                 <h5 class="text-center">Liste des cycle de la tontines {{tontineChoisi.libelle}}</h5>
                 <div class="tableau container">
-                  <table datatable [dtOptions]="dtOptions" class="row-border hover table text-left" class="table pt-3" *ngIf="listeCycles.length>0">
+                  <table datatable [dtOptions]="dtOptions" class="row-border hover table table-responsive text-left" class="table pt-3" *ngIf="listeCycles.length>0">
                     <thead  style="background-color: var(--couleurPrincipal) !important;">
                       <tr>
                           <th>Nom</th>

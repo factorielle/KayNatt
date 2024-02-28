@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListeParticipantTontineComponent } from './liste-participant-tontine.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ActivatedRoute } from '@angular/router';
 
 describe('ListeParticipantTontineComponent', () => {
   let component: ListeParticipantTontineComponent;
@@ -10,7 +11,10 @@ describe('ListeParticipantTontineComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ListeParticipantTontineComponent],
-      imports:[DataTablesModule]
+      imports:[DataTablesModule],
+      providers: [
+        { provide: ActivatedRoute, useValue: {} }
+      ]
     });
     fixture = TestBed.createComponent(ListeParticipantTontineComponent);
     component = fixture.componentInstance;

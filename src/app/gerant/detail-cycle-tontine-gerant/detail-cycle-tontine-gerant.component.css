@@ -212,3 +212,26 @@ th{
   input, textarea, select{
     border-left: 3px solid var(--couleurSecondaire);
   }
+  .responsive-table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    overflow-x: auto; /* Ajoute un défilement horizontal si nécessaire */
+    display: block; /* Rend la table réactive */
+    white-space: nowrap; /* Empêche le renvoi à la ligne du texte dans les cellules */
+  }
+  .tableau{
+    overflow-x: auto
+  }
+  @media screen and (max-width: 768px) {
+    .responsive-table {
+      overflow-y: auto; /* Ajoute un défilement vertical si nécessaire */
+    }
+    #menu-toggle{
+        margin-left: -5vh;
+    }
+    .top{
+        /* margin-top: 2vh; */
+    }
+  }
+  @media(max-width:376px){}
