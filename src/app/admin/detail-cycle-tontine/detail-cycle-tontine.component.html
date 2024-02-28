@@ -150,27 +150,29 @@
                     <li><span class="fw-bold">Etat: </span>{{cycleChoisi.statut}}</li>
                 </ul>
 
-                <table datatable [dtOptions]="dtOptions" class="row-border hover table-responsive table text-left" class="table pt-3" *ngIf="contribution.length>0">
-                    <thead  >
-                      <tr >
-                          <th>Nom Complet</th>
-                          <th>Montant </th>
-                          <th>Contribution</th>
-                          <th>Date paiement</th>
-                          <th>Role</th>
-                      </tr>
-                  </thead>
-            
-                  <tbody>
-                    <tr *ngFor="let part of contribution">
-                        <td>{{part.name}}</td>
-                        <td>{{part.montant_paiement}}</td>
-                        <td>{{part.statutCotisation}}</td>
-                        <td>{{part.date_paiement | date:'dd/MM/yyyy'}}</td>
-                        <td>{{part.role}}</td>
-                    </tr>
-                  </tbody>
-                    </table>
+                <div class="tableau">
+                    <table datatable [dtOptions]="dtOptions" class="row-border hover table-responsive table text-left" class="table pt-3" *ngIf="contribution.length>0">
+                        <thead  >
+                          <tr >
+                              <th>Nom Complet</th>
+                              <th>Montant </th>
+                              <th>Contribution</th>
+                              <th>Date paiement</th>
+                              <th>Role</th>
+                          </tr>
+                      </thead>
+                
+                      <tbody>
+                        <tr *ngFor="let part of contribution">
+                            <td>{{part.name}}</td>
+                            <td>{{part.montant_paiement}}</td>
+                            <td>{{part.statutCotisation}}</td>
+                            <td>{{part.date_paiement | date:'dd/MM/yyyy'}}</td>
+                            <td>{{part.role}}</td>
+                        </tr>
+                      </tbody>
+                        </table>
+                </div>
               </div>
             </div>
 
