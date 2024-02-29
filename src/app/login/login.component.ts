@@ -10,6 +10,7 @@ import {  User } from '../model/tontine';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+  isAdmin!:boolean;
   afficherLogin:boolean=true;
   afficherIns:boolean=true;
   nom:any;
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit{
   constructor(private authService:AuthService, private route:Router){}
 
   ngOnInit() {
-   
+   this.isAdmin=false;
   }
   
 afficherFormIns(){
@@ -105,59 +106,89 @@ inscription(){
   }
 
 }
+connexion() {
+    const credentials = {
+      email: this.email,
+      password: this.password,
+    };
 
-connexion(){
-  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
-
-  if (this.email == "" || this.password == "") {
-    this.showMessage( "error","Desole", "Veuillez remplir tous les champs");
-  } else if (!this.email.match(emailPattern)) {
-    this.showMessage("error","desole", "l'email n'est pas valide" );
-  }else{
-    const credentials={
-      email:this.email,
-      password:this.password
-    }
     this.authService.login(credentials).subscribe(
       (response:any) => {
-        // Stockez le token dans un service ou dans le stockage local (localStorage).
-        console.log(response)
-        console.log(response.data.role)
-        localStorage.setItem('token', response.token)
-        localStorage.setItem('userInfo', JSON.stringify(response.data));
-        if(response.token){
-          
-          this.showMessage("success", "Bienvenue",`${response.data.name}`);
-          if(response.data.role=='createur_tontine'){
+        if (response.token) {
+          this.isAdmin=true;
+          // alert(this.isAdmin)
+          localStorage.setItem("token", response.token);
+          localStorage.setItem("userInfo", JSON.stringify(response.data));
 
-            this.route.navigate(['/dashboardGerant']);
+          this.showMessage("success", "Bienvenue", `${response.data.name}`);
+
+          const role = response.data.role?.toLowerCase(); 
+
+          if (role === "createur_tontine") {
+            this.route.navigate(["/dashboardGerant"]);
+          } else if (role === "participant_tontine") {
+            this.route.navigate(["/dashboardPart"]);
+          } 
+        } 
+      else{
+        
+        this.verif();
+      }
+      }
+     
+    );
+}
+
+
+// dconnexion(){
+//   const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,}$/;
+
+//   if (this.email == "" || this.password == "") {
+//     this.showMessage( "error","Desole", "Veuillez remplir tous les champs");
+//   } else if (!this.email.match(emailPattern)) {
+//     this.showMessage("error","desole", "l'email n'est pas valide" );
+//   }else{
+    
+//     const credentials={
+//       email:this.email,
+//       password:this.password
+//     }
+//     this.authService.login(credentials).subscribe(
+//       (response:any) => {
+//         // Stockez le token dans un service ou dans le stockage local (localStorage).
+//         console.log(response)
+//         console.log(response.data.role)
+//         localStorage.setItem('token', response.token)
+//         localStorage.setItem('userInfo', JSON.stringify(response.data));
+//         if(response.token){
+          
+//           this.showMessage("success", "Bienvenue",`${response.data.name}`);
+//           if(response.data.role=='createur_tontine'){
+
+//             this.route.navigate(['/dashboardGerant']);
 
             
-          }else if(response.data.role=='participant_tontine'){
-            this.route.navigate(['/dashboardPart'])
+//           }else if(response.data.role=='participant_tontine'){
+//             this.route.navigate(['/dashboardPart'])
 
-          }
-          else{
-            this.showMessage('error','Oops', 'Ce compte n\'existe pas')
-          }
-          }
-        // this.route.navigate(['/accueil'])
-      },
-      (error:any) => {
-        // Gérez les erreurs de connexion.
-        console.error('Erreur de connexion :', error);
-      }
-    );
-  }
-}
+//           }
+//           else{
+//             this.showMessage('error','Oops', 'Ce compte n\'existe pas')
+//           }
+//         }else{
+//           console.error("Erreur de connexion:", response); // Provide more informative error message
+//           this.showMessage("error", "Oops", "Une erreur est survenue. Veuillez réessayer.");
+//         }
+//         // this.route.navigate(['/accueil'])
+//       },
+      
+//     );
+//   }
+// }
 
 
 // connexionAmin
 connexionAdmin(){
-  if ( this.password=='' || this.email=='')  {
-    this.showMessage("error", "Oops","Veuillez renseigner tous les champs");
-   
-  }else{
     const credentials={
       email_admin:this.email,
       password:this.password
@@ -166,7 +197,7 @@ connexionAdmin(){
       (response:any) => {
         // Stockez le token dans un service ou dans le stockage local (localStorage).
         console.log(response)
-        // console.log(response.data.role)
+       this.isAdmin=true;
         localStorage.setItem('userInfo',JSON.stringify(response.data) )
         localStorage.setItem('token', response.token)
      if(response.token ){
@@ -175,12 +206,10 @@ connexionAdmin(){
       
   
     }
-    else{
-      this.showMessage('error','Oops', 'Ce compte n\'existe pas');
-    }
+   
   })
 
-  }
+  
 }
 
 // sweetalert
@@ -236,11 +265,25 @@ verifEmailConFonction() {
     !this.email.includes('.')
   ) {
     this.verifEmailCon = 'Veuillez donner un email valide';
-  } else {
+  } 
+  else {
     this.verifEmailCon = '';
     this.exactEmailCon = true;
   }
 }
+verif() {
+  // alert(this.isAdmin)
+  if(this.isAdmin==false){
+    this.showMessage("error", "Oops", "Une erreur est survenue. Veuillez réessayer."); 
+    this.email='';
+    this.password='';
+    this.exactEmailCon=false;
+    this.exactPassword=false;
+  }
+}
+
+
+
 
 // Verification du nom
 NomPattern1 = /^[a-zA-Z ]+$/;
