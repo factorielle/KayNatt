@@ -36,6 +36,9 @@ export class DetailCycleTontineGerantComponent implements OnInit {
   exactCotisation: boolean = false;
   contribution: any;
   montant: any;
+  tontineEnCours: any[]=[];
+  tontineStat: any[]=[];
+  tontineTermine: any[]=[];
 
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
 
@@ -58,6 +61,7 @@ export class DetailCycleTontineGerantComponent implements OnInit {
     this.getCycle();
     // liste tontine
     this.getTontine();
+    this.getTontineByUser();
 
     // dataTables
     this.dtOptions = {
@@ -137,6 +141,29 @@ export class DetailCycleTontineGerantComponent implements OnInit {
       this.tontineChoisi = this.tontines.find((element: any) => element.id == this.tontineId);
       console.log( this.tontineChoisi);
   })
+  }
+
+  getTontineByUser(){ 
+    const userConnect=JSON.parse(localStorage.getItem('userInfo')||'{}')
+    this.tontineService.listeTontineByUsr(userConnect.id).subscribe((response:any)=>{
+      this.tontineStat=response.data
+      console.log('stat',this.tontineStat);
+      this.tontineStat.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+          }
+        });
+        console.log('term', this.tontineTermine);
+    
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+  
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
+    })
   }
 
   getParticipantAccepte(){

@@ -20,12 +20,17 @@ export class DetailTontineParticipantComponent  implements OnInit{
   createur:any;
   idUser: any;
   dureeTontine:any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineStat: any[]=[];
 
   constructor(private authService:AuthService, private router:Router, private route:ActivatedRoute, private tontineService:TontineService, private userService:UserService){}
   idTontineChoisi = this.route.snapshot.params['id'];
   ngOnInit() {
+  
 
       this.getTontine();
+      this.tontineStatFonction()
 
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -128,6 +133,32 @@ export class DetailTontineParticipantComponent  implements OnInit{
     const duree = Math.ceil(nombreParticipants / nombreParticipantsParPeriode);
   
     return duree;
+  }
+
+  tontineStatFonction(){
+    const userConnect=JSON.parse(localStorage.getItem('userInfo') || '{}')
+    this.tontineService.listeTontineParPart(userConnect.id).subscribe((response:any)=>{
+      console.log(response);
+      this.tontineStat=response.data;
+      console.log(this.tontineStat);
+      this.tontineStat.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    });
+    
+    console.log('term', this.tontineTermine);
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
+    })
+      
+
+
   }
 }
 

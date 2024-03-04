@@ -13,6 +13,8 @@ export class DashParticipantComponent implements  OnInit{
   userConnect:any;
   idUser:any;
   tontines:any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
 
   constructor(private authService:AuthService, private route:Router, private tontineService: TontineService){}
   ngOnInit() {
@@ -67,8 +69,24 @@ menuToggle?.addEventListener("click", (e: Event) => {
     this.tontineService.listeTontineParPart(this.idUser).subscribe((response:any)=>{
       console.log(response);
       this.tontines=response.data;
-      console.log(this.tontines)
+      console.log(this.tontines);
+      this.tontines.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    });
+    
+    console.log('term', this.tontineTermine);
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
     })
+      
+
 
   }
 

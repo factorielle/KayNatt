@@ -16,11 +16,14 @@ export class ListeTontineParticipantComponent implements OnInit {
   tontines: any;
   tontineChoisi: any;
   participants: any;
+  tontineEnCours: any[]=[];
+  tontineTermine: any[]=[];
+  tontineStat: any[]=[];
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
   idTontineChoisi = this.route.snapshot.params['id'];
   ngOnInit(): void {
    
-
+    this.tontineStatFonction();
       // dataTables
       this.dtOptions = {
         searching: true,
@@ -87,5 +90,30 @@ deconnexion(){
 showDetails(article: any) {
   this.details = article;
   console.warn(this.details);
+}
+tontineStatFonction(){
+  const userConnect=JSON.parse(localStorage.getItem('userInfo') || '{}')
+  this.tontineService.listeTontineParPart(userConnect.id).subscribe((response:any)=>{
+    console.log(response);
+    this.tontineStat=response.data;
+    console.log(this.tontineStat);
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontineStat.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+
+console.log('cours', this.tontineEnCours);
+  })
+    
+
+
 }
 }

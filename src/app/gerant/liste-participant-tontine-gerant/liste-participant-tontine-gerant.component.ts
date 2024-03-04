@@ -19,6 +19,9 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
   partTontineAccepte: any;
   demandeurAccepter: any;
   details = { name: '', email: '', adresse: '', telephone:'' };
+  tontineEnCours: any[]=[];
+  tontineStat: any[]=[];
+  tontineTermine: any[]=[];
 
   constructor(private participantTontineService:TontineService, private route:ActivatedRoute , private userService:UserService, private tontineService:TontineService, private authService:AuthService, private router:Router){}
   idTontineChoisi=this.route.snapshot.params['id']
@@ -40,6 +43,7 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
   message:string='';
   dtOptions: DataTables.Settings = {};
   ngOnInit(){
+    this.getTontineByUser();
     this.dtOptions = {
       searching: true,
       lengthChange: true,
@@ -105,6 +109,28 @@ export class ListeParticipantTontineGerantComponent implements OnInit{
     })
   }
 
+  getTontineByUser(){ 
+    const userConnect=JSON.parse(localStorage.getItem('userInfo')||'{}')
+    this.tontineService.listeTontineByUsr(userConnect.id).subscribe((response:any)=>{
+      this.tontineStat=response.data
+      console.log('stat',this.tontineStat);
+      this.tontineStat.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+          }
+        });
+        console.log('term', this.tontineTermine);
+    
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+  
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
+    })
+  }
 
 
   envoi(){

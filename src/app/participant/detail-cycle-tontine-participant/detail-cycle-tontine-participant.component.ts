@@ -29,6 +29,10 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
   verifCotisation: String = '';
   exactCotisation: boolean = false;
   contribution: any;
+  montant: any;
+  tontineEnCours: any[]=[];
+  tontineStat: any[]=[];
+  tontineTermine: any[]=[];
   constructor(private route:ActivatedRoute,private authService:AuthService, private router:Router, private cycleService:CycleService, private tontineService:TontineService, private userService:UserService){}
   
   dtOptions: DataTables.Settings = {};
@@ -74,6 +78,7 @@ export class DetailCycleTontineParticipantComponent implements OnInit{
             wrapper?.classList.add("toggled");
         }
     });
+    this.tontineStatFonction();
   this.cotisations();
   this.getParticipant();
   }
@@ -196,8 +201,35 @@ cotisations(){
   this.cycleService.listeCotisation(this.idCycleChoisi).subscribe((response:any)=>{
     console.log('cotis',response);
     this.contribution=response.data
+    this.montant=response.montant_a_gagner
     console.log('sation',this.contribution)
   })
+
+}
+
+tontineStatFonction(){
+  const userConnect=JSON.parse(localStorage.getItem('userInfo') || '{}')
+  this.tontineService.listeTontineParPart(userConnect.id).subscribe((response:any)=>{
+    console.log(response);
+    this.tontineStat=response.data;
+    console.log(this.tontineStat);
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontineStat.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+
+console.log('cours', this.tontineEnCours);
+  })
+    
+
 
 }
 }

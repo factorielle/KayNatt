@@ -14,7 +14,7 @@ export class IntercepteurInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request);
+    // console.log(request);
     // Récupérer le token JWT depuis le service d'authentification
     const token = localStorage.getItem('token');
 
@@ -25,7 +25,7 @@ export class IntercepteurInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(clonedRequest);
+      // console.log(clonedRequest);
 
       return next.handle(clonedRequest);
     } else {

@@ -20,6 +20,9 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
   participants: any;
   userChoisi: any;
   participation_tontine_id: any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineStat: any[]=[];
 
   constructor(private authService:AuthService, private router:Router, private route:ActivatedRoute, private tontineService:TontineService, private userService:UserService, private cycleService:CycleService){}
   idtontine=this.route.snapshot.params['id']
@@ -41,7 +44,7 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
     };
     this.getParticipant();
 
-
+    this.tontineStatFonction();
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
     // Attache un gestionnaire d'événements au clic de cet élément
@@ -100,6 +103,31 @@ export class ListeCycleTontineParticipantComponent implements OnInit {
 
   getCycles(){
    
+  }
+  tontineStatFonction(){
+    const userConnect=JSON.parse(localStorage.getItem('userInfo') || '{}')
+    this.tontineService.listeTontineParPart(userConnect.id).subscribe((response:any)=>{
+      console.log(response);
+      this.tontineStat=response.data;
+      console.log(this.tontineStat);
+      this.tontineStat.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    });
+    
+    console.log('term', this.tontineTermine);
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
+    })
+      
+
+
   }
 
 }

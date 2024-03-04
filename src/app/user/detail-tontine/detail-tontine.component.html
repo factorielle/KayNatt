@@ -24,7 +24,7 @@
                         <li><span class="fw-bold">Initiée par:</span> {{createur.name}}</li>
                     </ul>
                         <div class="mt-5 boutons mb-3 ms-4">
-                            <button class="btn btnInt fw-bold me-2 mb-1" [ngClass]="{'disabled': tontineChoisi.etat === 'en_cours'}"
+                            <button class="btn btnInt fw-bold me-2 mb-1" [ngClass]="{'disabled': tontineChoisi.etat === 'en_cours' || tontineChoisi.etat==='termine'}"
                             (click)="integration(tontineChoisi)">Integrer</button>
                             <button class="btn btnRetour fw-bold mb-1" [routerLink]="['/accueil']">Retour</button>
                         </div>

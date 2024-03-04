@@ -42,6 +42,8 @@ export class DashGerantComponent implements OnInit {
    exactRegle: boolean = false;
    exactDescription: boolean = false;
    exactCotisation: boolean = false;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
 
   constructor(private tontineService:TontineService, private authService:AuthService, private route:Router){}
   ngOnInit() {
@@ -138,6 +140,20 @@ getTontineByUser(){
   this.tontineService.listeTontineByUsr(userConnect.id).subscribe((response:any)=>{
     this.tontines=response.data
     console.log(this.tontines);
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontines.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+
+console.log('cours', this.tontineEnCours);
   })
 }
 

@@ -13,6 +13,9 @@ export class DetailTontineGerantComponent  implements OnInit{
 
   tontines:any;
   tontineChoisi:any;
+  tontineStat: any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
 
   constructor(private route: ActivatedRoute, private tontineService:TontineService, private authService:AuthService, private router:Router){}
   idTontineChoisi = this.route.snapshot.params['id'];
@@ -24,11 +27,14 @@ export class DetailTontineGerantComponent  implements OnInit{
       console.log(response);
       this.tontines=response.data
       console.log(this.tontines)
+      
       this.tontineChoisi = this.tontines.find((element: any) => element.id == this.idTontineChoisi);
       this.dureeTontine=this.calculerDureeTontine(this.tontineChoisi.periode,  this.tontineChoisi.nombre_participant,this.tontineChoisi.date_de_debut)
       console.log(this.tontineChoisi)
+      
 
     })
+    this.getTontineByUser();
     
     const menuToggle = document.getElementById("menu-toggle") as HTMLElement | null;
 
@@ -87,6 +93,28 @@ export class DetailTontineGerantComponent  implements OnInit{
     return duree;
   }
 
+
+  getTontineByUser(){ 
+    const userConnect=JSON.parse(localStorage.getItem('userInfo')||'{}')
+    this.tontineService.listeTontineByUsr(userConnect.id).subscribe((response:any)=>{
+      this.tontineStat=response.data
+      console.log('stat',this.tontineStat);
+      this.tontineStat.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    });
+    
+    console.log('term', this.tontineTermine);
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  
+  console.log('cours', this.tontineEnCours);
+    })
+  }
   deconnexion(){
     this.authService.logout().subscribe((response:any)=>{
       console.log(response);
