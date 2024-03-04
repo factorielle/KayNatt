@@ -3,6 +3,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CycleService } from 'src/app/services/cycle.service';
 import { TontineService } from 'src/app/services/tontine.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-detail-cycle-tontine',
@@ -19,7 +20,12 @@ export class DetailCycleTontineComponent  implements OnInit{
   partTontineAccepte: any;
   contribution: any;
   montant: any;
-  constructor(private route:ActivatedRoute, private tontineService:TontineService, private cycleService:CycleService, private authService:AuthService, private router:Router){}
+  tontineEnAttente: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineStat: any;
+  tontineTermine: any[]=[];
+  users: any;
+  constructor(private route:ActivatedRoute, private tontineService:TontineService, private cycleService:CycleService, private authService:AuthService, private router:Router, private userService:UserService){}
   dtOptions: DataTables.Settings = {};
   ngOnInit(){
     this.route.paramMap.subscribe(params => {
@@ -45,6 +51,8 @@ export class DetailCycleTontineComponent  implements OnInit{
     this.getParticipantAccepte();
     this.responsive();
     this.cotisations();
+    this.getUser();
+    this.listeTontines();
   }
 
   responsive(){
@@ -115,6 +123,37 @@ sidebarItems.forEach(element => {
       console.log('sation',this.contribution)
     })
   
+  }
+
+  getUser(){
+    this.userService.getUsers().subscribe((response:any)=>{
+      this.users=response.data
+      console.log(this.users)
+  })  
+  
+  }
+  listeTontines(){
+  this.tontineService.AfficherTontine().subscribe((response:any)=>{
+    this.tontineStat=response.data;
+    console.log(this.tontineStat); 
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontineStat.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+  });
+  this.tontines.forEach((element:any) => {
+  if (element.etat === 'en_attente') {
+      this.tontineEnAttente.push(element);
+  }
+  });
+  });
   }
 
   

@@ -20,6 +20,9 @@ export class DetailTontineAdminComponent  implements OnInit{
   userChoisi: any;
   participation_tontine_id: any;
   cycles: any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineEnAttente: any[]=[];
 
   constructor(private route: ActivatedRoute, private tontineService:TontineService, private userService:UserService, private authSercice:AuthService, private router:Router, private cycleService:CycleService){}
   idTontineChoisi = this.route.snapshot.params['id'];
@@ -29,6 +32,7 @@ export class DetailTontineAdminComponent  implements OnInit{
   ngOnInit(): void {
   this.detailTontine();
   this.responsive();
+  this.listeTontines();
   }
   detailTontine(){
     this.tontineService.AfficherTontine().subscribe((response:any)=>{
@@ -131,6 +135,29 @@ sidebarItems.forEach(element => {
   }
 
  
+  listeTontines(){
+    this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      this.tontines=response.data;
+      console.log(this.tontines); 
+      this.tontines.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    }); 
+    
+    console.log('term', this.tontineTermine);
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  this.tontines.forEach((element:any) => {
+    if (element.etat === 'en_attente') {
+        this.tontineEnAttente.push(element);
+    }
+  });
+    });
+  } 
 
 
 }

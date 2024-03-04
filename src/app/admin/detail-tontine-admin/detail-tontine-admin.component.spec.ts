@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DetailTontineAdminComponent } from './detail-tontine-admin.component';
 import { ActivatedRoute } from '@angular/router';
 

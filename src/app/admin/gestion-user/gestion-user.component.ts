@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { TontineService } from 'src/app/services/tontine.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,8 +12,12 @@ import { UserService } from 'src/app/services/user.service';
 export class GestionUserComponent implements OnInit{
  
   users:any;
+  tontines: any;
+  tontineEnCours: any[]=[];
+  tontineEnAttente: any[]=[];
+  tontineTermine: any[]=[];
 
-  constructor(private userService:UserService, private logoutService:AuthService, private route:Router){}
+  constructor(private userService:UserService, private logoutService:AuthService, private route:Router, private tontineService:TontineService){}
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
     this.dtOptions = {
@@ -28,6 +33,7 @@ export class GestionUserComponent implements OnInit{
 
     this.getUser();
     this.responsive();
+    this.listeTontines();
   }
 
   getUser(){
@@ -36,6 +42,29 @@ export class GestionUserComponent implements OnInit{
       console.log(this.users)
   })
 
+}
+listeTontines(){
+  this.tontineService.AfficherTontine().subscribe((response:any)=>{
+    this.tontines=response.data;
+    console.log(this.tontines); 
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontines.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+this.tontines.forEach((element:any) => {
+  if (element.etat === 'en_attente') {
+      this.tontineEnAttente.push(element);
+  }
+});
+  });
 }
 
 DeconnexionAdmin(){

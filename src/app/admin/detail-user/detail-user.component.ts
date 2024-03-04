@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { TontineService } from 'src/app/services/tontine.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -14,8 +15,12 @@ export class DetailUserComponent implements OnInit{
   message:string='';
   userChoisi:any;
   users:any;
+  tontineEnAttente: any[]=[];
+  tontines: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineTermine: any[]=[];
 
-  constructor(private route: ActivatedRoute, private userService:UserService, private authService:AuthService, private router:Router){}
+  constructor(private route: ActivatedRoute, private userService:UserService, private authService:AuthService, private router:Router, private tontineService:TontineService){}
   idUserChoisi = this.route.snapshot.params['id'];
   ngOnInit(){
     this.userService.getUsers().subscribe((response:any)=>{
@@ -25,6 +30,7 @@ export class DetailUserComponent implements OnInit{
       this.userChoisi = this.users.find((element: any) => element.id == this.idUserChoisi);
 
     })
+    this.listeTontines();
     this.responsive();
   }
 
@@ -107,5 +113,28 @@ sidebarItems.forEach(element => {
   });
 });
 
+  }
+  listeTontines(){
+    this.tontineService.AfficherTontine().subscribe((response:any)=>{
+      this.tontines=response.data;
+      console.log(this.tontines); 
+      this.tontines.forEach((element:any) => {
+        if (element.etat === 'termine') {
+            this.tontineTermine.push(element);
+        }
+    }); 
+    
+    console.log('term', this.tontineTermine);
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'en_cours') {
+          this.tontineEnCours.push(element);
+      }
+  });
+  this.tontines.forEach((element:any) => {
+    if (element.etat === 'en_attente') {
+        this.tontineEnAttente.push(element);
+    }
+  });
+    });
   }
 }

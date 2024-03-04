@@ -16,6 +16,10 @@ export class ListeParticipantTontineComponent implements OnInit{
   demandeurAccepter: any;
   tontines: any;
   tontineChoisi: any;
+  tontineTermine: any[]=[];
+  tontineStat: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineEnAttente: any[]=[];
   constructor(private route:ActivatedRoute, private router:Router, private authService:AuthService, private participantTontineService:TontineService, private userService:UserService){}
   idTontineChoisi=this.route.snapshot.params['id']
 
@@ -36,6 +40,8 @@ export class ListeParticipantTontineComponent implements OnInit{
     // this.getUserAccepter();
     this.getTontine();
     this.responsive();
+    this.getUser();
+    this.listeTontines();
 
   }
 
@@ -91,6 +97,37 @@ export class ListeParticipantTontineComponent implements OnInit{
       })
     
   }
+
+  getUser(){
+    this.userService.getUsers().subscribe((response:any)=>{
+      this.users=response.data
+      console.log(this.users)
+  })  
+
+}
+listeTontines(){
+  this.participantTontineService.AfficherTontine().subscribe((response:any)=>{
+    this.tontineStat=response.data;
+    console.log(this.tontines); 
+    this.tontineStat.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontineStat.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+this.tontines.forEach((element:any) => {
+  if (element.etat === 'en_attente') {
+      this.tontineEnAttente.push(element);
+  }
+});
+  });
+}
 
 
   DeconnexionAdmin(){

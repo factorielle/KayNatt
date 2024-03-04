@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import { TontineService } from 'src/app/services/tontine.service';
 
 
 @Component({
@@ -21,9 +23,16 @@ import { Router } from '@angular/router';
   ],
 })
 export class DashAccueilComponent implements OnInit{
-  constructor(private logout:AuthService, private route:Router){}
+  users: any;
+  tontines: any;
+  tontineTermine: any[]=[];
+  tontineEnCours: any[]=[];
+  tontineEnAttente: any[]=[];
+  constructor(private logout:AuthService, private route:Router, private userService:UserService, private tontineService:TontineService){}
   ngOnInit(): void {
     this.responsive();
+    this.getUser();
+    this.listeTontines();
   }
 
   responsive(){
@@ -64,6 +73,34 @@ sidebarItems.forEach(element => {
       this.route.navigate(['/accueil'])
     })
   }
-  
+  getUser(){
+    this.userService.getUsers().subscribe((response:any)=>{
+      this.users=response.data
+      console.log(this.users)
+  })  
 
+}
+listeTontines(){
+  this.tontineService.AfficherTontine().subscribe((response:any)=>{
+    this.tontines=response.data;
+    console.log(this.tontines); 
+    this.tontines.forEach((element:any) => {
+      if (element.etat === 'termine') {
+          this.tontineTermine.push(element);
+      }
+  });
+  
+  console.log('term', this.tontineTermine);
+  this.tontines.forEach((element:any) => {
+    if (element.etat === 'en_cours') {
+        this.tontineEnCours.push(element);
+    }
+});
+this.tontines.forEach((element:any) => {
+  if (element.etat === 'en_attente') {
+      this.tontineEnAttente.push(element);
+  }
+});
+  });
+}
 }

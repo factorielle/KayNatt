@@ -87,7 +87,7 @@
                     <div class="">
                         <div class="info">
                             <p class="adminStat mb-2">Nombre  d’utilisateur</p>
-                            <p>35 </p>
+                            <p>{{users.length}} </p>
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="48" viewBox="0 0 53 69" fill="none">
@@ -106,7 +106,7 @@
                     <div class="">
                         <div class="info">
                             <p class="adminStat mb-2">Nombre de tontine</p>
-                            <p>30 </p>
+                            <p>{{tontineStat.length}} </p>
                         </div>
                       
                     </div>
@@ -207,7 +207,7 @@
                     </div>
                     <div class="bottom">
                         <div class="line"></div>
-                        <h4 class="fw-bold">12</h4>
+                        <h4 class="fw-bold">{{tontineEnCours.length}}</h4>
                     </div>
                 </div>
                 <div class="item">
@@ -217,7 +217,7 @@
                     </div>
                     <div class="bottom">
                         <div class="line"></div>
-                        <h4 class="fw-bold">10</h4>
+                        <h4 class="fw-bold">{{tontineTermine.length}}</h4>
                     </div>
                 </div>
                 <div class="item">
@@ -227,16 +227,16 @@
                     </div>
                     <div class="bottom">
                         <div class="line"></div>
-                        <h4 class="fw-bold">8</h4>
+                        <h4 class="fw-bold">0</h4>
                     </div>
                 </div>
                 <div class="item">
                     <div class="top">
-                        <p>Nombre de  gerant</p>
+                        <p>Tontines en attente</p>
                     </div>
                     <div class="bottom">
                         <div class="line"></div>
-                        <h4 class="fw-bold">20</h4>
+                        <h4 class="fw-bold">{{tontineEnAttente.length}}</h4>
                     </div>
                 </div>
             </div>
